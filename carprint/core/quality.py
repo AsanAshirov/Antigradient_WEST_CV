@@ -40,6 +40,34 @@ def glare_mask(rgb: np.ndarray) -> np.ndarray:
     return mask.astype(bool)
 
 
+def reflection_factor(rgb: np.ndarray, pts: np.ndarray) -> np.ndarray:
+    """Per-keypoint evidence factor in [0.2, 1]: bright, colourless neighbourhoods on paint are usually
+    mirrored sky or buildings that move with the camera, so their matches count less as identity evidence."""
+    hsv = cv2.cvtColor(rgb, cv2.COLOR_RGB2HSV)
+    soft = ((hsv[..., 2] >= 200) & (hsv[..., 1] <= 50)).astype(np.uint8)
+    soft = cv2.dilate(soft, np.ones((15, 15), np.uint8)).astype(bool)
+    h, w = soft.shape
+    xi = np.clip(pts[:, 0].round().astype(int), 0, w - 1)
+    yi = np.clip(pts[:, 1].round().astype(int), 0, h - 1)
+    return np.where(soft[yi, xi], 0.2, 1.0)
+
+
+CORNER_RATIO = 0.2  # lambda_min / lambda_max of the structure tensor at which a point counts as a full corner
+
+
+def corner_factor(rgb: np.ndarray, pts: np.ndarray, block: int = 9) -> np.ndarray:
+    """Per-keypoint factor in [0, 1] against the aperture problem: on a straight edge the structure tensor has one
+    dominant direction, so a match can slide along the edge (car bodies are full of horizontal lines)."""
+    gray = cv2.cvtColor(rgb, cv2.COLOR_RGB2GRAY).astype(np.float32) / 255.0
+    ev = cv2.cornerEigenValsAndVecs(gray, block, 3)
+    l1, l2 = np.maximum(ev[..., 0], ev[..., 1]), np.minimum(ev[..., 0], ev[..., 1])
+    ratio = l2 / np.maximum(l1, 1e-12)
+    h, w = gray.shape
+    xi = np.clip(pts[:, 0].round().astype(int), 0, w - 1)
+    yi = np.clip(pts[:, 1].round().astype(int), 0, h - 1)
+    return np.clip(ratio[yi, xi] / CORNER_RATIO, 0.0, 1.0)
+
+
 def laplacian_variance(gray: np.ndarray) -> float:
     """Variance of the Laplacian of the contrast-normalised image at 1024 px: invariant to exposure scaling."""
     h, w = gray.shape

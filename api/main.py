@@ -17,7 +17,7 @@ import cv2
 import numpy as np
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi.responses import FileResponse, JSONResponse, Response
 from pydantic import BaseModel
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,11 +26,13 @@ sys.path.insert(0, str(ROOT))
 from carprint.core.image_io import load_image  # noqa: E402
 from carprint.core.quality import MESSAGES_RU  # noqa: E402
 from carprint.damage import segmenter  # noqa: E402
+from carprint.identity.cohort import bank_paths  # noqa: E402
 from carprint.identity.pipeline import make_frame  # noqa: E402
 from carprint.identity.verify import Frame, distinctiveness, verify  # noqa: E402
 from carprint.identity.viz import side_by_side  # noqa: E402
 from carprint.integrity.hashing import DUPLICATE_MAX_DISTANCE, hamming, phash64, sha256_hex  # noqa: E402
 from carprint.integrity.ledger import Ledger  # noqa: E402
+from carprint.integrity.report import build_pdf  # noqa: E402
 from carprint.timeline.diff import compare as timeline_compare  # noqa: E402
 
 DATA = Path(os.environ.get("CARPRINT_DATA", ROOT / "data" / "store"))
@@ -68,6 +70,7 @@ class StoredFrame:
     parts: list = field(default_factory=list)
     damages: list = field(default_factory=list)
     analyzed: bool = False
+    overlay_url: str | None = None
 
 
 @dataclass
@@ -103,10 +106,7 @@ def vehicle_key_for(identifier: str) -> str:
 def cohort_for(model_hint: str) -> list[Frame]:
     key = model_hint or "generic"
     if key not in COHORT_CACHE:
-        folder = COHORT / key if (COHORT / key).is_dir() else COHORT
-        paths = sorted(p for p in folder.rglob("*") if p.suffix.lower() in (".jpg", ".jpeg", ".png"))
-        rng = np.random.default_rng(0)
-        paths = list(rng.permutation(paths)[:COHORT_K]) if paths else []
+        paths = bank_paths(COHORT, model_hint, COHORT_K) if COHORT.is_dir() else []
         COHORT_CACHE[key] = [make_frame(f"cohort_{i}", "extra", load_image(p.read_bytes()).rgb) for i, p in enumerate(paths)]
     return COHORT_CACHE[key]
 
@@ -155,6 +155,7 @@ def analyze_frame(sf: StoredFrame) -> dict:
         x, y, w, h = d.bbox
         cv2.rectangle(overlay, (x, y), (x + w, y + h), (231, 76, 60), 2)
         cv2.putText(overlay, f"{d.cls} {d.score:.2f}", (x, max(12, y - 4)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
+    sf.overlay_url = save_artifact(overlay, "ovl")
     return {
         "frame_id": sf.frame_id, "slot": sf.slot,
         "privacy": {"plates_blurred": len(plates), "persons_blurred": 0},
@@ -162,7 +163,7 @@ def analyze_frame(sf: StoredFrame) -> dict:
         "damages": [{"damage_id": f"dmg_{sf.frame_id}_{i}", "part": part_at(sf, d), "class": d.cls, "score": round(d.score, 3),
                      "area_ratio": round(d.area_ratio, 4), "bbox": list(d.bbox),
                      "status": "auto" if d.score >= 0.6 else "needs_master"} for i, d in enumerate(sf.damages)],
-        "overlay_url": save_artifact(overlay, "ovl"),
+        "overlay_url": sf.overlay_url,
     }
 
 
@@ -336,6 +337,28 @@ def confirm(inspection_id: str, body: ConfirmIn):
                "findings": [f.model_dump() for f in body.findings]}
     rec = ledger.append(ins.vehicle_key, f"rec_{uuid.uuid4().hex[:12]}", payload)
     return {**rec, "public_key_url": "/api/v1/passport/public-key"}
+
+
+@app.get("/api/v1/inspections/{inspection_id}/report.pdf")
+def report(inspection_id: str):
+    ins = _get_inspection(inspection_id)
+    with compute_lock:
+        for sf in ins.frames:
+            if sf.overlay_url is None:
+                analyze_frame(sf)
+    record = next((r for r in ledger.timeline(ins.vehicle_key) if r["payload"].get("inspection_id") == ins.inspection_id), None)
+    damages = [f"{d.cls} ({part_at(sf, d) or 'деталь не определена'}, {d.score:.2f})" for sf in ins.frames for d in sf.damages]
+    rows = [("Осмотр", ins.inspection_id), ("Автомобиль (ключ)", ins.vehicle_key), ("Тип / роль", f"{ins.type} / {ins.role}"),
+            ("Кадров", str(len(ins.frames))), ("Находки модели", "; ".join(damages) or "не обнаружено"),
+            ("Запись паспорта", record["record_hash"] if record else "не подтверждено приёмщиком"),
+            ("Предыдущая запись", record["prev_hash"] if record else "—")]
+    rows += [(f"Кадр {sf.slot}", f"SHA-256 {sf.sha256[:32]}… {sf.capture_mode} {sf.server_ts}") for sf in ins.frames]
+    overlays = [(f"{sf.slot} — {sf.sha256[:16]}", ARTIFACTS / sf.overlay_url.rsplit("/", 1)[-1]) for sf in ins.frames if sf.overlay_url]
+    pdf = build_pdf("CarPrint — акт осмотра", rows, overlays,
+                    "Находки модели не являются решением: каждая подтверждается сотрудником. Номера размыты. "
+                    "Целостность записи проверяется по цепочке хешей и подписи Ed25519 (/api/v1/passport/public-key).")
+    return Response(content=pdf, media_type="application/pdf",
+                    headers={"Content-Disposition": f'inline; filename="{ins.inspection_id}.pdf"'})
 
 
 @app.get("/api/v1/vehicles/{vehicle_key}/timeline")

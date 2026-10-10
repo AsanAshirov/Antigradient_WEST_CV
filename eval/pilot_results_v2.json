@@ -1,0 +1,3674 @@
+{
+ "test_manifest_sha256": "a6b95b5d4727ac57961c56374e4869d1ed4e5e93bd7b7b8903be7b0204fe88ea",
+ "generated_at": "2026-10-10T20:42:48",
+ "n_images": 24,
+ "n_cars": 24,
+ "n_sessions": 24,
+ "identity": {
+  "genuine": {
+   "decisions": {},
+   "fnmr": {
+    "errors": 0,
+    "n": 0,
+    "rate": null,
+    "upper95": null
+   },
+   "review_rate": {
+    "errors": 0,
+    "n": 0,
+    "rate": null,
+    "upper95": null
+   },
+   "tar": {
+    "errors": 0,
+    "n": 0,
+    "rate": null,
+    "upper95": null
+   }
+  },
+  "impostor_hard": {
+   "decisions": {
+    "RECAPTURE_REQUIRED": 59,
+    "REVIEW": 71,
+    "SAME": 2
+   },
+   "fmr": {
+    "errors": 2,
+    "n": 132,
+    "rate": 0.015151515151515152,
+    "upper95": 0.046925206494094124
+   },
+   "fmr_vehicle_bound": {
+    "errors": 3,
+    "n": 24,
+    "rate": 0.125,
+    "upper95": 0.29227319650798933
+   },
+   "review_rate": {
+    "errors": 130,
+    "n": 132,
+    "rate": 0.9848484848484849,
+    "upper95": 0.9973012574194998
+   }
+  },
+  "impostor_other": {
+   "decisions": {
+    "RECAPTURE_REQUIRED": 64,
+    "REVIEW": 80
+   },
+   "fmr": {
+    "errors": 0,
+    "n": 144,
+    "rate": 0.0,
+    "upper95": 0.02058879229949585
+   },
+   "fmr_vehicle_bound": {
+    "errors": 0,
+    "n": 24,
+    "rate": 0.0,
+    "upper95": 0.11734615615494873
+   },
+   "review_rate": {
+    "errors": 144,
+    "n": 144,
+    "rate": 1.0,
+    "upper95": 1.0
+   }
+  }
+ },
+ "latency_ms": {
+  "p50": 277.01954999974987,
+  "p95": 2345.196725000278,
+  "n": 276
+ },
+ "records": [
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 3.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 4.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "SAME",
+   "score": 15.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 4.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "SAME",
+   "score": 7.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "RECAPTURE_REQUIRED",
+   "score": 0.0
+  }
+ ]
+}

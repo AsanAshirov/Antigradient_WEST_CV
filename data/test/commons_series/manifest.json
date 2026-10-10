@@ -1,0 +1,50 @@
+[
+ {
+  "path": "lacetti_s0/001.jpg",
+  "car_id": "lacetti_s0",
+  "session": "s0",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_series_weak_positive"
+ },
+ {
+  "path": "lacetti_s0/002.jpg",
+  "car_id": "lacetti_s0",
+  "session": "s1",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_series_weak_positive"
+ },
+ {
+  "path": "lacetti_s0/003.jpg",
+  "car_id": "lacetti_s0",
+  "session": "s0",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_series_weak_positive"
+ },
+ {
+  "path": "lacetti_s0/004.jpg",
+  "car_id": "lacetti_s0",
+  "session": "s1",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_series_weak_positive"
+ },
+ {
+  "path": "lacetti_s0/005.jpg",
+  "car_id": "lacetti_s0",
+  "session": "s0",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_series_weak_positive"
+ },
+ {
+  "path": "lacetti_s0/006.jpg",
+  "car_id": "lacetti_s0",
+  "session": "s1",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_series_weak_positive"
+ }
+]

@@ -1,0 +1,170 @@
+[
+ {
+  "path": "../../cohort/cobalt/cobalt_008.jpg",
+  "car_id": "cobalt_cobalt_008",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_009.jpg",
+  "car_id": "cobalt_cobalt_009",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_010.jpg",
+  "car_id": "cobalt_cobalt_010",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_011.jpg",
+  "car_id": "cobalt_cobalt_011",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_012.jpg",
+  "car_id": "cobalt_cobalt_012",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_013.jpg",
+  "car_id": "cobalt_cobalt_013",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_014.jpg",
+  "car_id": "cobalt_cobalt_014",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_015.jpg",
+  "car_id": "cobalt_cobalt_015",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_016.jpg",
+  "car_id": "cobalt_cobalt_016",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_017.jpg",
+  "car_id": "cobalt_cobalt_017",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_018.jpg",
+  "car_id": "cobalt_cobalt_018",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_019.jpg",
+  "car_id": "cobalt_cobalt_019",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_008.jpg",
+  "car_id": "nexia_nexia_008",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_009.jpg",
+  "car_id": "nexia_nexia_009",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_010.jpg",
+  "car_id": "nexia_nexia_010",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_011.jpg",
+  "car_id": "nexia_nexia_011",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_012.jpg",
+  "car_id": "nexia_nexia_012",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_013.jpg",
+  "car_id": "nexia_nexia_013",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_014.jpg",
+  "car_id": "nexia_nexia_014",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_015.jpg",
+  "car_id": "nexia_nexia_015",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_016.jpg",
+  "car_id": "nexia_nexia_016",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_017.jpg",
+  "car_id": "nexia_nexia_017",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_018.jpg",
+  "car_id": "nexia_nexia_018",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_019.jpg",
+  "car_id": "nexia_nexia_019",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra"
+ }
+]

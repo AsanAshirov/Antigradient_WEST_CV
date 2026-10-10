@@ -22,6 +22,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from carprint.core.image_io import load_image  # noqa: E402
+from carprint.identity.cohort import bank_paths  # noqa: E402
 from carprint.identity.pipeline import make_frame  # noqa: E402
 from carprint.identity.verify import verify  # noqa: E402
 
@@ -53,8 +54,8 @@ def main(manifest_path: str, cohort_dir: str, out_path: str, max_impostor_per_st
 
     def cohort(model: str):
         if model not in cohort_cache:
-            paths = sorted((Path(cohort_dir) / model).glob("*.jpg"))
-            cohort_cache[model] = [make_frame(f"c{i}", "extra", load_image(p.read_bytes()).rgb) for i, p in enumerate(paths[:8])]
+            paths = bank_paths(Path(cohort_dir), model)
+            cohort_cache[model] = [make_frame(f"c{model}{i}", "extra", load_image(p.read_bytes()).rgb) for i, p in enumerate(paths)]
         return cohort_cache[model]
 
     model_of = {k: v[0]["model"] for k, v in sessions.items()}

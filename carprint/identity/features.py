@@ -8,6 +8,7 @@ import numpy as np
 import torch
 
 _lock = threading.Lock()
+MIN_MATCH_SCORE = 0.3  # LightGlue match confidence; low-confidence matches feed degenerate fits
 _models: dict = {}
 
 
@@ -62,4 +63,5 @@ def match(f0: Features, f1: Features) -> tuple[np.ndarray, np.ndarray]:
     out = lg({"image0": f0.raw, "image1": f1.raw})
     m = out["matches"][0].cpu().numpy()
     s = out["scores"][0].cpu().numpy()
-    return m, s
+    keep = s >= MIN_MATCH_SCORE
+    return m[keep], s[keep]

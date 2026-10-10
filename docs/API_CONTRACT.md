@@ -72,7 +72,7 @@
   "server_ts": "2026-10-10T19:02:11Z",
   "quality": {
     "ok": true,
-    "blur": 182.4, "brightness": 0.47, "glare_ratio": 0.03, "car_area_ratio": 0.61,
+    "blur": 0.031, "brightness": 0.47, "glare_ratio": 0.03, "car_area_ratio": 0.61,
     "issues": []                              // напр. ["blurry", "too_dark", "glare", "no_car"]
   },
   "recapture_required": false,
@@ -103,7 +103,7 @@
 }
 ```
 
-Классы повреждений: `dent, scratch, crack, glass_shatter, lamp_broken, tire_flat, paint_damage, broken_part, missing_part, corrosion`. Класс `fake_damage` (блик/грязь/наклейка) наружу не отдаётся как повреждение.
+Классы повреждений (v0.1, по обучающим данным): `dent, scratch, crack, paint_damage, broken_part, missing_part, corrosion`. `blur` — резкость (дисперсия лапласиана нормированного изображения, порог 0.010). Класс `fake_damage` (блик/грязь/наклейка) наружу не отдаётся как повреждение.
 
 ## POST /verifications
 

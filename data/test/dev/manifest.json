@@ -1,0 +1,626 @@
+[
+ {
+  "path": "../commons_series/lacetti_s0/001.jpg",
+  "car_id": "lacetti_s0",
+  "session": "s0",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_series_weak_positive"
+ },
+ {
+  "path": "../commons_series/lacetti_s0/002.jpg",
+  "car_id": "lacetti_s0",
+  "session": "s1",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_series_weak_positive"
+ },
+ {
+  "path": "../commons_series/lacetti_s0/003.jpg",
+  "car_id": "lacetti_s0",
+  "session": "s0",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_series_weak_positive"
+ },
+ {
+  "path": "../commons_series/lacetti_s0/004.jpg",
+  "car_id": "lacetti_s0",
+  "session": "s1",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_series_weak_positive"
+ },
+ {
+  "path": "../commons_series/lacetti_s0/005.jpg",
+  "car_id": "lacetti_s0",
+  "session": "s0",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_series_weak_positive"
+ },
+ {
+  "path": "../commons_series/lacetti_s0/006.jpg",
+  "car_id": "lacetti_s0",
+  "session": "s1",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_series_weak_positive"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_008.jpg",
+  "car_id": "cobalt_cobalt_008",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_009.jpg",
+  "car_id": "cobalt_cobalt_009",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_010.jpg",
+  "car_id": "cobalt_cobalt_010",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_011.jpg",
+  "car_id": "cobalt_cobalt_011",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_012.jpg",
+  "car_id": "cobalt_cobalt_012",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_013.jpg",
+  "car_id": "cobalt_cobalt_013",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_014.jpg",
+  "car_id": "cobalt_cobalt_014",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_015.jpg",
+  "car_id": "cobalt_cobalt_015",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_016.jpg",
+  "car_id": "cobalt_cobalt_016",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_017.jpg",
+  "car_id": "cobalt_cobalt_017",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_018.jpg",
+  "car_id": "cobalt_cobalt_018",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/cobalt/cobalt_019.jpg",
+  "car_id": "cobalt_cobalt_019",
+  "session": "s0",
+  "model": "cobalt",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/damas/damas_008.jpg",
+  "car_id": "damas_damas_008",
+  "session": "s0",
+  "model": "damas",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/damas/damas_009.jpg",
+  "car_id": "damas_damas_009",
+  "session": "s0",
+  "model": "damas",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/damas/damas_010.jpg",
+  "car_id": "damas_damas_010",
+  "session": "s0",
+  "model": "damas",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/damas/damas_011.jpg",
+  "car_id": "damas_damas_011",
+  "session": "s0",
+  "model": "damas",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/damas/damas_012.jpg",
+  "car_id": "damas_damas_012",
+  "session": "s0",
+  "model": "damas",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/damas/damas_013.jpg",
+  "car_id": "damas_damas_013",
+  "session": "s0",
+  "model": "damas",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/damas/damas_014.jpg",
+  "car_id": "damas_damas_014",
+  "session": "s0",
+  "model": "damas",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/damas/damas_015.jpg",
+  "car_id": "damas_damas_015",
+  "session": "s0",
+  "model": "damas",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/damas/damas_016.jpg",
+  "car_id": "damas_damas_016",
+  "session": "s0",
+  "model": "damas",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/damas/damas_017.jpg",
+  "car_id": "damas_damas_017",
+  "session": "s0",
+  "model": "damas",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/damas/damas_018.jpg",
+  "car_id": "damas_damas_018",
+  "session": "s0",
+  "model": "damas",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/damas/damas_019.jpg",
+  "car_id": "damas_damas_019",
+  "session": "s0",
+  "model": "damas",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/lacetti/lacetti_008.jpg",
+  "car_id": "lacetti_lacetti_008",
+  "session": "s0",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/lacetti/lacetti_009.jpg",
+  "car_id": "lacetti_lacetti_009",
+  "session": "s0",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/lacetti/lacetti_010.jpg",
+  "car_id": "lacetti_lacetti_010",
+  "session": "s0",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/lacetti/lacetti_011.jpg",
+  "car_id": "lacetti_lacetti_011",
+  "session": "s0",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/lacetti/lacetti_012.jpg",
+  "car_id": "lacetti_lacetti_012",
+  "session": "s0",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/lacetti/lacetti_013.jpg",
+  "car_id": "lacetti_lacetti_013",
+  "session": "s0",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/lacetti/lacetti_014.jpg",
+  "car_id": "lacetti_lacetti_014",
+  "session": "s0",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/lacetti/lacetti_015.jpg",
+  "car_id": "lacetti_lacetti_015",
+  "session": "s0",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/lacetti/lacetti_016.jpg",
+  "car_id": "lacetti_lacetti_016",
+  "session": "s0",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/lacetti/lacetti_017.jpg",
+  "car_id": "lacetti_lacetti_017",
+  "session": "s0",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/lacetti/lacetti_018.jpg",
+  "car_id": "lacetti_lacetti_018",
+  "session": "s0",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/lacetti/lacetti_019.jpg",
+  "car_id": "lacetti_lacetti_019",
+  "session": "s0",
+  "model": "lacetti",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_008.jpg",
+  "car_id": "nexia_nexia_008",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_009.jpg",
+  "car_id": "nexia_nexia_009",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_010.jpg",
+  "car_id": "nexia_nexia_010",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_011.jpg",
+  "car_id": "nexia_nexia_011",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_012.jpg",
+  "car_id": "nexia_nexia_012",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_013.jpg",
+  "car_id": "nexia_nexia_013",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_014.jpg",
+  "car_id": "nexia_nexia_014",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_015.jpg",
+  "car_id": "nexia_nexia_015",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_016.jpg",
+  "car_id": "nexia_nexia_016",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_017.jpg",
+  "car_id": "nexia_nexia_017",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_018.jpg",
+  "car_id": "nexia_nexia_018",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/nexia/nexia_019.jpg",
+  "car_id": "nexia_nexia_019",
+  "session": "s0",
+  "model": "nexia",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/song_plus/song_plus_008.jpg",
+  "car_id": "song_plus_song_plus_008",
+  "session": "s0",
+  "model": "song_plus",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/song_plus/song_plus_009.jpg",
+  "car_id": "song_plus_song_plus_009",
+  "session": "s0",
+  "model": "song_plus",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/song_plus/song_plus_010.jpg",
+  "car_id": "song_plus_song_plus_010",
+  "session": "s0",
+  "model": "song_plus",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/song_plus/song_plus_011.jpg",
+  "car_id": "song_plus_song_plus_011",
+  "session": "s0",
+  "model": "song_plus",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/song_plus/song_plus_012.jpg",
+  "car_id": "song_plus_song_plus_012",
+  "session": "s0",
+  "model": "song_plus",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/song_plus/song_plus_013.jpg",
+  "car_id": "song_plus_song_plus_013",
+  "session": "s0",
+  "model": "song_plus",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/song_plus/song_plus_014.jpg",
+  "car_id": "song_plus_song_plus_014",
+  "session": "s0",
+  "model": "song_plus",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/song_plus/song_plus_015.jpg",
+  "car_id": "song_plus_song_plus_015",
+  "session": "s0",
+  "model": "song_plus",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/song_plus/song_plus_016.jpg",
+  "car_id": "song_plus_song_plus_016",
+  "session": "s0",
+  "model": "song_plus",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/song_plus/song_plus_017.jpg",
+  "car_id": "song_plus_song_plus_017",
+  "session": "s0",
+  "model": "song_plus",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/song_plus/song_plus_018.jpg",
+  "car_id": "song_plus_song_plus_018",
+  "session": "s0",
+  "model": "song_plus",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/song_plus/song_plus_019.jpg",
+  "car_id": "song_plus_song_plus_019",
+  "session": "s0",
+  "model": "song_plus",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/spark/spark_008.jpg",
+  "car_id": "spark_spark_008",
+  "session": "s0",
+  "model": "spark",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/spark/spark_009.jpg",
+  "car_id": "spark_spark_009",
+  "session": "s0",
+  "model": "spark",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/spark/spark_010.jpg",
+  "car_id": "spark_spark_010",
+  "session": "s0",
+  "model": "spark",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/spark/spark_011.jpg",
+  "car_id": "spark_spark_011",
+  "session": "s0",
+  "model": "spark",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/spark/spark_012.jpg",
+  "car_id": "spark_spark_012",
+  "session": "s0",
+  "model": "spark",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/spark/spark_013.jpg",
+  "car_id": "spark_spark_013",
+  "session": "s0",
+  "model": "spark",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/spark/spark_014.jpg",
+  "car_id": "spark_spark_014",
+  "session": "s0",
+  "model": "spark",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/spark/spark_015.jpg",
+  "car_id": "spark_spark_015",
+  "session": "s0",
+  "model": "spark",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/spark/spark_016.jpg",
+  "car_id": "spark_spark_016",
+  "session": "s0",
+  "model": "spark",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/spark/spark_017.jpg",
+  "car_id": "spark_spark_017",
+  "session": "s0",
+  "model": "spark",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/spark/spark_018.jpg",
+  "car_id": "spark_spark_018",
+  "session": "s0",
+  "model": "spark",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ },
+ {
+  "path": "../../cohort/spark/spark_019.jpg",
+  "car_id": "spark_spark_019",
+  "session": "s0",
+  "model": "spark",
+  "slot": "extra",
+  "kind": "commons_holdout_impostor"
+ }
+]

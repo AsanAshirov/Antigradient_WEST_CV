@@ -15,7 +15,7 @@ from dataclasses import dataclass, field
 
 import numpy as np
 
-from carprint.core.quality import QualityReport
+from carprint.core.quality import QualityReport, corner_factor, reflection_factor
 from carprint.identity.features import Features, match
 from carprint.identity.geometry import Zone, fit_zones, log10_nfa
 
@@ -28,6 +28,8 @@ CELL_MIN_WEIGHT = 2.0  # distinctive weight needed for a cell to vote (one vote 
 DIFF_ALIGN_NFA = -4.0  # raw (unweighted) zone significance meaning "same model, comparable view"
 DIFF_MIN_REF_MARKS = 15  # distinctive reference keypoints that should have reappeared
 DIFF_MAX_DISTINCT = 3.0
+DIFF_MIN_ZONES = 2  # contradicted aligned zones needed for DIFFERENT (conservative; VIN is the hard proof)
+MIN_COHORT = 4  # without a same-model cohort, design features cannot be discounted -> no automatic SAME
 
 
 @dataclass
@@ -67,7 +69,21 @@ class Verdict:
     cohort_size: int = 0
 
 
+_W_CACHE: dict[tuple, tuple] = {}
+_W_CACHE_MAX = 512
+
+
 def distinctiveness(ref: Frame, cohort: list[Frame]) -> np.ndarray:
+    # Keyed by object identity; the cached tuple keeps the objects alive so their ids cannot be reused.
+    key = (id(ref), tuple(id(c) for c in cohort))
+    if key not in _W_CACHE:
+        if len(_W_CACHE) >= _W_CACHE_MAX:
+            _W_CACHE.pop(next(iter(_W_CACHE)))
+        _W_CACHE[key] = (ref, list(cohort), _distinctiveness(ref, cohort))
+    return _W_CACHE[key][2]
+
+
+def _distinctiveness(ref: Frame, cohort: list[Frame]) -> np.ndarray:
     n = len(ref.feats.keypoints)
     k = len(cohort)
     if k == 0:
@@ -87,15 +103,20 @@ def distinctiveness(ref: Frame, cohort: list[Frame]) -> np.ndarray:
 
 
 def compare_frames(ref: Frame, cur: Frame, w_ref: np.ndarray) -> list[ZoneEvidence]:
-    m, _ = match(ref.feats, cur.feats)
+    m, conf = match(ref.feats, cur.feats)
     if len(m) < 10:
         return []
     pts0, pts1 = ref.feats.keypoints[m[:, 0]], cur.feats.keypoints[m[:, 1]]
     area = cur.rgb.shape[0] * cur.rgb.shape[1]
     cell = max(ref.rgb.shape[:2]) * CELL_FRACTION
     out = []
+    # Identity weight of a match = cohort distinctiveness x not-a-reflection x corner-like (no aperture sliding)
+    # x LightGlue confidence. Geometry still uses every match for registration.
+    refl = np.minimum(reflection_factor(ref.rgb, pts0), reflection_factor(cur.rgb, pts1))
+    corner = np.minimum(corner_factor(ref.rgb, pts0), corner_factor(cur.rgb, pts1))
+    evidence_w = refl * corner * conf
     for z in fit_zones(pts0, pts1, area):
-        w = w_ref[m[z.inlier_idx, 0]]
+        w = w_ref[m[z.inlier_idx, 0]] * evidence_w[z.inlier_idx]
         k_d = float(w.sum())
         cid = np.floor(pts0[z.inlier_idx] / cell).astype(int)
         votes: dict[tuple[int, int], float] = {}
@@ -105,7 +126,8 @@ def compare_frames(ref: Frame, cur: Frame, w_ref: np.ndarray) -> list[ZoneEviden
         x, y, bw, bh = z.bbox0
         kp = ref.feats.keypoints
         inside = (kp[:, 0] >= x) & (kp[:, 0] <= x + bw) & (kp[:, 1] >= y) & (kp[:, 1] <= y + bh)
-        marks = int(((w_ref > 0.7) & inside).sum())
+        refl_ref = reflection_factor(ref.rgb, kp)
+        marks = int(((w_ref * refl_ref > 0.7) & inside).sum())
         zone_area = max(bw * bh * 4.0, 0.05 * area)
         out.append(ZoneEvidence(ref.frame_id, cur.frame_id, z, k_d,
                                 log10_nfa(z.n_tentative, int(round(k_d)), zone_area), marks, cells))
@@ -135,16 +157,16 @@ def verify(ref_frames: list[Frame], cur_frames: list[Frame], cohort: dict[str, l
     congruent = {(e.ref_frame, c) for e in strong for c in e.cells}
     score = float(len(congruent))
     reasons = []
-    if k_cohort == 0:
-        reasons.append("Нет когорты машин той же модели: вес признаков не учитывает типовой дизайн")
+    if k_cohort < MIN_COHORT:
+        reasons.append(f"Когорта машин той же модели мала ({k_cohort} < {MIN_COHORT}): автоматический SAME запрещён")
 
-    if len(congruent) >= SAME_MIN_CELLS and min(e.log10_nfa_distinct for e in strong) < SAME_STRONG_NFA:
+    if k_cohort >= MIN_COHORT and len(congruent) >= SAME_MIN_CELLS and min(e.log10_nfa_distinct for e in strong) < SAME_STRONG_NFA:
         reasons.insert(0, f"Совпали индивидуальные признаки в {len(congruent)} независимых ячейках ({len(strong)} зон)")
         return Verdict("SAME", score, evidence, reasons, k_cohort)
 
     aligned = [e for e in evidence if e.zone.log10_nfa < DIFF_ALIGN_NFA]
     contradicted = [e for e in aligned if e.ref_marks_in_zone >= DIFF_MIN_REF_MARKS and e.distinct_inliers < DIFF_MAX_DISTINCT]
-    if contradicted and len(congruent) <= 1 and k_cohort > 0:
+    if len(contradicted) >= DIFF_MIN_ZONES and len(congruent) <= 1 and k_cohort >= MIN_COHORT:
         reasons.insert(0, "Ракурсы совмещаются по дизайну модели, но индивидуальные метки эталона не найдены")
         return Verdict("DIFFERENT", score, evidence, reasons, k_cohort)
 
