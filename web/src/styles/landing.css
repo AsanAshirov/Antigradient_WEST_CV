@@ -188,8 +188,9 @@
 
 .hero__readout {
   position: absolute;
+  z-index: 2;
   right: var(--gutter);
-  top: 32%;
+  top: 128px;
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1274,4 +1275,20 @@
   .cost__table td:last-child {
     padding-right: 20px;
   }
+}
+
+/* ---------- pipeline film ---------- */
+.how__film {
+  margin-top: 72px;
+}
+
+.pipefilm video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--ink);
+  border-radius: var(--radius);
+}
+
+.pipefilm figcaption {
+  margin-top: 12px;
 }

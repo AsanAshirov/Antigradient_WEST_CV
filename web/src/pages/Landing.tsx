@@ -2,7 +2,7 @@ import { motion, useMotionValueEvent, useReducedMotion, useScroll, useSpring } f
 import { useEffect, useRef, useState } from "react";
 import { CostCard } from "../components/CostCard";
 import { MatchView } from "../components/EvidenceViewer";
-import { HeroFilm } from "../components/HeroFilm";
+import { HeroFilm, PipelineFilm } from "../components/HeroFilm";
 import { Arrow, Play, VerdictMark } from "../components/Icons";
 import { LandingNav } from "../components/Nav";
 import { DimensionLine, Reveal, rise, SectionHead, stagger, Viewfinder, Wipe } from "../components/Primitives";
@@ -147,6 +147,7 @@ function How() {
             </li>
           ))}
         </ol>
+        <Reveal className="how__film"><PipelineFilm /></Reveal>
       </div>
     </section>
   );

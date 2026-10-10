@@ -28,7 +28,7 @@ const ru = {
     line2b: "новая.",
     lead: "CarPrint по фото с телефона подтверждает, что на приёмке та же машина, показывает, что изменилось с прошлого визита, и оценивает ремонт — с доказательствами, которые можно проверить.",
     primary: "Проверить по фото",
-    secondary: "Как это работает",
+    secondary: "Как это работает · 25 с",
     filmLabel: "Видео отрендерено нашим конвейером из реальных фото",
     pause: "Пауза",
     play: "Воспроизвести",
@@ -40,8 +40,8 @@ const ru = {
     ],
     footnote:
       "* верхняя граница 95 % интервала Клоппера–Пирсона, 0 ошибок из 200, замороженный тест v1. Фото: Marinelson Almeida, CC BY 2.0.",
-    overlayCells: "ячейки 8 / нужно 6",
-    overlayVerdict: "вердикт: та же машина",
+    overlayCells: "420 точек на силуэте машины",
+    overlayVerdict: "фон не голосует",
     overlayScan: "скан · кадр 3 / 9 · перед-лево 45°",
   },
   problem: {
@@ -61,6 +61,8 @@ const ru = {
     label: "Как работает",
     title: "От снимка до подписанного акта — шесть шагов",
     lead: "Каждый шаг оставляет след: хеш кадра, метрики качества, зоны совмещения, вероятности. Решение принимает человек.",
+    filmLabel: "Фильм: как CarPrint принимает решение",
+    filmCaption: "25 секунд, отрендерено нашим конвейером: точки на силуэте, совпадения между двумя съёмками одной машины, 4 000 сценариев сметы, цепочка паспорта.",
     steps: [
       { title: "Съёмка по плану", text: "8 ракурсов и случайный вызов: «покажите правое заднее колесо». Старое фото не подсунуть.", tag: "nonce · 8 + 1 кадр" },
       { title: "Контроль качества", text: "Резкость, экспозиция, блики, машина в кадре. Плохой кадр переснимают сразу, а не через неделю.", tag: "blur · glare · subject" },
@@ -262,7 +264,7 @@ const en: Strings = {
     line2b: "new.",
     lead: "From phone photos, CarPrint confirms it is the same car at check-in, shows what changed since the last visit and estimates the repair — with evidence anyone can verify.",
     primary: "Check from photos",
-    secondary: "How it works",
+    secondary: "How it works · 25 s",
     filmLabel: "Film rendered by our pipeline from real photos",
     pause: "Pause",
     play: "Play",
@@ -273,8 +275,8 @@ const en: Strings = {
       { value: "Ed25519", text: "signature on every record of the vehicle passport" },
     ],
     footnote: "* upper bound of the 95% Clopper–Pearson interval, 0 errors in 200, frozen test v1. Photo: Marinelson Almeida, CC BY 2.0.",
-    overlayCells: "cells 8 / need 6",
-    overlayVerdict: "verdict: same car",
+    overlayCells: "420 keypoints on the car silhouette",
+    overlayVerdict: "the background never votes",
     overlayScan: "scan · frame 3 / 9 · front-left 45°",
   },
   problem: {
@@ -294,6 +296,8 @@ const en: Strings = {
     label: "How it works",
     title: "From a photo to a signed report in six steps",
     lead: "Every step leaves a trace: frame hash, quality metrics, registered zones, probabilities. A person makes the call.",
+    filmLabel: "Film: how CarPrint reaches a decision",
+    filmCaption: "25 seconds rendered by our pipeline: keypoints on the silhouette, matches between two shoots of one car, 4,000 estimate scenarios, the passport chain.",
     steps: [
       { title: "Guided capture", text: "8 angles and a random challenge: “show the rear right wheel”. An old photo cannot be slipped in.", tag: "nonce · 8 + 1 frames" },
       { title: "Quality gate", text: "Sharpness, exposure, glare, car in frame. A bad shot is retaken now, not discovered next week.", tag: "blur · glare · subject" },
