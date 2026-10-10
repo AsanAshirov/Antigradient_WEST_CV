@@ -29,7 +29,7 @@ from carprint.core.quality import MESSAGES_RU  # noqa: E402
 from carprint.damage import segmenter  # noqa: E402
 from carprint.identity.cohort import bank_paths  # noqa: E402
 from carprint.identity.pipeline import make_frame  # noqa: E402
-from carprint.identity.verify import Frame, distinctiveness, verify  # noqa: E402
+from carprint.identity.verify import Frame, Verdict, distinctiveness, verify  # noqa: E402
 from carprint.identity.viz import side_by_side  # noqa: E402
 from carprint.integrity.hashing import DUPLICATE_MAX_DISTANCE, hamming, phash64, sha256_hex  # noqa: E402
 from carprint.integrity.ledger import Ledger  # noqa: E402
@@ -271,7 +271,10 @@ def _verify(ref: Inspection, cur: Inspection) -> dict:
     fresh = [sf for sf in cur.frames if sf.frame_id not in recycled]
     with compute_lock:
         cohort = {sf.frame_id: cohort_for(ref.model_hint) for sf in ref.frames}
-        v = verify([sf.frame for sf in ref.frames], [sf.frame for sf in fresh], cohort)
+        if recycled and not fresh:
+            v = Verdict("REVIEW", 0.0, [], ["Все фото текущего осмотра — копии эталонных снимков: нужен новый осмотр"])
+        else:
+            v = verify([sf.frame for sf in ref.frames], [sf.frame for sf in fresh], cohort)
         for sf in ref.frames + cur.frames:
             analyze_frame(sf)
         evidence, timeline = [], []

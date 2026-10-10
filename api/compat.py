@@ -16,6 +16,8 @@ from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from fastapi.responses import Response
 
 from carprint.core.image_io import load_image
+from carprint.identity.features import match
+from carprint.identity.geometry import fit_zones
 from carprint.integrity.hashing import DUPLICATE_MAX_DISTANCE, hamming, phash64, sha256_hex
 
 router = APIRouter()
@@ -96,22 +98,35 @@ def build_router(main):
         cells = max((z.get("congruent_cells", 0) for z in zones), default=0)
         registered = best is not None and best["log10_nfa"] < main.REGISTRATION_NFA
 
-        aligned, coverage, err = None, 0.0, None
+        rh, rw = ref.frame.rgb.shape[:2]
+        aligned, coverage, err, inliers, tentative = None, 0.0, None, 0, 0
+        zone = None
         if registered:
             v_zone = next((z for z in main.LAST_ZONES.get(res["verification_id"], []) if z.zone.n_inliers == best["inliers"]), None)
-            if v_zone is not None:
-                H = v_zone.zone.H
-                rh, rw = ref.frame.rgb.shape[:2]
-                aligned = cv2.warpPerspective(cur.frame.rgb, np.linalg.inv(H), (rw, rh))
-                x, y, w, h = v_zone.zone.bbox0
-                coverage = round(100.0 * (w * h) / (rw * rh), 1)
-            err = best["reproj_err_px"]
+            zone = v_zone.zone if v_zone is not None else None
+        elif not zones:
+            # Identity evidence may be empty (e.g. the second photo is an excluded copy); geometry is still shown.
+            with main.compute_lock:
+                m, _ = match(ref.frame.feats, cur.frame.feats)
+                if len(m) >= 10:
+                    found = fit_zones(ref.frame.feats.keypoints[m[:, 0]], cur.frame.feats.keypoints[m[:, 1]], rw * rh)
+                    zone = max(found, key=lambda z: z.n_inliers, default=None)
+                    if zone is not None and zone.log10_nfa >= main.REGISTRATION_NFA:
+                        zone = None
+        if zone is not None:
+            aligned = cv2.warpPerspective(cur.frame.rgb, np.linalg.inv(zone.H), (rw, rh))
+            x, y, w, h = zone.bbox0
+            coverage = round(100.0 * (w * h) / (rw * rh), 1)
+            err, inliers, tentative = round(zone.reproj_err_px, 2), zone.n_inliers, zone.n_tentative
+            registered = True
 
         warnings = []
         for f in (ref, cur):
             warnings += [QUALITY_EN[i] for i in f.frame.quality.issues if i in QUALITY_EN]
-        if blobs[0] == blobs[1] or hamming(phash64(ref.frame.rgb), phash64(cur.frame.rgb)) <= DUPLICATE_MAX_DISTANCE:
-            warnings.append("The same photo was uploaded twice: it is excluded from identity evidence.")
+        copy = blobs[0] == blobs[1] or hamming(phash64(ref.frame.rgb), phash64(cur.frame.rgb)) <= DUPLICATE_MAX_DISTANCE
+        if copy:
+            warnings.append("The second photo is a copy or a transformed copy of the first (perceptual hash): it is "
+                            "excluded from identity evidence. Alignment is shown for illustration only.")
         if verdict == "REVIEW":
             warnings.append("Photograph the same side of the car from a similar angle; include wheels and any marks.")
         warnings.append("Matching shape alone never proves identity: features shared by the model are discounted.")
@@ -122,9 +137,10 @@ def build_router(main):
         return {
             "decision": verdict,
             "geometry": "MATCHED" if registered else "INSUFFICIENT",
-            "message": DECISION_EN.get(verdict, verdict).format(cells=cells),
-            "inliers": int(best["inliers"]) if best else 0,
-            "candidate_matches": int(best.get("tentative", best["inliers"])) if best else 0,
+            "message": ("Copy detected: the second photo is not an independent capture" if copy
+                        else DECISION_EN.get(verdict, verdict).format(cells=cells)),
+            "inliers": int(inliers),
+            "candidate_matches": int(tentative),
             "reprojection_error_px": err,
             "coverage_percent": coverage,
             "elapsed_ms": round((time.perf_counter() - t0) * 1000),
@@ -138,7 +154,7 @@ def build_router(main):
             "limitations": LIMITATIONS,
             # CarPrint extras
             "congruent_cells": cells, "score_raw": res["score_raw"], "cohort_size": res["cohort_size"],
-            "zones": zones, "integrity": res["integrity"], "reasons_ru": res["reasons_ru"],
+            "zones": zones, "integrity": res["integrity"], "copy_detected": copy,
             "damage_timeline": res["damage_timeline"],
         }
 
