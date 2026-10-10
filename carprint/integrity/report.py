@@ -45,8 +45,11 @@ def build_pdf(title: str, rows: list[tuple[str, str]], overlays: list[tuple[str,
             d.text((440, y), line, fill="black", font=body)
             y += 36
         y += 10
-    for line in _wrap(d, footer, small, A4[0] - 160):
-        d.text((80, A4[1] - 160 + (len(pages) * 0)), line, fill=(110, 110, 110), font=small)
+    footer_lines = _wrap(d, footer, small, A4[0] - 160)
+    fy = A4[1] - 80 - 28 * len(footer_lines)
+    for line in footer_lines:
+        d.text((80, fy), line, fill=(110, 110, 110), font=small)
+        fy += 28
     pages.append(page)
     for caption, path in overlays:
         if not path.exists():

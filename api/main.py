@@ -33,7 +33,7 @@ from carprint.identity.viz import side_by_side  # noqa: E402
 from carprint.integrity.hashing import DUPLICATE_MAX_DISTANCE, hamming, phash64, sha256_hex  # noqa: E402
 from carprint.integrity.ledger import Ledger  # noqa: E402
 from carprint.integrity.report import build_pdf  # noqa: E402
-from carprint.timeline.diff import compare as timeline_compare  # noqa: E402
+from carprint.timeline.diff import ZoneMap, compare as timeline_compare  # noqa: E402
 
 DATA = Path(os.environ.get("CARPRINT_DATA", ROOT / "data" / "store"))
 MODELS = Path(os.environ.get("CARPRINT_MODELS", ROOT / "models"))
@@ -43,6 +43,7 @@ for d in (DATA, ARTIFACTS):
     d.mkdir(parents=True, exist_ok=True)
 VEHICLE_SECRET = os.environ.get("CARPRINT_VEHICLE_SECRET", "dev-only-secret").encode()
 COHORT_K = 8
+REGISTRATION_NFA = -2.0  # a zone must be registered (a-contrario) before damage masks are carried through it
 SHOT_PLAN = [
     ("front", "Перед целиком, 2–3 м"), ("front_left_45", "Диагональ слева спереди"), ("left", "Левый бок целиком"),
     ("rear_left_45", "Диагональ слева сзади"), ("rear", "Зад целиком"), ("rear_right_45", "Диагональ справа сзади"),
@@ -261,19 +262,26 @@ def _verify(ref: Inspection, cur: Inspection) -> dict:
         evidence, timeline = [], []
         by_id = {sf.frame_id: sf for sf in ref.frames + cur.frames}
         best_zone: dict[tuple[str, str], object] = {}
+        registered: dict[tuple[str, str], list[ZoneMap]] = {}
         for z in v.zones:
             key = (z.ref_frame, z.cur_frame)
             if key not in best_zone or z.zone.n_inliers > best_zone[key].zone.n_inliers:
                 best_zone[key] = z
+            if z.zone.log10_nfa < REGISTRATION_NFA:
+                registered.setdefault(key, []).append(ZoneMap(z.zone.H, z.zone.bbox0, z.zone.bbox1))
         for (rf, cf), z in sorted(best_zone.items(), key=lambda kv: kv[1].log10_nfa_distinct)[:6]:
             r, c = by_id[rf], by_id[cf]
             viz = side_by_side(r.frame, c.frame, weights_for(r, ref.model_hint))
             evidence.append({**z.to_dict(), "slot": r.slot, "match_viz_url": save_artifact(viz, "m")})
-            for item in timeline_compare(r.damages, c.damages, z.zone.H, r.frame.rgb.shape, c.frame.rgb.shape,
-                                         part_of=lambda inst, sf=c: part_at(sf, inst)):
-                timeline.append({"status": item.status, "class": item.cls, "part": item.part, "slot": r.slot,
-                                 "cur_bbox": item.cur_bbox, "ref_bbox": item.ref_bbox,
-                                 "first_seen_inspection_id": ref.inspection_id if item.status == "previously_recorded" else None})
+        # The timeline only makes sense for the same car; each pair of frames contributes its registered panels.
+        if v.decision != "DIFFERENT":
+            for (rf, cf), zone_maps in registered.items():
+                r, c = by_id[rf], by_id[cf]
+                for item in timeline_compare(r.damages, c.damages, zone_maps, r.frame.rgb, c.frame.rgb.shape,
+                                             part_of=lambda inst, sf=c: part_at(sf, inst)):
+                    timeline.append({"status": item.status, "class": item.cls, "part": item.part, "slot": c.slot,
+                                     "ref_frame": rf, "cur_frame": cf, "cur_bbox": item.cur_bbox, "ref_bbox": item.ref_bbox,
+                                     "first_seen_inspection_id": ref.inspection_id if item.status == "previously_recorded" else None})
     flags = sorted({"gallery_upload" for sf in cur.frames if sf.capture_mode != "camera"})
     flags += [f"recycled_reference_photo:{cid}->{rid}" for cid, rid in recycled.items()]
     level = "red" if recycled else ("yellow" if flags else "green")
