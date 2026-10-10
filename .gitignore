@@ -1,0 +1,10 @@
+data/raw/
+data/store/
+data/cohort/*/
+data/*.log
+models/
+*.pth
+*.onnx
+__pycache__/
+.venv/
+training/kaggle/k_*/

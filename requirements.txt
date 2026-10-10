@@ -1,0 +1,13 @@
+numpy>=1.26
+opencv-python-headless>=4.9,<5
+pillow>=10
+scipy>=1.11
+scikit-learn>=1.4
+fastapi>=0.110
+uvicorn[standard]>=0.29
+python-multipart>=0.0.9
+pydantic>=2.6
+cryptography>=42
+requests>=2.31
+rfdetr==1.11.2
+lightglue @ git+https://github.com/cvg/LightGlue.git
