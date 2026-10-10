@@ -53,6 +53,7 @@
   "session": "s0",
   "model": "cobalt",
   "slot": "extra",
+  "author": "RL GNZLZ",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -61,6 +62,7 @@
   "session": "s0",
   "model": "cobalt",
   "slot": "extra",
+  "author": "Just a Man",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -69,6 +71,7 @@
   "session": "s0",
   "model": "cobalt",
   "slot": "extra",
+  "author": "Milhouse35",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -77,6 +80,7 @@
   "session": "s0",
   "model": "cobalt",
   "slot": "extra",
+  "author": "Raf24~commonswiki",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -85,6 +89,7 @@
   "session": "s0",
   "model": "cobalt",
   "slot": "extra",
+  "author": "Matti Blume",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -93,6 +98,7 @@
   "session": "s0",
   "model": "cobalt",
   "slot": "extra",
+  "author": "Solijon Solayev",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -101,6 +107,7 @@
   "session": "s0",
   "model": "cobalt",
   "slot": "extra",
+  "author": "Horacio Cambeiro",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -109,6 +116,7 @@
   "session": "s0",
   "model": "cobalt",
   "slot": "extra",
+  "author": "Matti Blume",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -117,6 +125,7 @@
   "session": "s0",
   "model": "cobalt",
   "slot": "extra",
+  "author": "RG72",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -125,6 +134,7 @@
   "session": "s0",
   "model": "cobalt",
   "slot": "extra",
+  "author": "Bilimkoniut",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -133,6 +143,7 @@
   "session": "s0",
   "model": "cobalt",
   "slot": "extra",
+  "author": "Retired electrician",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -141,6 +152,7 @@
   "session": "s0",
   "model": "cobalt",
   "slot": "extra",
+  "author": "Horacio Cambeiro",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -149,6 +161,7 @@
   "session": "s0",
   "model": "damas",
   "slot": "extra",
+  "author": "Jean Housen",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -157,6 +170,7 @@
   "session": "s0",
   "model": "damas",
   "slot": "extra",
+  "author": "Jean Housen",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -165,6 +179,7 @@
   "session": "s0",
   "model": "damas",
   "slot": "extra",
+  "author": "Jean Housen",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -173,6 +188,7 @@
   "session": "s0",
   "model": "damas",
   "slot": "extra",
+  "author": "Jean Housen",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -181,6 +197,7 @@
   "session": "s0",
   "model": "damas",
   "slot": "extra",
+  "author": "Jean Housen",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -189,6 +206,7 @@
   "session": "s0",
   "model": "damas",
   "slot": "extra",
+  "author": "Raf24~commonswiki",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -197,6 +215,7 @@
   "session": "s0",
   "model": "damas",
   "slot": "extra",
+  "author": "Jamshid Nurkulov",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -205,6 +224,7 @@
   "session": "s0",
   "model": "damas",
   "slot": "extra",
+  "author": "Jamshid Nurkulov",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -213,6 +233,7 @@
   "session": "s0",
   "model": "damas",
   "slot": "extra",
+  "author": "Ilya Plekhanovcropped and driver's face blurred by Mr.choppers",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -221,6 +242,7 @@
   "session": "s0",
   "model": "damas",
   "slot": "extra",
+  "author": "Jamshid Nurkulov",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -229,6 +251,7 @@
   "session": "s0",
   "model": "damas",
   "slot": "extra",
+  "author": "Ilya Plekhanov",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -237,6 +260,7 @@
   "session": "s0",
   "model": "damas",
   "slot": "extra",
+  "author": "Jamshid Nurkulov",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -245,6 +269,7 @@
   "session": "s0",
   "model": "lacetti",
   "slot": "extra",
+  "author": "Vauxford",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -253,6 +278,7 @@
   "session": "s0",
   "model": "lacetti",
   "slot": "extra",
+  "author": "Cutlass",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -261,6 +287,7 @@
   "session": "s0",
   "model": "lacetti",
   "slot": "extra",
+  "author": "Vauxford",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -269,6 +296,7 @@
   "session": "s0",
   "model": "lacetti",
   "slot": "extra",
+  "author": "ddgek",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -277,6 +305,7 @@
   "session": "s0",
   "model": "lacetti",
   "slot": "extra",
+  "author": "Jean Housen",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -285,6 +314,7 @@
   "session": "s0",
   "model": "lacetti",
   "slot": "extra",
+  "author": "Jean Housen",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -293,6 +323,7 @@
   "session": "s0",
   "model": "lacetti",
   "slot": "extra",
+  "author": "Jean Housen",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -301,6 +332,7 @@
   "session": "s0",
   "model": "lacetti",
   "slot": "extra",
+  "author": "Jean Housen",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -309,6 +341,7 @@
   "session": "s0",
   "model": "lacetti",
   "slot": "extra",
+  "author": "Sergey A. Demidov",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -317,6 +350,7 @@
   "session": "s0",
   "model": "lacetti",
   "slot": "extra",
+  "author": "Umarxon III",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -325,6 +359,7 @@
   "session": "s0",
   "model": "lacetti",
   "slot": "extra",
+  "author": "Victor Vizu",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -333,6 +368,7 @@
   "session": "s0",
   "model": "lacetti",
   "slot": "extra",
+  "author": "Umarxon III",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -341,6 +377,7 @@
   "session": "s0",
   "model": "nexia",
   "slot": "extra",
+  "author": "Throwawayacc222",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -349,6 +386,7 @@
   "session": "s0",
   "model": "nexia",
   "slot": "extra",
+  "author": "pan1c",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -357,6 +395,7 @@
   "session": "s0",
   "model": "nexia",
   "slot": "extra",
+  "author": "vipnumber",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -365,6 +404,7 @@
   "session": "s0",
   "model": "nexia",
   "slot": "extra",
+  "author": "Toreodor",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -373,6 +413,7 @@
   "session": "s0",
   "model": "nexia",
   "slot": "extra",
+  "author": "wanghongliu",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -381,6 +422,7 @@
   "session": "s0",
   "model": "nexia",
   "slot": "extra",
+  "author": "wanghongliu",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -389,6 +431,7 @@
   "session": "s0",
   "model": "nexia",
   "slot": "extra",
+  "author": "Mosantio",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -397,6 +440,7 @@
   "session": "s0",
   "model": "nexia",
   "slot": "extra",
+  "author": "pan1c",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -405,6 +449,7 @@
   "session": "s0",
   "model": "nexia",
   "slot": "extra",
+  "author": "Throwawayacc222",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -413,6 +458,7 @@
   "session": "s0",
   "model": "nexia",
   "slot": "extra",
+  "author": "Chu",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -421,6 +467,7 @@
   "session": "s0",
   "model": "nexia",
   "slot": "extra",
+  "author": "Chu",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -429,6 +476,7 @@
   "session": "s0",
   "model": "nexia",
   "slot": "extra",
+  "author": "Throwawayacc222",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -437,6 +485,7 @@
   "session": "s0",
   "model": "song_plus",
   "slot": "extra",
+  "author": "Zotyefan",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -445,6 +494,7 @@
   "session": "s0",
   "model": "song_plus",
   "slot": "extra",
+  "author": "Zotyefan",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -453,6 +503,7 @@
   "session": "s0",
   "model": "song_plus",
   "slot": "extra",
+  "author": "Zotyefan",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -461,6 +512,7 @@
   "session": "s0",
   "model": "song_plus",
   "slot": "extra",
+  "author": "Pancho507",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -469,6 +521,7 @@
   "session": "s0",
   "model": "song_plus",
   "slot": "extra",
+  "author": "Pancho507",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -477,6 +530,7 @@
   "session": "s0",
   "model": "song_plus",
   "slot": "extra",
+  "author": "Pancho507",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -485,6 +539,7 @@
   "session": "s0",
   "model": "song_plus",
   "slot": "extra",
+  "author": "Pancho507",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -493,6 +548,7 @@
   "session": "s0",
   "model": "song_plus",
   "slot": "extra",
+  "author": "Pancho507",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -501,6 +557,7 @@
   "session": "s0",
   "model": "song_plus",
   "slot": "extra",
+  "author": "Raf24~commonswiki",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -509,6 +566,7 @@
   "session": "s0",
   "model": "song_plus",
   "slot": "extra",
+  "author": "RenRenKeiMok 2024",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -517,6 +575,7 @@
   "session": "s0",
   "model": "song_plus",
   "slot": "extra",
+  "author": "RenRenKeiMok 2024",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -525,6 +584,7 @@
   "session": "s0",
   "model": "song_plus",
   "slot": "extra",
+  "author": "Umarxon III",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -533,6 +593,7 @@
   "session": "s0",
   "model": "spark",
   "slot": "extra",
+  "author": "Benespit",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -541,6 +602,7 @@
   "session": "s0",
   "model": "spark",
   "slot": "extra",
+  "author": "Benespit",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -549,6 +611,7 @@
   "session": "s0",
   "model": "spark",
   "slot": "extra",
+  "author": "Benespit",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -557,6 +620,7 @@
   "session": "s0",
   "model": "spark",
   "slot": "extra",
+  "author": "Benespit",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -565,6 +629,7 @@
   "session": "s0",
   "model": "spark",
   "slot": "extra",
+  "author": "Benespit",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -573,6 +638,7 @@
   "session": "s0",
   "model": "spark",
   "slot": "extra",
+  "author": "\u4e16\u66f8 \u540d\u4ed8 (Flickr)",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -581,6 +647,7 @@
   "session": "s0",
   "model": "spark",
   "slot": "extra",
+  "author": "Spanish Coches",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -589,6 +656,7 @@
   "session": "s0",
   "model": "spark",
   "slot": "extra",
+  "author": "Spanish Coches",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -597,6 +665,7 @@
   "session": "s0",
   "model": "spark",
   "slot": "extra",
+  "author": "Chu",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -605,6 +674,7 @@
   "session": "s0",
   "model": "spark",
   "slot": "extra",
+  "author": "Ethan Llamas",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -613,6 +683,7 @@
   "session": "s0",
   "model": "spark",
   "slot": "extra",
+  "author": "Ethan Llamas",
   "kind": "commons_holdout_impostor"
  },
  {
@@ -621,6 +692,7 @@
   "session": "s0",
   "model": "spark",
   "slot": "extra",
+  "author": "Chu",
   "kind": "commons_holdout_impostor"
  }
 ]

@@ -1,0 +1,5300 @@
+{
+ "test_manifest_sha256": "c6c0f4b979fb193038c2c7a18a44b6f523578af136369c1c48d17ccef2684a93",
+ "generated_at": "2026-10-10T21:02:40",
+ "n_images": 78,
+ "n_cars": 73,
+ "n_sessions": 74,
+ "identity": {
+  "genuine": {
+   "decisions": {
+    "SAME": 1
+   },
+   "fnmr": {
+    "errors": 0,
+    "n": 1,
+    "rate": 0.0,
+    "upper95": 0.95
+   },
+   "review_rate": {
+    "errors": 0,
+    "n": 1,
+    "rate": 0.0,
+    "upper95": 0.95
+   },
+   "tar": {
+    "errors": 1,
+    "n": 1,
+    "rate": 1.0,
+    "upper95": 1.0
+   }
+  },
+  "impostor_hard": {
+   "decisions": {
+    "REVIEW": 197,
+    "DIFFERENT": 2,
+    "SAME": 1
+   },
+   "fmr": {
+    "errors": 1,
+    "n": 200,
+    "rate": 0.005,
+    "upper95": 0.02349847043495072
+   },
+   "fmr_vehicle_bound": {
+    "errors": 2,
+    "n": 73,
+    "rate": 0.0273972602739726,
+    "upper95": 0.08374086267128898
+   },
+   "review_rate": {
+    "errors": 197,
+    "n": 200,
+    "rate": 0.985,
+    "upper95": 0.99589938666493
+   }
+  },
+  "impostor_other": {
+   "decisions": {
+    "REVIEW": 200
+   },
+   "fmr": {
+    "errors": 0,
+    "n": 200,
+    "rate": 0.0,
+    "upper95": 0.014867039231272056
+   },
+   "fmr_vehicle_bound": {
+    "errors": 0,
+    "n": 73,
+    "rate": 0.0,
+    "upper95": 0.040206794253165846
+   },
+   "review_rate": {
+    "errors": 200,
+    "n": 200,
+    "rate": 1.0,
+    "upper95": 1.0
+   }
+  }
+ },
+ "latency_ms": {
+  "p50": 661.9796000013594,
+  "p95": 3100.2689999986615,
+  "n": 401
+ },
+ "records": [
+  {
+   "label": "genuine",
+   "ref": [
+    "lacetti_s0",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_s0",
+    "s1"
+   ],
+   "decision": "SAME",
+   "score": 44.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_015",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_s0",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_019",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_s0",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_008",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_009",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_009",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_008",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_012",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 4.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_010",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_013",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_019",
+    "s0"
+   ],
+   "decision": "DIFFERENT",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_016",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_010",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_015",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_s0",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_008",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_011",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_010",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_017",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_s0",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_011",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_011",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_009",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_013",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_009",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_011",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_013",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_s0",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_014",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_016",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_013",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_008",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_008",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_012",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_012",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_018",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_011",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_011",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_009",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_015",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 2.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "DIFFERENT",
+   "score": 1.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_008",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_008",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_014",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_010",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_013",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_s0",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_014",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_016",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_009",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_011",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_017",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_014",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_s0",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_011",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_010",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_016",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_009",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_019",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_s0",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_008",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_010",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_015",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_011",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 2.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_012",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_010",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_015",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_012",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_012",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_009",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_013",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_009",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_017",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_016",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_015",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_010",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_013",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_009",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_009",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_009",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_009",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_s0",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_011",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_s0",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_010",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_014",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_008",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_013",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_014",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_016",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 4.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_017",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_009",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_015",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_008",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_013",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_010",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_010",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_008",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 1.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_009",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_010",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_s0",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_014",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_011",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_016",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_s0",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_015",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_010",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_008",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_009",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_016",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_018",
+    "s0"
+   ],
+   "decision": "SAME",
+   "score": 41.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_011",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_012",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_013",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 1.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_012",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_013",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_013",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_010",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_010",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_011",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_011",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_011",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_014",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_013",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_014",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_009",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_009",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_s0",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_014",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_014",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_016",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_009",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_008",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_008",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_s0",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_012",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_012",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_009",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_010",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_010",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "damas_damas_011",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_008",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_013",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_011",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_012",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_013",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_017",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_018",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_008",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_spark_018",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "song_plus_song_plus_008",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "lacetti_lacetti_010",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_009",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_015",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "song_plus_song_plus_019",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "song_plus_song_plus_008",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_011",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_018",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_008",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_016",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_011",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_015",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_014",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_018",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_017",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_s0",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_018",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_017",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_013",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_010",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_013",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_010",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_014",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_014",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "song_plus_song_plus_010",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_013",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_015",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_009",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_014",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_019",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_011",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "song_plus_song_plus_017",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_017",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_s0",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_008",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_014",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "song_plus_song_plus_011",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_012",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_016",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_019",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_013",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_019",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_013",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_010",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_013",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_019",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_012",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_009",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_s0",
+    "s1"
+   ],
+   "cur": [
+    "spark_spark_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_015",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_009",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_019",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_015",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_012",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_018",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_015",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "song_plus_song_plus_015",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "song_plus_song_plus_012",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_011",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_018",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_011",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_016",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_014",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_018",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_015",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_016",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "song_plus_song_plus_012",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "song_plus_song_plus_010",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_016",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_s0",
+    "s1"
+   ],
+   "cur": [
+    "song_plus_song_plus_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_012",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_014",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 3.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_012",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_010",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_009",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_009",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_018",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_s0",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_011",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_016",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_015",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_010",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "song_plus_song_plus_017",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_s0",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_009",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_011",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "song_plus_song_plus_011",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_011",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_018",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_018",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_018",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_009",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_s0",
+    "s1"
+   ],
+   "cur": [
+    "nexia_nexia_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_012",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_014",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_019",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_013",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_014",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_017",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_013",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_019",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_017",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_017",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_018",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_018",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_010",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_lacetti_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_014",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_008",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_015",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_014",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_008",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_018",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_019",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_016",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_012",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_009",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_010",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_017",
+    "s0"
+   ],
+   "cur": [
+    "nexia_nexia_010",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_014",
+    "s0"
+   ],
+   "cur": [
+    "lacetti_s0",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_nexia_011",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_014",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_019",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_013",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "damas_damas_019",
+    "s0"
+   ],
+   "cur": [
+    "spark_spark_011",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "cobalt_cobalt_011",
+    "s0"
+   ],
+   "cur": [
+    "damas_damas_012",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "lacetti_lacetti_017",
+    "s0"
+   ],
+   "cur": [
+    "song_plus_song_plus_019",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  }
+ ]
+}

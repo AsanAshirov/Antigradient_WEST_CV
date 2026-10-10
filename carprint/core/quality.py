@@ -32,20 +32,24 @@ class QualityReport:
         return {**asdict(self), "ok": self.ok}
 
 
+SPECULAR_V = 250  # near-clipped value; white paint under normal exposure stays below it
+SPECULAR_S = 30
+
+
 def glare_mask(rgb: np.ndarray) -> np.ndarray:
-    """Specular highlights: very bright and nearly colourless pixels, slightly dilated."""
+    """Specular highlights: near-clipped, colourless pixels, slightly dilated. White paint is not glare."""
     hsv = cv2.cvtColor(rgb, cv2.COLOR_RGB2HSV)
-    mask = (hsv[..., 2] >= 245) & (hsv[..., 1] <= 40)
+    mask = (hsv[..., 2] >= SPECULAR_V) & (hsv[..., 1] <= SPECULAR_S)
     mask = cv2.dilate(mask.astype(np.uint8), np.ones((7, 7), np.uint8))
     return mask.astype(bool)
 
 
 def reflection_factor(rgb: np.ndarray, pts: np.ndarray) -> np.ndarray:
-    """Per-keypoint evidence factor in [0.2, 1]: bright, colourless neighbourhoods on paint are usually
-    mirrored sky or buildings that move with the camera, so their matches count less as identity evidence."""
+    """Per-keypoint evidence factor in [0.2, 1]: points next to specular highlights are usually mirrored light
+    sources or sky that move with the camera, so their matches count less as identity evidence."""
     hsv = cv2.cvtColor(rgb, cv2.COLOR_RGB2HSV)
-    soft = ((hsv[..., 2] >= 200) & (hsv[..., 1] <= 50)).astype(np.uint8)
-    soft = cv2.dilate(soft, np.ones((15, 15), np.uint8)).astype(bool)
+    soft = ((hsv[..., 2] >= SPECULAR_V - 5) & (hsv[..., 1] <= SPECULAR_S)).astype(np.uint8)
+    soft = cv2.dilate(soft, np.ones((21, 21), np.uint8)).astype(bool)
     h, w = soft.shape
     xi = np.clip(pts[:, 0].round().astype(int), 0, w - 1)
     yi = np.clip(pts[:, 1].round().astype(int), 0, h - 1)
@@ -97,7 +101,7 @@ def assess(rgb: np.ndarray, subject_mask: np.ndarray | None = None) -> QualityRe
         issues.append("too_dark")
     if clipped > CLIPPED_MAX:
         issues.append("overexposed")
-    if glare_ratio > GLARE_MAX:
+    if subject_mask is not None and glare_ratio > GLARE_MAX:  # without a car mask, sky and walls would count
         issues.append("glare")
     if subject_ratio is not None and subject_ratio < SUBJECT_MIN:
         issues.append("car_too_small" if subject_ratio > 0 else "no_car")
