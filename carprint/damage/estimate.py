@@ -161,7 +161,7 @@ def group_key(part: str | None, slot: str) -> str:
 
 
 def estimate(damages: list[tuple[str, DamageInput]], model: str = "", n: int = N_SAMPLES, seed: int = 0,
-             table: dict | None = None) -> dict:
+             table: dict | None = None, return_samples: bool = False) -> dict:
     """damages: (group key, input). Returns the cost distribution and its explanation."""
     table = table or price_table()
     rng = np.random.default_rng(seed)
@@ -228,11 +228,14 @@ def estimate(damages: list[tuple[str, DamageInput]], model: str = "", n: int = N
     parts_out.sort(key=lambda p: -p["cost_mean"])
     usd = float(table["usd_rate"])
     q = {k: float(np.percentile(total, v)) for k, v in (("p10", 10), ("p50", 50), ("p90", 90))}
-    return {"currency": table["currency"], **{k: _money(v) for k, v in q.items()}, "mean": _money(total.mean()),
-            "usd": {k: round(v / usd) for k, v in q.items()}, "p_zero": round(float(np.mean(total == 0)), 3),
-            "parts": parts_out, "n_damages": sum(len(v) for v in groups.values()), "samples": n,
-            "price_table": table["version"], "status": table.get("status", "indicative"),
-            "note_ru": table.get("note_ru", ""), "note_en": table.get("note_en", "")}
+    out = {"currency": table["currency"], **{k: _money(v) for k, v in q.items()}, "mean": _money(total.mean()),
+           "usd": {k: round(v / usd) for k, v in q.items()}, "p_zero": round(float(np.mean(total == 0)), 3),
+           "parts": parts_out, "n_damages": sum(len(v) for v in groups.values()), "samples": n,
+           "price_table": table["version"], "status": table.get("status", "indicative"),
+           "note_ru": table.get("note_ru", ""), "note_en": table.get("note_en", "")}
+    if return_samples:  # the simulated totals themselves (charts, the film); never part of the API response
+        out["total_samples"] = total
+    return out
 
 
 def _money(x: float) -> int:
