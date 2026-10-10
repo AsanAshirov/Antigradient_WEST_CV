@@ -24,9 +24,10 @@ _model = {}
 
 @dataclass
 class Subject:
-    box: tuple[int, int, int, int] | None  # x0, y0, x1, y1 in image pixels; None = not found
+    box: tuple[int, int, int, int] | None  # x0, y0, x1, y1 in image pixels with margin; None = not found
     score: float
     label: str
+    raw_box: tuple[int, int, int, int] | None = None  # detector box without margin
 
     def mask(self, shape) -> np.ndarray:
         m = np.zeros(shape[:2], bool)
@@ -60,7 +61,7 @@ def _detector():
 def locate(rgb: np.ndarray) -> Subject:
     det = _detector()
     if det is None:
-        return Subject(None, 0.0, "")
+        return Subject(None, 0.0, "unavailable")
     model, names = det
     with _lock:
         d = model.predict(Image.fromarray(rgb), threshold=MIN_SCORE)
@@ -82,4 +83,4 @@ def locate(rgb: np.ndarray) -> Subject:
     (x0, y0, x1, y1), conf, name = best
     mx, my = (x1 - x0) * MARGIN, (y1 - y0) * MARGIN
     box = (int(max(0, x0 - mx)), int(max(0, y0 - my)), int(min(w, x1 + mx)), int(min(h, y1 + my)))
-    return Subject(box, conf, name)
+    return Subject(box, conf, name, (int(x0), int(y0), int(x1), int(y1)))

@@ -27,6 +27,8 @@ sys.path.insert(0, str(ROOT))
 from carprint.core.image_io import load_image  # noqa: E402
 from carprint.core.quality import MESSAGES_RU  # noqa: E402
 from carprint.damage import segmenter  # noqa: E402
+from carprint.damage.estimate import DamageInput, estimate as cost_estimate, group_key, near_part_edge  # noqa: E402
+from carprint.damage.scale import estimate_scale, measure, vehicle_spec  # noqa: E402
 from carprint.identity.cohort import bank_paths  # noqa: E402
 from carprint.identity.pipeline import make_frame  # noqa: E402
 from carprint.identity.verify import Frame, Verdict, distinctiveness, verify  # noqa: E402
@@ -73,6 +75,9 @@ class StoredFrame:
     damages: list = field(default_factory=list)
     analyzed: bool = False
     overlay_url: str | None = None
+    scale: object = None  # carprint.damage.scale.Scale
+    sizes: list = field(default_factory=list)  # measure() per damage
+    damage_inputs: list = field(default_factory=list)  # DamageInput per damage (cost model)
 
 
 @dataclass
@@ -136,13 +141,56 @@ def save_artifact(rgb: np.ndarray, prefix: str) -> str:
     return f"/api/v1/artifacts/{name}"
 
 
-def part_at(sf: StoredFrame, inst) -> str | None:
+def part_instance_at(sf: StoredFrame, inst):
     best, best_overlap = None, 0
     for p in sf.parts:
+        if p.cls == "license_plate":
+            continue
         ov = int(np.logical_and(p.mask, inst.mask).sum())
         if ov > best_overlap:
-            best, best_overlap = p.cls, ov
+            best, best_overlap = p, ov
     return best
+
+
+def part_at(sf: StoredFrame, inst) -> str | None:
+    p = part_instance_at(sf, inst)
+    return p.cls if p is not None else None
+
+
+def _measure_damages(sf: StoredFrame):
+    """Metric scale of the frame and size of every damage: the inputs of the cost model."""
+    ins = INSPECTIONS.get(sf.inspection_id)
+    sf.scale = estimate_scale(sf.parts, vehicle_spec(ins.model_hint if ins else ""), sf.frame.rgb.shape,
+                              sf.frame.subject_box, sf.slot)
+    sf.sizes, sf.damage_inputs = [], []
+    for i, d in enumerate(sf.damages):
+        part = part_instance_at(sf, d)
+        size = measure(d.mask, part.cls if part else None, sf.scale)
+        rel = float(d.mask.sum() / part.mask.sum()) if part is not None and part.mask.any() else None
+        sf.sizes.append(size)
+        sf.damage_inputs.append(DamageInput(d.cls, part.cls if part else None, d.score, size["length_mm"],
+                                            size.get("rel_unc_length"), rel,
+                                            near_part_edge(d.mask, part.mask if part else None), f"dmg_{sf.frame_id}_{i}"))
+
+
+def inspection_cost(frames: list[StoredFrame], model_hint: str, only: dict[str, set] | None = None) -> dict | None:
+    """Cost of the damages of one inspection. A damage seen from several slots is costed once: every part is taken
+    from the view where its damage is largest. `only` restricts to {frame_id: damage indices} (e.g. new damages)."""
+    views: dict[str, list] = {}
+    for sf in frames:
+        per_group: dict[str, list] = {}
+        for i, di in enumerate(sf.damage_inputs):
+            if only is not None and i not in only.get(sf.frame_id, ()):
+                continue
+            per_group.setdefault(group_key(di.part, sf.slot), []).append(di)
+        for key, ds in per_group.items():
+            views.setdefault(key, []).append((sum(d.rel_area or 0.0 for d in ds) or len(ds), ds))
+    chosen = [(key, d) for key, v in views.items() for d in max(v, key=lambda t: t[0])[1]]
+    return cost_estimate(chosen, model=model_hint) if chosen else None
+
+
+def _size_dict(size: dict) -> dict:
+    return {k: (round(v, 3) if isinstance(v, float) else v) for k, v in size.items() if k != "area_px"}
 
 
 def analyze_frame(sf: StoredFrame) -> dict:
@@ -150,6 +198,7 @@ def analyze_frame(sf: StoredFrame) -> dict:
         parts_model, dmg_model = segmenter.load("parts", MODELS), segmenter.load("damage", MODELS)
         sf.parts = parts_model.predict(sf.frame.rgb, 0.4) if parts_model else []
         sf.damages = dmg_model.predict(sf.frame.rgb, 0.35) if dmg_model else []
+        _measure_damages(sf)
         sf.analyzed = True
     plates = [p.mask for p in sf.parts if p.cls == "license_plate"]
     overlay = blur_regions(sf.frame.rgb, plates)
@@ -164,8 +213,10 @@ def analyze_frame(sf: StoredFrame) -> dict:
         "privacy": {"plates_blurred": len(plates), "persons_blurred": 0},
         "parts": [{"part": p.cls, "score": round(p.score, 3), "bbox": list(p.bbox)} for p in sf.parts if p.cls != "license_plate"],
         "damages": [{"damage_id": f"dmg_{sf.frame_id}_{i}", "part": part_at(sf, d), "class": d.cls, "score": round(d.score, 3),
-                     "area_ratio": round(d.area_ratio, 4), "bbox": list(d.bbox),
-                     "status": "auto" if d.score >= 0.6 else "needs_master"} for i, d in enumerate(sf.damages)],
+                     "area_ratio": round(d.area_ratio, 4), "bbox": list(d.bbox), "size": _size_dict(sz),
+                     "status": "auto" if d.score >= 0.6 else "needs_master"}
+                    for i, (d, sz) in enumerate(zip(sf.damages, sf.sizes))],
+        "scale": sf.scale.to_dict() if sf.scale is not None else None,
         "overlay_url": sf.overlay_url,
     }
 
@@ -258,8 +309,9 @@ def analyze(inspection_id: str):
     t0 = time.perf_counter()
     with compute_lock:
         frames = [analyze_frame(sf) for sf in ins.frames]
+        cost = inspection_cost(ins.frames, ins.model_hint)
     status = "PROCESSED" if any(sf.frame.quality.ok for sf in ins.frames) else "RECAPTURE_REQUIRED"
-    return {"inspection_id": ins.inspection_id, "status": status, "frames": frames,
+    return {"inspection_id": ins.inspection_id, "status": status, "frames": frames, "cost_estimate": cost,
             "latency_ms": round((time.perf_counter() - t0) * 1000)}
 
 
@@ -292,14 +344,26 @@ def _verify(ref: Inspection, cur: Inspection) -> dict:
             viz = side_by_side(r.frame, c.frame, weights_for(r, ref.model_hint))
             evidence.append({**z.to_dict(), "slot": r.slot, "match_viz_url": save_artifact(viz, "m")})
         # The timeline only makes sense for the same car; each pair of frames contributes its registered panels.
+        new_idx: dict[str, set] = {}
+        old_idx: dict[str, set] = {}
         if v.decision != "DIFFERENT":
             for (rf, cf), zone_maps in registered.items():
                 r, c = by_id[rf], by_id[cf]
                 for item in timeline_compare(r.damages, c.damages, zone_maps, r.frame.rgb, c.frame.rgb.shape,
-                                             part_of=lambda inst, sf=c: part_at(sf, inst)):
+                                             part_of=lambda inst, sf=c: part_at(sf, inst),
+                                             part_of_ref=lambda inst, sf=r: part_at(sf, inst)):
                     timeline.append({"status": item.status, "class": item.cls, "part": item.part, "slot": c.slot,
                                      "ref_frame": rf, "cur_frame": cf, "cur_bbox": item.cur_bbox, "ref_bbox": item.ref_bbox,
+                                     "damage_id": f"dmg_{cf}_{item.cur_index}" if item.cur_index is not None else None,
                                      "first_seen_inspection_id": ref.inspection_id if item.status == "previously_recorded" else None})
+                    if item.cur_index is not None and item.status in ("newly_detected", "previously_recorded"):
+                        target = new_idx if item.status == "newly_detected" else old_idx
+                        target.setdefault(cf, set()).add(item.cur_index)
+        # New = new in some registered view and recorded in none (a damage seen as old from another angle is old).
+        only_new = {f: ids - old_idx.get(f, set()) for f, ids in new_idx.items()}
+        model = ref.model_hint or cur.model_hint
+        cost_new = inspection_cost(cur.frames, model, only_new) if any(only_new.values()) else None
+        cost_all = inspection_cost(cur.frames, model)
     flags = sorted({"gallery_upload" for sf in cur.frames if sf.capture_mode != "camera"})
     flags += [f"recycled_reference_photo:{cid}->{rid}" for cid, rid in recycled.items()]
     level = "red" if recycled else ("yellow" if flags else "green")
@@ -312,6 +376,7 @@ def _verify(ref: Inspection, cur: Inspection) -> dict:
     return {"verification_id": vid, "decision": v.decision, "score_raw": v.score_raw,
             "score_note": "Число совпавших независимых ячеек с индивидуальными признаками; не вероятность",
             "reasons_ru": v.reasons, "cohort_size": v.cohort_size, "evidence": evidence, "damage_timeline": timeline,
+            "cost_estimate_new": cost_new, "cost_estimate_current": cost_all,
             "integrity": {"flags": flags, "level": level}, "latency_ms": round((time.perf_counter() - t0) * 1000)}
 
 
@@ -376,10 +441,13 @@ def report(inspection_id: str):
         for sf in ins.frames:
             if sf.overlay_url is None:
                 analyze_frame(sf)
+        cost = inspection_cost(ins.frames, ins.model_hint)
     record = next((r for r in ledger.timeline(ins.vehicle_key) if r["payload"].get("inspection_id") == ins.inspection_id), None)
     damages = [f"{d.cls} ({part_at(sf, d) or 'деталь не определена'}, {d.score:.2f})" for sf in ins.frames for d in sf.damages]
     rows = [("Осмотр", ins.inspection_id), ("Автомобиль (ключ)", ins.vehicle_key), ("Тип / роль", f"{ins.type} / {ins.role}"),
             ("Кадров", str(len(ins.frames))), ("Находки модели", "; ".join(damages) or "не обнаружено"),
+            ("Оценка ремонта (ориентир)", f"P10–P90 {cost['p10']:,}–{cost['p90']:,} сум, медиана {cost['p50']:,} сум"
+             .replace(",", " ") if cost else "нет находок"),
             ("Запись паспорта", record["record_hash"] if record else "не подтверждено приёмщиком"),
             ("Предыдущая запись", record["prev_hash"] if record else "—")]
     rows += [(f"Кадр {sf.slot}", f"SHA-256 {sf.sha256[:32]}… {sf.capture_mode} {sf.server_ts}") for sf in ins.frames]

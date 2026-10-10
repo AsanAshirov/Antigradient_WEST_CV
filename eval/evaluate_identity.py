@@ -25,8 +25,15 @@ sys.path.insert(0, str(ROOT))
 
 from carprint.core.image_io import load_image  # noqa: E402
 from carprint.identity.cohort import bank_paths  # noqa: E402
-from carprint.identity.pipeline import make_frame  # noqa: E402
+from carprint.identity.pipeline import SUBJECT_STATS, USE_SUBJECT, make_frame  # noqa: E402
 from carprint.identity.verify import verify  # noqa: E402
+
+
+def zone_record(e) -> dict:
+    """Everything needed to re-decide a pair offline under other thresholds (eval/calibrate.py)."""
+    return {"ref": e.ref_frame, "nfa": round(e.zone.log10_nfa, 2), "nfa_d": round(e.log10_nfa_distinct, 2),
+            "inl": e.zone.n_inliers, "dinl": round(e.distinct_inliers, 2), "marks": e.ref_marks_in_zone,
+            "votes": [[int(cx), int(cy), round(v, 3)] for (cx, cy), v in e.votes.items()]}
 
 
 def upper95(errors: int, n: int) -> float | None:
@@ -85,7 +92,8 @@ def main(manifest_path: str, cohort_dir: str, out_path: str, max_impostor_per_st
             coh = cohort(model_of[a])
             v = verify(frames[a], frames[b], {f.frame_id: coh for f in frames[a]})
             lat.append((time.perf_counter() - t) * 1000)
-            records.append({"label": label, "ref": list(a), "cur": list(b), "decision": v.decision, "score": v.score_raw})
+            records.append({"label": label, "ref": list(a), "cur": list(b), "decision": v.decision, "score": v.score_raw,
+                            "cohort": v.cohort_size, "zones": [zone_record(e) for e in v.zones]})
 
     def summarize(label):
         rs = [r for r in records if r["label"] == label]
@@ -95,7 +103,8 @@ def main(manifest_path: str, cohort_dir: str, out_path: str, max_impostor_per_st
         return rs, dict(dec)
 
     out = {"test_manifest_sha256": hashlib.sha256(manifest_bytes).hexdigest(), "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
-           "n_images": len(items), "n_cars": len({k[0] for k in keys}), "n_sessions": len(keys), "identity": {}}
+           "n_images": len(items), "n_cars": len({k[0] for k in keys}), "n_sessions": len(keys),
+           "vehicle_crop": USE_SUBJECT, "subject_stats": dict(SUBJECT_STATS), "identity": {}}
     g, gd = summarize("genuine")
     out["identity"]["genuine"] = {"decisions": gd, "fnmr": rate(gd.get("DIFFERENT", 0), len(g)),
                                   "review_rate": rate(gd.get("REVIEW", 0) + gd.get("RECAPTURE_REQUIRED", 0), len(g)),

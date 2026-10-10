@@ -13,3 +13,4 @@ data/test/commons_series/*/
 data/*.jpg
 data/*.pdf
 data/kaggle_*/
+eval/runs_dl/

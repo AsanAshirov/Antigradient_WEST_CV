@@ -26,6 +26,8 @@ class TimelineItem:
     part: str | None
     cur_bbox: tuple | None
     ref_bbox: tuple | None
+    cur_index: int | None = None  # index into the current frame's damages (cost of what is new)
+    ref_index: int | None = None
 
 
 @dataclass
@@ -69,32 +71,33 @@ def _zone_for(bbox, zones: list[ZoneMap], use_ref: bool) -> ZoneMap | None:
 
 
 def compare(ref_dmg: list[Instance], cur_dmg: list[Instance], zones: list[ZoneMap], ref_rgb: np.ndarray,
-            cur_shape, part_of=lambda inst: None) -> list[TimelineItem]:
+            cur_shape, part_of=lambda inst: None, part_of_ref=None) -> list[TimelineItem]:
+    part_of_ref = part_of_ref or part_of  # reference masks live in the reference frame: use its parts
     observable_ref = ~glare_mask(ref_rgb)
     items, used = [], set()
     warped_ref = []
     for r in ref_dmg:
         z = _zone_for(r.bbox, zones, use_ref=True)
         warped_ref.append(_dilate(warp(r.mask, z.H, cur_shape)) if z is not None else None)
-    for d in cur_dmg:
+    for ci, d in enumerate(cur_dmg):
         z = _zone_for(d.bbox, zones, use_ref=False)
         if z is None:
-            items.append(TimelineItem("insufficient_evidence", d.cls, part_of(d), d.bbox, None))
+            items.append(TimelineItem("insufficient_evidence", d.cls, part_of(d), d.bbox, None, ci))
             continue
         dm = _dilate(d.mask)
         cands = [(i, _iou(dm, w)) for i, w in enumerate(warped_ref) if w is not None and i not in used]
         best = max(cands, key=lambda t: t[1], default=(None, 0.0))
         if best[0] is not None and best[1] >= MATCH_IOU:
             used.add(best[0])
-            items.append(TimelineItem("previously_recorded", d.cls, part_of(d), d.bbox, ref_dmg[best[0]].bbox))
+            items.append(TimelineItem("previously_recorded", d.cls, part_of(d), d.bbox, ref_dmg[best[0]].bbox, ci, best[0]))
             continue
         seen = warp(observable_ref, z.H, cur_shape)
         visible = float(seen[d.mask].mean()) if d.mask.any() else 0.0
         status = "newly_detected" if visible >= VISIBLE_MIN else "insufficient_evidence"
-        items.append(TimelineItem(status, d.cls, part_of(d), d.bbox, None))
+        items.append(TimelineItem(status, d.cls, part_of(d), d.bbox, None, ci))
     for i, (r, w) in enumerate(zip(ref_dmg, warped_ref)):
         if i in used:
             continue
         status = "previously_seen_now_absent" if w is not None and w.any() else "insufficient_evidence"
-        items.append(TimelineItem(status, r.cls, part_of(r), None, r.bbox))
+        items.append(TimelineItem(status, r.cls, part_of_ref(r), None, r.bbox, None, i))
     return items

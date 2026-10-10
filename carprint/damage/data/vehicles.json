@@ -1,0 +1,24 @@
+{
+ "note": "Overall dimensions (mm) and standard tyre size per model: the rulers of carprint/damage/scale.py. 'verified' = checked against the cited source on 2026-10-10.",
+ "generic": {"length": 4400, "width": 1740, "height": 1500, "wheelbase": 2600, "tyre": "195/65 R15",
+             "tyre_rel_unc": 0.06, "height_rel_unc": 0.12, "verified": false,
+             "source": "typical B/C-segment passenger car; wide uncertainties"},
+ "models": {
+  "cobalt":    {"length": 4479, "width": 1735, "height": 1514, "wheelbase": 2620, "tyre": "185/75 R14", "verified": true,
+                "source": "https://fastcarcheck.uk/specs/make/chevrolet/cobalt/256572; tyres 185/75 R14 or 195/65 R15 (same diameter): https://auto.ru/catalog/cars/chevrolet/cobalt/specifications/razmer-koles/"},
+  "nexia":     {"length": 4310, "width": 1710, "height": 1505, "wheelbase": 2480, "tyre": "185/60 R15", "tyre_rel_unc": 0.04,
+                "height_rel_unc": 0.10, "verified": false},
+  "gentra":    {"length": 4515, "width": 1725, "height": 1445, "wheelbase": 2600, "tyre": "195/55 R15", "tyre_rel_unc": 0.04,
+                "height_rel_unc": 0.10, "verified": false},
+  "lacetti":   {"length": 4515, "width": 1725, "height": 1445, "wheelbase": 2600, "tyre": "195/55 R15", "tyre_rel_unc": 0.04,
+                "height_rel_unc": 0.10, "verified": false},
+  "spark":     {"length": 3640, "width": 1597, "height": 1522, "wheelbase": 2375, "tyre": "155/70 R14", "tyre_rel_unc": 0.04,
+                "verified": true, "source": "https://fastcarcheck.uk/specs/make/chevrolet/spark/176979 (155/65 R13, 155/70 R14, 155/80 R13 fitted)"},
+  "matiz":     {"length": 3495, "width": 1495, "height": 1485, "wheelbase": 2340, "tyre": "155/65 R13", "verified": true,
+                "source": "https://www.carsguide.com.au/daewoo/matiz/car-dimensions/2001"},
+  "camry":     {"length": 4885, "width": 1840, "height": 1445, "wheelbase": 2825, "tyre": "215/55 R17", "tyre_rel_unc": 0.04,
+                "verified": true, "source": "https://paultan.org/research/compare/toyota-camry/xv70-vs-xv80/ (dimensions; tyre size assumed)"},
+  "song_plus": {"length": 4705, "width": 1890, "height": 1680, "wheelbase": 2765, "tyre": "235/50 R19", "tyre_rel_unc": 0.04,
+                "height_rel_unc": 0.10, "verified": false}
+ }
+}

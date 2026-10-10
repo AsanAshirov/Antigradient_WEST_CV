@@ -39,6 +39,7 @@ class Frame:
     rgb: np.ndarray
     feats: Features
     quality: QualityReport
+    subject_box: tuple | None = None  # detected vehicle x0, y0, x1, y1 without margin (metric scale, crops)
 
 
 @dataclass
@@ -50,6 +51,7 @@ class ZoneEvidence:
     log10_nfa_distinct: float
     ref_marks_in_zone: int  # distinctive reference keypoints inside the aligned zone
     cells: frozenset = frozenset()  # congruent cells (cx, cy) in the reference frame
+    votes: dict = field(default_factory=dict)  # (cx, cy) -> distinctive weight, kept for offline calibration
 
     def to_dict(self) -> dict:
         z = self.zone
@@ -130,7 +132,7 @@ def compare_frames(ref: Frame, cur: Frame, w_ref: np.ndarray) -> list[ZoneEviden
         marks = int(((w_ref * refl_ref > 0.7) & inside).sum())
         zone_area = max(bw * bh * 4.0, 0.05 * area)
         out.append(ZoneEvidence(ref.frame_id, cur.frame_id, z, k_d,
-                                log10_nfa(z.n_tentative, int(round(k_d)), zone_area), marks, cells))
+                                log10_nfa(z.n_tentative, int(round(k_d)), zone_area), marks, cells, votes))
     return out
 
 

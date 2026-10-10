@@ -156,6 +156,7 @@ def build_router(main):
             "congruent_cells": cells, "score_raw": res["score_raw"], "cohort_size": res["cohort_size"],
             "zones": zones, "integrity": res["integrity"], "copy_detected": copy,
             "damage_timeline": res["damage_timeline"],
+            "cost_estimate_new": res.get("cost_estimate_new"), "cost_estimate_current": res.get("cost_estimate_current"),
         }
 
     @router.get("/api/example/{view}")
