@@ -1,0 +1,5613 @@
+{
+ "test_manifest_sha256": "9fb4432af1f2cdee34628d9b2a05de540ab0c6ce291729b3e7a94637262df2f0",
+ "generated_at": "2026-10-10T21:45:52",
+ "n_images": 92,
+ "n_cars": 61,
+ "n_sessions": 83,
+ "identity": {
+  "genuine": {
+   "decisions": {
+    "REVIEW": 24,
+    "SAME": 1
+   },
+   "fnmr": {
+    "errors": 0,
+    "n": 25,
+    "rate": 0.0,
+    "upper95": 0.11292814500684321
+   },
+   "review_rate": {
+    "errors": 24,
+    "n": 25,
+    "rate": 0.96,
+    "upper95": 0.9979503715873792
+   },
+   "tar": {
+    "errors": 1,
+    "n": 25,
+    "rate": 0.04,
+    "upper95": 0.17612071060451798
+   }
+  },
+  "impostor_hard": {
+   "decisions": {
+    "REVIEW": 199,
+    "DIFFERENT": 1
+   },
+   "fmr": {
+    "errors": 0,
+    "n": 200,
+    "rate": 0.0,
+    "upper95": 0.014867039231272056
+   },
+   "fmr_vehicle_bound": {
+    "errors": 0,
+    "n": 61,
+    "rate": 0.0,
+    "upper95": 0.04792395210660731
+   },
+   "review_rate": {
+    "errors": 199,
+    "n": 200,
+    "rate": 0.995,
+    "upper95": 0.9997435664127765
+   }
+  },
+  "impostor_other": {
+   "decisions": {
+    "REVIEW": 199,
+    "DIFFERENT": 1
+   },
+   "fmr": {
+    "errors": 0,
+    "n": 200,
+    "rate": 0.0,
+    "upper95": 0.014867039231272056
+   },
+   "fmr_vehicle_bound": {
+    "errors": 0,
+    "n": 61,
+    "rate": 0.0,
+    "upper95": 0.04792395210660731
+   },
+   "review_rate": {
+    "errors": 199,
+    "n": 200,
+    "rate": 0.995,
+    "upper95": 0.9997435664127765
+   }
+  }
+ },
+ "latency_ms": {
+  "p50": 512.2397000013734,
+  "p95": 4918.140999998286,
+  "n": 425
+ },
+ "records": [
+  {
+   "label": "genuine",
+   "ref": [
+    "matiz_black_g2",
+    "s0"
+   ],
+   "cur": [
+    "matiz_black_g2",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "matiz_g4_m100_red",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g4_m100_red",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "matiz_g4_m150_twotone",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g4_m150_twotone",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g4_m200_red",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "matiz_g4_m300_lightblue",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g4_m300_lightblue",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "matiz_g5_blue",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g5_blue",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "matiz_g5_orange",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g5_orange",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "matiz_green_g2",
+    "s0"
+   ],
+   "cur": [
+    "matiz_green_g2",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "matiz_pink_g0",
+    "s0"
+   ],
+   "cur": [
+    "matiz_pink_g0",
+    "s1"
+   ],
+   "decision": "SAME",
+   "score": 40.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "matiz_twotone_g3",
+    "s0"
+   ],
+   "cur": [
+    "matiz_twotone_g3",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "matiz_white_g3",
+    "s0"
+   ],
+   "cur": [
+    "matiz_white_g3",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "nexia_blue_hatch_waw",
+    "s0"
+   ],
+   "cur": [
+    "nexia_blue_hatch_waw",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "nexia_gl_junior_g3",
+    "s0"
+   ],
+   "cur": [
+    "nexia_gl_junior_g3",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s0"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s0"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s2"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s0"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s3"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s1"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s2"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s1"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s3"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s2"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s3"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "nhtsa_8455",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8455",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "nhtsa_8465",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8465",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "nhtsa_8466",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8466",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "spark_g0_white",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_white",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "spark_g1_beige_show",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_beige_show",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "genuine",
+   "ref": [
+    "spark_g1_lime_show",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_lime_show",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8466",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_lime_show",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_white",
+    "s1"
+   ],
+   "cur": [
+    "spark_g1_cream_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_03",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_pink_g0",
+    "s0"
+   ],
+   "cur": [
+    "matiz_white_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g1_3",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g4_m150_twotone",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_black_g2",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g5_red",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_blue_hatch_waw",
+    "s0"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g1_3",
+    "s0"
+   ],
+   "cur": [
+    "matiz_pink_g0",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g1_6",
+    "s0"
+   ],
+   "cur": [
+    "matiz_silver_creative_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8466",
+    "s1"
+   ],
+   "cur": [
+    "spark_g3_06",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_g0_yellow_pia",
+    "s0"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s2"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_blue_g3",
+    "s0"
+   ],
+   "cur": [
+    "matiz_green_g2",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_g0_lightblue_tashkent",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g0_yellow_pia",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8466",
+    "s1"
+   ],
+   "cur": [
+    "spark_g3_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8466",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_07",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_black_g2",
+    "s1"
+   ],
+   "cur": [
+    "matiz_white_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m100_red",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g4_m300_lightblue",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_04",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_02",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8465",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_00",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8466",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_silver",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_twotone_g3",
+    "s1"
+   ],
+   "cur": [
+    "matiz_white_g3",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8465",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_white",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g1_lime_show",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m150_twotone",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g4_m200_red",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8465",
+    "s1"
+   ],
+   "cur": [
+    "spark_g5_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g1_beige_show",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_02",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_black_g2",
+    "s0"
+   ],
+   "cur": [
+    "matiz_silver_creative_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g1_blue_show",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_01",
+    "s0"
+   ],
+   "decision": "DIFFERENT",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_green_g2",
+    "s0"
+   ],
+   "cur": [
+    "matiz_white_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8455",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_07",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8465",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_00",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g1_lime_show",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8465",
+    "s1"
+   ],
+   "cur": [
+    "spark_g3_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s1"
+   ],
+   "cur": [
+    "matiz_g4_m300_lightblue",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_grey_g2_3",
+    "s0"
+   ],
+   "cur": [
+    "matiz_white_g3",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_g0_green_hatch_poz",
+    "s0"
+   ],
+   "cur": [
+    "nexia_gl_junior_g3",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8465",
+    "s1"
+   ],
+   "cur": [
+    "spark_g3_00",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_pink_g0",
+    "s0"
+   ],
+   "cur": [
+    "matiz_red_g2_2",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_01",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g5_blue",
+    "s1"
+   ],
+   "cur": [
+    "matiz_white_g3",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g1_4",
+    "s0"
+   ],
+   "cur": [
+    "matiz_twotone_g3",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8465",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_02",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g1_3",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g5_red",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m300_lightblue",
+    "s0"
+   ],
+   "cur": [
+    "matiz_grey_g2_3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m150_twotone",
+    "s0"
+   ],
+   "cur": [
+    "matiz_white_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g5_silver",
+    "s0"
+   ],
+   "cur": [
+    "matiz_green_g2",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_white",
+    "s1"
+   ],
+   "cur": [
+    "spark_g3_06",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8455",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_red",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8455",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_02",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g1_blue_show",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_06",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_blue_g3",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g1_5",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g5_red",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g5_silver",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_silver",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_black_g2",
+    "s1"
+   ],
+   "cur": [
+    "matiz_g1_3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_01",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_green_g2",
+    "s1"
+   ],
+   "cur": [
+    "matiz_twotone_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m150_twotone",
+    "s0"
+   ],
+   "cur": [
+    "matiz_pink_g0",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g5_blue",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g5_red",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_silver_creative_g3",
+    "s0"
+   ],
+   "cur": [
+    "matiz_white_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8466",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g5_blue",
+    "s1"
+   ],
+   "cur": [
+    "matiz_g5_red",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_g3_03",
+    "s0"
+   ],
+   "cur": [
+    "nexia_gl_junior_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g5_blue",
+    "s1"
+   ],
+   "cur": [
+    "matiz_g5_orange",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_blue_g3",
+    "s0"
+   ],
+   "cur": [
+    "matiz_pink_g0",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_00",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_02",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8455",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_white",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8465",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_00",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g5_orange",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g5_red",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_red_g2_2",
+    "s0"
+   ],
+   "cur": [
+    "matiz_white_g3",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8455",
+    "s1"
+   ],
+   "cur": [
+    "nhtsa_8466",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 1.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g3_00",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_07",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g3_05",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_black_g2",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g1_3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g5_silver",
+    "s0"
+   ],
+   "cur": [
+    "matiz_green_g2",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8465",
+    "s1"
+   ],
+   "cur": [
+    "spark_g3_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_silver",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_red_g2_2",
+    "s0"
+   ],
+   "cur": [
+    "matiz_twotone_g3",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g1_1",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g1_5",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_white",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s1"
+   ],
+   "cur": [
+    "matiz_g5_blue",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m150_twotone",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g4_m300_lightblue",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g5_silver",
+    "s0"
+   ],
+   "cur": [
+    "matiz_twotone_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g5_01",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_02",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8465",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g1_lime_show",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_07",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g1_blue_show",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_lime_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_02",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_00",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m100_red",
+    "s1"
+   ],
+   "cur": [
+    "matiz_g4_m200_red",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m150_twotone",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g4_m200_red",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8466",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_02",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g5_blue",
+    "s1"
+   ],
+   "cur": [
+    "matiz_green_g2",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8466",
+    "s1"
+   ],
+   "cur": [
+    "spark_g5_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g1_cream_show",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_06",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_03",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_00",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g3_00",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_silver",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_white",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_white",
+    "s1"
+   ],
+   "cur": [
+    "spark_g5_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s1"
+   ],
+   "cur": [
+    "matiz_white_g3",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m300_lightblue",
+    "s1"
+   ],
+   "cur": [
+    "matiz_g5_blue",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_black_g2",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g1_6",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_06",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_02",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_07",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g3_05",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_silver",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_white",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_lime_show",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_white",
+    "s1"
+   ],
+   "cur": [
+    "spark_g3_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m150_twotone",
+    "s1"
+   ],
+   "cur": [
+    "matiz_white_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g5_orange",
+    "s1"
+   ],
+   "cur": [
+    "matiz_white_g3",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g1_blue_show",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_00",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8455",
+    "s1"
+   ],
+   "cur": [
+    "nhtsa_8465",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_blue_g3",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g4_m200_red",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g1_1",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g4_m150_twotone",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g1_lime_show",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_g0_yellow_pia",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g3_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_black_g2",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g5_orange",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g1_4",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g1_6",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_green",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g3_01",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g1_cream_show",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m100_red",
+    "s1"
+   ],
+   "cur": [
+    "matiz_green_g2",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_red",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_cream_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_g3_00",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g3_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_blue_hatch_waw",
+    "s1"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_01",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8466",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_02",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_red",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g1_cream_show",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_07",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m150_twotone",
+    "s1"
+   ],
+   "cur": [
+    "matiz_white_g3",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_white",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8466",
+    "s1"
+   ],
+   "cur": [
+    "spark_g1_cream_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g1_5",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g4_m200_red",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g5_orange",
+    "s1"
+   ],
+   "cur": [
+    "matiz_green_g2",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m100_red",
+    "s1"
+   ],
+   "cur": [
+    "matiz_silver_creative_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g1_beige_show",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_06",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_silver",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_03",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_06",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g1_beige_show",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_07",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_07",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_04",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_06",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_g0_lightblue_tashkent",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g3_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_g0_yellow_pia",
+    "s0"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s3"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g3_05",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_06",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_03",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g1_lime_show",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g1_5",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g5_blue",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_blue_g3",
+    "s0"
+   ],
+   "cur": [
+    "matiz_white_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g5_orange",
+    "s0"
+   ],
+   "cur": [
+    "matiz_pink_g0",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g5_orange",
+    "s1"
+   ],
+   "cur": [
+    "matiz_white_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_white",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_07",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g1_1",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g4_m100_red",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 2.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_red",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_02",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_g3_00",
+    "s0"
+   ],
+   "cur": [
+    "nexia_gl_junior_g3",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_blue_g3",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g1_1",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8466",
+    "s1"
+   ],
+   "cur": [
+    "spark_g1_beige_show",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_g0_yellow_pia",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g3_00",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_red",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_silver",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g3_01",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g1_1",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g5_blue",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g5_orange",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g5_silver",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g3_01",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_07",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8455",
+    "s1"
+   ],
+   "cur": [
+    "spark_g1_lime_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_black_g2",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g4_m150_twotone",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_07",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_07",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_blue_g3",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g1_4",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_g0_green_hatch_poz",
+    "s0"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s3"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_white",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_cream_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s1"
+   ],
+   "cur": [
+    "matiz_g5_silver",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8466",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_beige_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_blue_hatch_waw",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g0_lightblue_tashkent",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_00",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_07",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g1_1",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g5_red",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nexia_g3_03",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g3_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_black_g2",
+    "s1"
+   ],
+   "cur": [
+    "matiz_g4_m300_lightblue",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g5_orange",
+    "s0"
+   ],
+   "cur": [
+    "matiz_white_g3",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m300_lightblue",
+    "s1"
+   ],
+   "cur": [
+    "matiz_green_g2",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g1_1",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g4_m150_twotone",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g1_cream_show",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m100_red",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g4_m200_red",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_black_g2",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g5_orange",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8455",
+    "s1"
+   ],
+   "cur": [
+    "spark_g1_cream_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_white",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_lime_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g1_5",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g4_m300_lightblue",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m150_twotone",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g5_orange",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g4_m100_red",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g4_m150_twotone",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_silver",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8455",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_beige_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g0_green",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_lime_show",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g1_3",
+    "s0"
+   ],
+   "cur": [
+    "matiz_white_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_g1_4",
+    "s0"
+   ],
+   "cur": [
+    "matiz_g5_orange",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "matiz_black_g2",
+    "s1"
+   ],
+   "cur": [
+    "matiz_g4_m100_red",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8465",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g2_02",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g1_blue_show",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "spark_g1_beige_show",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8465",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_lime_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "hard",
+   "ref": [
+    "nhtsa_8465",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m300_lightblue",
+    "s1"
+   ],
+   "cur": [
+    "nexia_g3_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g3_00",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_00",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_silver",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_silver",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_red",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g3_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m300_lightblue",
+    "s1"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s3"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_twotone_g3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_gl_junior_g3",
+    "s1"
+   ],
+   "cur": [
+    "spark_g5_02",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g3_05",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_06",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_6",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_blue",
+    "s1"
+   ],
+   "cur": [
+    "spark_g1_cream_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s3"
+   ],
+   "cur": [
+    "spark_g1_beige_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_06",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_pink_g0",
+    "s1"
+   ],
+   "cur": [
+    "nexia_g3_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_4",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_red",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_pink_g0",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_blue",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_02",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m150_twotone",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_orange",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8466",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_silver",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_white",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_blue_g3",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8455",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_1",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_07",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_red",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g0_yellow_pia",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_grey_g2_3",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g3_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_green_g2",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_02",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g3_03",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_green",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_grey_g2_3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_cream_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_green_g2",
+    "s1"
+   ],
+   "cur": [
+    "nhtsa_8455",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m100_red",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_silver",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_orange",
+    "s1"
+   ],
+   "cur": [
+    "nexia_blue_hatch_waw",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_blue",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_lime_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s1"
+   ],
+   "cur": [
+    "spark_g1_beige_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_twotone_g3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_red_g2_2",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8466",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_black_g2",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_07",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g3_05",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_06",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_1",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_white",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_red",
+    "s0"
+   ],
+   "cur": [
+    "nexia_blue_hatch_waw",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_1",
+    "s0"
+   ],
+   "cur": [
+    "nexia_gl_junior_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_twotone_g3",
+    "s1"
+   ],
+   "cur": [
+    "nexia_g3_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_pink_g0",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_orange",
+    "s1"
+   ],
+   "cur": [
+    "spark_g3_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_black_g2",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_06",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s3"
+   ],
+   "cur": [
+    "spark_g0_silver",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_blue_g3",
+    "s0"
+   ],
+   "cur": [
+    "nexia_blue_hatch_waw",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_silver",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_00",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_twotone_g3",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g0_lightblue_tashkent",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s1"
+   ],
+   "cur": [
+    "spark_g0_red",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_blue",
+    "s1"
+   ],
+   "cur": [
+    "nhtsa_8465",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_black_g2",
+    "s0"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_red",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_cream_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s3"
+   ],
+   "cur": [
+    "nhtsa_8466",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_green",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_blue_hatch_waw",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_silver",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m150_twotone",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_cream_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g3_00",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m150_twotone",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_beige_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g3_03",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_silver",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g3_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_02",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_blue",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_00",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s1"
+   ],
+   "cur": [
+    "nexia_gl_junior_g3",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_lime_show",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_green_g2",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g3_00",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8465",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_blue_hatch_waw",
+    "s1"
+   ],
+   "cur": [
+    "spark_g3_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m150_twotone",
+    "s1"
+   ],
+   "cur": [
+    "nexia_gl_junior_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m300_lightblue",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8455",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_blue_g3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_orange",
+    "s1"
+   ],
+   "cur": [
+    "spark_g5_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m100_red",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g0_yellow_pia",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g3_05",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_07",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_4",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g3_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_orange",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_beige_show",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_black_g2",
+    "s0"
+   ],
+   "cur": [
+    "nexia_blue_hatch_waw",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_lime_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_green_g2",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g3_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_blue_hatch_waw",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_07",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_twotone_g3",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g0_yellow_pia",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_pink_g0",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_green",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_orange",
+    "s1"
+   ],
+   "cur": [
+    "spark_g1_blue_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m100_red",
+    "s1"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s3"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_blue_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_blue",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_06",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_gl_junior_g3",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_00",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_twotone_g3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_gl_junior_g3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_lime_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_red",
+    "s0"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_grey_g2_3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_orange",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_07",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_black_g2",
+    "s1"
+   ],
+   "cur": [
+    "spark_g1_lime_show",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g0_lightblue_tashkent",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8455",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g3_04",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_pink_g0",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_00",
+    "s0"
+   ],
+   "decision": "DIFFERENT",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_blue_hatch_waw",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_07",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_black_g2",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_lime_show",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_gl_junior_g3",
+    "s1"
+   ],
+   "cur": [
+    "spark_g3_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g3_04",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_white",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_twotone_g3",
+    "s1"
+   ],
+   "cur": [
+    "spark_g3_06",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_silver_creative_g3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m300_lightblue",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_beige_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_green_g2",
+    "s1"
+   ],
+   "cur": [
+    "spark_g5_02",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_blue_g3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_white",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_twotone_g3",
+    "s1"
+   ],
+   "cur": [
+    "nhtsa_8466",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s2"
+   ],
+   "cur": [
+    "spark_g2_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_02",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_silver_creative_g3",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g0_lightblue_tashkent",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_gl_junior_g3",
+    "s1"
+   ],
+   "cur": [
+    "spark_g3_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_green_g2",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_silver_creative_g3",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g0_yellow_pia",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m100_red",
+    "s1"
+   ],
+   "cur": [
+    "spark_g0_white",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s2"
+   ],
+   "cur": [
+    "spark_g0_white",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_orange",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8465",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_1",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_white",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g3_04",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_cream_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m100_red",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_beige_show",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_red",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g0_yellow_pia",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_red",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_grey_g2_3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_silver",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_6",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_beige_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m100_red",
+    "s1"
+   ],
+   "cur": [
+    "nexia_gl_junior_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_6",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_green",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_green_g2",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_black_g2",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_cream_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m100_red",
+    "s0"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_gl_junior_g3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_white_g3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_lime_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m150_twotone",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s0"
+   ],
+   "cur": [
+    "nexia_blue_hatch_waw",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g3_00",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_blue_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g0_green_hatch_poz",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_00",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_orange",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g0_yellow_pia",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_red",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8466",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_4",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_06",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_blue_g3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_orange",
+    "s0"
+   ],
+   "cur": [
+    "nexia_gl_junior_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_red_g2_2",
+    "s0"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s2"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m300_lightblue",
+    "s1"
+   ],
+   "cur": [
+    "spark_g3_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g3_00",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8466",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g0_yellow_pia",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_lime_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g3_03",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8455",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_blue_hatch_waw",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8455",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_blue_g3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_blue",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s1"
+   ],
+   "cur": [
+    "spark_g1_beige_show",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_silver_creative_g3",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8466",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g0_lightblue_tashkent",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8466",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_white_g3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_beige_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_silver",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_beige_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_red_g2_2",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g3_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s3"
+   ],
+   "cur": [
+    "spark_g0_green",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_3",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g0_green_hatch_poz",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g0_green_hatch_poz",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8455",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m300_lightblue",
+    "s1"
+   ],
+   "cur": [
+    "spark_g1_beige_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_blue",
+    "s1"
+   ],
+   "cur": [
+    "nexia_gl_junior_g3",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_green_lordmmx",
+    "s1"
+   ],
+   "cur": [
+    "spark_g0_white",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_06",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_red_g2_2",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_grey_g2_3",
+    "s0"
+   ],
+   "cur": [
+    "nexia_blue_hatch_waw",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_gl_junior_g3",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8465",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_blue_hatch_waw",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8466",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_gl_junior_g3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_cream_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m300_lightblue",
+    "s1"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s2"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g0_green_hatch_poz",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_blue_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_silver_creative_g3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_02",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_twotone_g3",
+    "s1"
+   ],
+   "cur": [
+    "nexia_g3_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s1"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_twotone_g3",
+    "s0"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s2"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_twotone_g3",
+    "s1"
+   ],
+   "cur": [
+    "nexia_g0_green_hatch_poz",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_white_g3",
+    "s1"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s3"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_5",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_00",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_1",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_beige_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_beige_show",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_black_g2",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g0_lightblue_tashkent",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8466",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m150_twotone",
+    "s1"
+   ],
+   "cur": [
+    "spark_g2_07",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_4",
+    "s0"
+   ],
+   "cur": [
+    "nhtsa_8455",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g4_m200_red",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_4",
+    "s0"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_blue_g3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_03",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_twotone_g3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_06",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_black_g2",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g3_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_6",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g0_yellow_pia",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_white_g3",
+    "s1"
+   ],
+   "cur": [
+    "spark_g1_blue_show",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_blue_hatch_waw",
+    "s0"
+   ],
+   "cur": [
+    "spark_g3_01",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_3",
+    "s0"
+   ],
+   "cur": [
+    "spark_g2_05",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_red_g2_2",
+    "s0"
+   ],
+   "cur": [
+    "nexia_gl_junior_g3",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_green_g2",
+    "s0"
+   ],
+   "cur": [
+    "spark_g5_04",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g5_red",
+    "s0"
+   ],
+   "cur": [
+    "nexia_g3_00",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "nexia_g3_00",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_white",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_pink_g0",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_white",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_pink_g0",
+    "s0"
+   ],
+   "cur": [
+    "spark_g0_silver",
+    "s0"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_g1_1",
+    "s0"
+   ],
+   "cur": [
+    "spark_g1_lime_show",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  },
+  {
+   "label": "other",
+   "ref": [
+    "matiz_white_g3",
+    "s1"
+   ],
+   "cur": [
+    "nexia_green_lordmmx",
+    "s1"
+   ],
+   "decision": "REVIEW",
+   "score": 0.0
+  }
+ ]
+}

@@ -1,7 +1,36 @@
-# CarPrint Verification AI
+# Antigradient · CarPrint Verification AI
+
+*WEST hackathon 2026 — Computer Vision track (automotive industry & road safety). Partners: Toyota Royal Motors,
+BYD Royal Motors, Ducati.*
 
 **Partner product — Royal Motors After-Sales. Process changed: vehicle check-in / check-out at service reception.**
 Second channel: insurers (KASKO pre-inspection and claims).
+
+| | |
+|---|---|
+| Evaluation protocol & current numbers | [docs/EVALUATION.md](docs/EVALUATION.md) |
+| API for the web app | [docs/API_CONTRACT.md](docs/API_CONTRACT.md) |
+| Data and licences | [DATA_SOURCES.md](DATA_SOURCES.md), [data/README.md](data/README.md) |
+| Research (RU): ideas, global problems & business, science/models/data | [docs/research/](docs/research/) |
+| Team concept (RU) | [docs/concept/](docs/concept/) |
+
+## Repository layout
+
+```
+carprint/          library
+  core/            image I/O, capture quality gate
+  identity/        features (ALIKED+LightGlue), geometry (MAGSAC zones, ORSA NFA), cohort, verification, subject crop
+  damage/          RF-DETR-Seg wrapper for parts and damage
+  timeline/        per-panel damage timeline between inspections
+  integrity/       hashes, Ed25519 hash-chained passport, PDF act
+api/               FastAPI service (docs/API_CONTRACT.md)
+training/kaggle/   RF-DETR-Seg fine-tuning job (HITL Car Parts & Damages, CC0)
+eval/              identity evaluation, diagnostics, frozen test-manifest hash, results
+scripts/           data collection (Commons cohort/test mining, contact sheets), benchmarks, smoke tests
+tests/             pytest suite
+docs/              API contract, evaluation, research, concept
+data/              manifests and labels only (images are rebuilt by scripts; see data/README.md)
+```
 
 CarPrint turns a phone walk-around of a car into an evidence record that answers three questions:
 
