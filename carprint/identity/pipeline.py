@@ -42,6 +42,7 @@ def make_frame(frame_id: str, slot: str, rgb: np.ndarray, subject_mask: np.ndarr
         SUBJECT_STATS["disabled"] += 1
     if box is not None:
         x0, y0, x1, y1 = box
+        keep = keep & subject.keypoint_mask(rgb.shape)  # silhouette: the car behind or the wall never votes
         f = extract(rgb[y0:y1, x0:x1], keep[y0:y1, x0:x1])
         feats = Features(f.keypoints + np.array([x0, y0], np.float32), f.scores, f.raw, (rgb.shape[1], rgb.shape[0]))
     else:

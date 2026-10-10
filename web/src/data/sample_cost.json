@@ -1,0 +1,78 @@
+{
+ "currency": "UZS",
+ "p10": 1470000,
+ "p50": 2740000,
+ "p90": 3740000,
+ "mean": 2650000,
+ "usd": {
+  "p10": 122,
+  "p50": 228,
+  "p90": 312
+ },
+ "p_zero": 0.004,
+ "parts": [
+  {
+   "part_key": "front_bumper",
+   "part": "front_bumper",
+   "damages": 1,
+   "likely_operation": "plastic_repair",
+   "operation_probs": {
+    "none": 0.102,
+    "plastic_repair": 0.522,
+    "replace": 0.376
+   },
+   "p_replace": 0.376,
+   "cost_p50": 1060000,
+   "cost_p90": 1710000,
+   "cost_mean": 1080000,
+   "evidence": [
+    "d1"
+   ],
+   "variance_share": 0.348
+  },
+  {
+   "part_key": "left_front_door",
+   "part": "front_door",
+   "damages": 1,
+   "likely_operation": "repair_paint",
+   "operation_probs": {
+    "none": 0.141,
+    "polish": 0.075,
+    "repair_paint": 0.784
+   },
+   "p_replace": 0.0,
+   "cost_p50": 1200000,
+   "cost_p90": 1620000,
+   "cost_mean": 1050000,
+   "evidence": [
+    "d2"
+   ],
+   "variance_share": 0.462
+  },
+  {
+   "part_key": "left_fender",
+   "part": "fender",
+   "damages": 1,
+   "likely_operation": "repair_paint",
+   "operation_probs": {
+    "none": 0.294,
+    "pdr": 0.234,
+    "repair_paint": 0.472
+   },
+   "p_replace": 0.0,
+   "cost_p50": 620000,
+   "cost_p90": 960000,
+   "cost_mean": 520000,
+   "evidence": [
+    "d3"
+   ],
+   "variance_share": 0.19
+  }
+ ],
+ "n_damages": 3,
+ "samples": 4000,
+ "price_table": "uz-2026-10-public-v1",
+ "status": "indicative",
+ "note_ru": "Ориентировочный диапазон по открытым ценам Ташкента (октябрь 2026). Не смета: окончательную цену даёт мастер по прайсу дилера.",
+ "note_en": "Indicative range from public Tashkent prices (Oct 2026). Not a quote: the final price comes from the dealer's price list."
+}

@@ -12,8 +12,11 @@ import numpy as np
 BLUR_MIN = 0.010  # variance of Laplacian of the unit-variance image at 1024 px long side
 DARK_P95_MAX = 0.30  # even the brightest 5% of the subject is darker than this -> underexposed
 CLIPPED_MAX = 0.25  # fraction of clipped (>=250) pixels -> overexposed
-GLARE_MAX = 0.12  # fraction of near-saturated, low-saturation pixels inside the subject
-SUBJECT_MIN = 0.15  # fraction of frame covered by the car
+# Calibrated on 224 real photos (cohort + test, vehicle crop; scripts/quality_stats.py, run r4): glare inside the car
+# box has median 0.09 and p95 0.22, the car box covers p5 = 9% of the frame. The old 0.12 / 0.15 rejected 31% / 8% of
+# usable photos; these values reject only the worst few percent.
+GLARE_MAX = 0.25  # fraction of near-saturated, low-saturation pixels inside the subject
+SUBJECT_MIN = 0.08  # fraction of frame covered by the car
 
 
 @dataclass

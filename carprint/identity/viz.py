@@ -1,35 +1,46 @@
-"""Evidence visualisations: matched zones between reference and current frames."""
+"""Evidence visualisations drawn from the zones the decision actually used (never a re-run of the matcher)."""
 from __future__ import annotations
 
 import cv2
 import numpy as np
 
-from carprint.identity.features import match
-from carprint.identity.geometry import fit_zones
-from carprint.identity.verify import Frame
+from carprint.identity.verify import Frame, ZoneEvidence
 
-ZONE_COLORS = [(46, 204, 113), (52, 152, 219), (241, 196, 15), (155, 89, 182), (230, 126, 34)]
+MARK = (255, 91, 31)  # RGB signal orange: individual mark (cohort weight >= 0.7)
+DESIGN = (200, 204, 210)  # shared design feature
+INDIVIDUAL_W = 0.7
 
 
-def side_by_side(ref: Frame, cur: Frame, w_ref: np.ndarray, height: int = 540) -> np.ndarray:
-    """Inlier lines per zone; bright = distinctive (individual mark), dim = shared design feature."""
+def side_by_side(ref: Frame, cur: Frame, zones: list[ZoneEvidence], height: int = 540) -> np.ndarray:
+    """Inlier lines of the given zones; orange = individual mark, grey = design feature shared by the model."""
     s0, s1 = height / ref.rgb.shape[0], height / cur.rgb.shape[0]
-    a = cv2.resize(ref.rgb, (round(ref.rgb.shape[1] * s0), height))
-    b = cv2.resize(cur.rgb, (round(cur.rgb.shape[1] * s1), height))
-    canvas = np.concatenate([a, b], axis=1).copy()
+    a = cv2.resize(ref.rgb, (round(ref.rgb.shape[1] * s0), height), interpolation=cv2.INTER_AREA)
+    b = cv2.resize(cur.rgb, (round(cur.rgb.shape[1] * s1), height), interpolation=cv2.INTER_AREA)
+    canvas = (np.concatenate([a, b], axis=1) * 0.8).astype(np.uint8)
     off = a.shape[1]
-    m, _ = match(ref.feats, cur.feats)
-    if len(m) >= 10:
-        p0, p1 = ref.feats.keypoints[m[:, 0]], cur.feats.keypoints[m[:, 1]]
-        for zi, z in enumerate(fit_zones(p0, p1, cur.rgb.shape[0] * cur.rgb.shape[1])):
-            color = np.array(ZONE_COLORS[zi % len(ZONE_COLORS)], float)
-            for idx in z.inlier_idx:
-                w = float(w_ref[m[idx, 0]])
-                c = tuple(int(v) for v in color * (0.35 + 0.65 * w))
-                x0, y0 = (p0[idx] * s0).astype(int)
-                x1, y1 = (p1[idx] * s1).astype(int)
-                cv2.line(canvas, (x0, y0), (x1 + off, y1), c, 1 if w < 0.5 else 2, cv2.LINE_AA)
-                if w >= 0.7:
-                    cv2.circle(canvas, (x0, y0), 4, c, -1, cv2.LINE_AA)
-                    cv2.circle(canvas, (x1 + off, y1), 4, c, -1, cv2.LINE_AA)
-    return canvas
+    dim = canvas.copy()
+    for z in zones:
+        if z.ref_pts is None:
+            continue
+        for (x0, y0), (x1, y1), w in zip(z.ref_pts * s0, z.cur_pts * s1, z.weights):
+            p, q = (int(x0), int(y0)), (int(x1) + off, int(y1))
+            if w >= INDIVIDUAL_W:
+                cv2.line(canvas, p, q, MARK, 2, cv2.LINE_AA)
+                cv2.circle(canvas, p, 4, MARK, -1, cv2.LINE_AA)
+                cv2.circle(canvas, q, 4, MARK, -1, cv2.LINE_AA)
+            else:
+                cv2.line(dim, p, q, DESIGN, 1, cv2.LINE_AA)
+    return cv2.addWeighted(dim, 0.5, canvas, 0.5, 0) if any(z.ref_pts is not None for z in zones) else canvas
+
+
+def match_lines(zones: list[ZoneEvidence], ref_shape, cur_shape, limit: int = 160) -> list[list[float]]:
+    """Inliers as [x0, y0, x1, y1, w] with coordinates normalised to each image (0..1), strongest first, so a
+    client can draw them over the two photos at any display size."""
+    rows = []
+    for z in zones:
+        if z.ref_pts is None:
+            continue
+        for (x0, y0), (x1, y1), w in zip(z.ref_pts, z.cur_pts, z.weights):
+            rows.append([x0 / ref_shape[1], y0 / ref_shape[0], x1 / cur_shape[1], y1 / cur_shape[0], float(w)])
+    rows.sort(key=lambda r: -r[4])
+    return [[round(float(v), 4) for v in r] for r in rows[:limit]]

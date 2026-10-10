@@ -1,0 +1,79 @@
+/* CarPrint design tokens — "Кино + чертёж". Mirrors the Foundations artboard in Claude Design. */
+:root {
+  /* ground */
+  --ink: #0c0d0f;
+  --ink-2: #16181b;
+  --ink-3: #1f2226;
+  --ink-line: #2a2d32;
+  --ink-text: #f2f1ed;
+  --ink-muted: rgba(242, 241, 237, 0.68);
+  --ink-faint: rgba(242, 241, 237, 0.45);
+
+  --paper: #f2f1ed;
+  --paper-2: #f7f6f2;
+  --sheet: #ffffff;
+  --line: #d6d4ce;
+  --line-soft: #eceae4;
+  --text: #111214;
+  --text-2: #34363b;
+  --muted: #55585e;
+  --faint: #6b6e74;
+
+  /* signal: one accent, used for new damage and the primary action only */
+  --signal: #ff5b1f;
+  --signal-text: #b6400c;
+  --signal-wash: rgba(255, 91, 31, 0.16);
+
+  /* verdicts: told apart by marker shape and label, not hue alone */
+  --same: #1d5bd6;
+  --same-on-ink: #7fa6f5;
+  --review: #b7791f;
+  --review-text: #8a5a00;
+  --review-on-ink: #f0b44c;
+  --different: #c2304a;
+  --different-text: #a3203a;
+  --different-on-ink: #f07a8e;
+  --ok: #2c6e49;
+  --ok-on-ink: #7cd992;
+
+  /* type */
+  --font-sans: "Onest Variable", "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --fs-display: clamp(52px, 7.4vw, 96px);
+  --fs-h2: clamp(36px, 4.4vw, 58px);
+  --fs-h3: clamp(20px, 1.7vw, 26px);
+  --fs-lead: clamp(18px, 1.45vw, 20px);
+  --fs-body: 17px;
+  --fs-small: 15px;
+  --fs-label: 12px;
+
+  /* space: 4 px base */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+  --gutter: clamp(20px, 4.4vw, 64px);
+  --max: 1312px;
+  --radius: 2px;
+
+  /* motion */
+  --ease: cubic-bezier(0.2, 0.7, 0, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --t-fast: 160ms;
+  --t-mid: 320ms;
+  --t-slow: 640ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-fast: 0ms;
+    --t-mid: 0ms;
+    --t-slow: 0ms;
+  }
+}

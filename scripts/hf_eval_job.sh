@@ -3,9 +3,12 @@
 # then uploads eval outputs to the private dataset repo under runs/<RUN_ID>/.
 # EVAL_SETS: space-separated "manifest:name:vehicle_crop(0|1)".
 set -uo pipefail
+# Image: pytorch/pytorch:2.8.0-cuda12.8-cudnn9-runtime. rfdetr 1.11.2 needs transformers 5.x, which does not import
+# on torch 2.5 (AutoBackbone / GenerationMixin errors), so older images silently lose the vehicle detector.
 pip install -q opencv-python-headless scipy pillow kornia matplotlib "rfdetr==1.11.2" huggingface_hub
 pip install -q --no-deps https://github.com/cvg/LightGlue/archive/refs/heads/main.zip
 pip install -q --force-reinstall --no-deps opencv-python-headless
+python -c "from transformers import AutoBackbone; import rfdetr; print('detector deps OK')" || { echo "detector deps broken"; exit 1; }
 cp -r /repo /work && cd /work
 RUN_ID=${RUN_ID:-run_$(date +%H%M%S)}
 mkdir -p out
@@ -17,6 +20,7 @@ for spec in ${EVAL_SETS:-"data/test/commons_mined/manifest.json:calib_v1:1"}; do
   grep -v -i "warn" "out/${name}.log" | tail -n 45
 done
 CARPRINT_SUBJECT=1 python scripts/bench.py data/cohort/nexia 6 > out/bench.log 2>&1; tail -n 30 out/bench.log
+CARPRINT_SUBJECT=1 python scripts/render_evidence.py out/evidence > out/evidence.log 2>&1; tail -n 15 out/evidence.log
 cp eval/bench_*.json out/ 2>/dev/null
 python - <<PY
 import os

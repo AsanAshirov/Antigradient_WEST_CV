@@ -105,6 +105,9 @@ def main(manifest_path: str, cohort_dir: str, out_path: str, max_impostor_per_st
     out = {"test_manifest_sha256": hashlib.sha256(manifest_bytes).hexdigest(), "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
            "n_images": len(items), "n_cars": len({k[0] for k in keys}), "n_sessions": len(keys),
            "vehicle_crop": USE_SUBJECT, "subject_stats": dict(SUBJECT_STATS), "identity": {}}
+    if USE_SUBJECT:
+        from carprint.identity.subject import detector_name
+        out["detector"] = detector_name()
     g, gd = summarize("genuine")
     out["identity"]["genuine"] = {"decisions": gd, "fnmr": rate(gd.get("DIFFERENT", 0), len(g)),
                                   "review_rate": rate(gd.get("REVIEW", 0) + gd.get("RECAPTURE_REQUIRED", 0), len(g)),

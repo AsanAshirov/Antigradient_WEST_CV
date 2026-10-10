@@ -52,6 +52,9 @@ class ZoneEvidence:
     ref_marks_in_zone: int  # distinctive reference keypoints inside the aligned zone
     cells: frozenset = frozenset()  # congruent cells (cx, cy) in the reference frame
     votes: dict = field(default_factory=dict)  # (cx, cy) -> distinctive weight, kept for offline calibration
+    ref_pts: np.ndarray | None = None  # inlier coordinates in the reference frame (the evidence itself)
+    cur_pts: np.ndarray | None = None  # the same inliers in the current frame
+    weights: np.ndarray | None = None  # identity weight of each inlier (cohort x reflection x corner x confidence)
 
     def to_dict(self) -> dict:
         z = self.zone
@@ -132,7 +135,8 @@ def compare_frames(ref: Frame, cur: Frame, w_ref: np.ndarray) -> list[ZoneEviden
         marks = int(((w_ref * refl_ref > 0.7) & inside).sum())
         zone_area = max(bw * bh * 4.0, 0.05 * area)
         out.append(ZoneEvidence(ref.frame_id, cur.frame_id, z, k_d,
-                                log10_nfa(z.n_tentative, int(round(k_d)), zone_area), marks, cells, votes))
+                                log10_nfa(z.n_tentative, int(round(k_d)), zone_area), marks, cells, votes,
+                                pts0[z.inlier_idx], pts1[z.inlier_idx], w))
     return out
 
 

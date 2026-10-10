@@ -46,3 +46,14 @@ Images with visible plates or people from Commons are used only server-side for 
 | VeRi-776, VehicleID, VERI-Wild, CityFlow, CO3D, KITTI | Non-commercial or research-only |
 | VehiDE (Kaggle mirror) | Provenance unclear (description paraphrases CarDD, no authors) |
 | State Farm, Carvana | Competition-only rules |
+
+## Website imagery (web/public)
+
+| File | Source | Author | Licence | Changes |
+|---|---|---|---|---|
+| `images/hero.jpg` | [Commons: After polishing in the painting of Chevrolet](https://commons.wikimedia.org/wiki/File:After_polishing_int_the_painting_of_Chevrolet._(24872172236).jpg) | Marinelson Almeida | CC BY 2.0 | resized, licence plate blurred |
+| `images/tashkent.jpg` | [Commons: Chevrolet Cobalt, Chilonzor-5 avenue, Tashkent](https://commons.wikimedia.org/wiki/File:Chevrolet_Cobalt._Chilonzor-5_avenue,_Tashkent,_Uzbekistan.jpg) | Jamshid Nurkulov | CC BY-SA 4.0 | resized, licence plate blurred |
+| `evidence/ref.jpg`, `evidence/cur.jpg`, `evidence/pair.json` | [Commons: Daewoo Matiz Groove M300 Monaco Pink](https://commons.wikimedia.org/wiki/File:Daewoo_Matiz_Groove_M300_Monaco_Pink_(23).jpg) series | Damian B Oh | CC BY-SA 4.0 | resized; `pair.json` is the output of our pipeline on these photos (CC BY-SA 4.0) |
+
+Datasets rejected for licence reasons: AutoDamageIQ (labelled CC BY 4.0 but built partly from CarDD, which is
+CC BY-NC 4.0), CarDD, VehiDE (non-commercial terms).

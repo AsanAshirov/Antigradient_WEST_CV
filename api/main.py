@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import hmac
 import os
+import re
 import secrets
 import sys
 import threading
@@ -32,7 +33,7 @@ from carprint.damage.scale import estimate_scale, measure, vehicle_spec  # noqa:
 from carprint.identity.cohort import bank_paths  # noqa: E402
 from carprint.identity.pipeline import make_frame  # noqa: E402
 from carprint.identity.verify import Frame, Verdict, distinctiveness, verify  # noqa: E402
-from carprint.identity.viz import side_by_side  # noqa: E402
+from carprint.identity.viz import match_lines, side_by_side  # noqa: E402
 from carprint.integrity.hashing import DUPLICATE_MAX_DISTANCE, hamming, phash64, sha256_hex  # noqa: E402
 from carprint.integrity.ledger import Ledger  # noqa: E402
 from carprint.integrity.report import build_pdf  # noqa: E402
@@ -209,7 +210,7 @@ def analyze_frame(sf: StoredFrame) -> dict:
         cv2.putText(overlay, f"{d.cls} {d.score:.2f}", (x, max(12, y - 4)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
     sf.overlay_url = save_artifact(overlay, "ovl")
     return {
-        "frame_id": sf.frame_id, "slot": sf.slot,
+        "frame_id": sf.frame_id, "slot": sf.slot, "quality": sf.frame.quality.to_dict(),
         "privacy": {"plates_blurred": len(plates), "persons_blurred": 0},
         "parts": [{"part": p.cls, "score": round(p.score, 3), "bbox": list(p.bbox)} for p in sf.parts if p.cls != "license_plate"],
         "damages": [{"damage_id": f"dmg_{sf.frame_id}_{i}", "part": part_at(sf, d), "class": d.cls, "score": round(d.score, 3),
@@ -341,8 +342,14 @@ def _verify(ref: Inspection, cur: Inspection) -> dict:
                 registered.setdefault(key, []).append(ZoneMap(z.zone.H, z.zone.bbox0, z.zone.bbox1))
         for (rf, cf), z in sorted(best_zone.items(), key=lambda kv: kv[1].log10_nfa_distinct)[:6]:
             r, c = by_id[rf], by_id[cf]
-            viz = side_by_side(r.frame, c.frame, weights_for(r, ref.model_hint))
-            evidence.append({**z.to_dict(), "slot": r.slot, "match_viz_url": save_artifact(viz, "m")})
+            pair_zones = [e for e in v.zones if (e.ref_frame, e.cur_frame) == (rf, cf)]
+            viz = side_by_side(r.frame, c.frame, pair_zones)
+            rh, rw = r.frame.rgb.shape[:2]
+            aligned = None
+            if z.zone.log10_nfa < REGISTRATION_NFA:
+                aligned = save_artifact(cv2.warpPerspective(c.frame.rgb, np.linalg.inv(z.zone.H), (rw, rh)), "al")
+            evidence.append({**z.to_dict(), "slot": r.slot, "match_viz_url": save_artifact(viz, "m"), "aligned_url": aligned,
+                             "matches": match_lines(pair_zones, r.frame.rgb.shape, c.frame.rgb.shape)})
         # The timeline only makes sense for the same car; each pair of frames contributes its registered panels.
         new_idx: dict[str, set] = {}
         old_idx: dict[str, set] = {}
@@ -375,9 +382,37 @@ def _verify(ref: Inspection, cur: Inspection) -> dict:
         LAST_ZONES.pop(next(iter(LAST_ZONES)))
     return {"verification_id": vid, "decision": v.decision, "score_raw": v.score_raw,
             "score_note": "Число совпавших независимых ячеек с индивидуальными признаками; не вероятность",
-            "reasons_ru": v.reasons, "cohort_size": v.cohort_size, "evidence": evidence, "damage_timeline": timeline,
+            "reasons_ru": v.reasons, "reasons_en": [reason_en(r) for r in v.reasons], "cohort_size": v.cohort_size,
+            "evidence": evidence, "damage_timeline": timeline,
             "cost_estimate_new": cost_new, "cost_estimate_current": cost_all,
             "integrity": {"flags": flags, "level": level}, "latency_ms": round((time.perf_counter() - t0) * 1000)}
+
+
+REASONS_EN = [
+    (r"Совпали индивидуальные признаки в (\d+) независимых ячейках \((\d+) зон\)",
+     "Individual marks agree in {0} independent cells ({1} zones)"),
+    (r"Когорта машин той же модели мала \((\d+) < (\d+)\): автоматический SAME запрещён",
+     "Same-model cohort too small ({0} < {1}): automatic SAME is disabled"),
+    (r"Ракурсы совмещаются по дизайну модели, но индивидуальные метки эталона не найдены",
+     "The views align on the model's design, but the reference's individual marks are absent"),
+    (r"Не найдено сопоставимых участков: снимите те же ракурсы, что в эталоне",
+     "No comparable areas found: shoot the same angles as the reference"),
+    (r"Доказательств недостаточно: (\d+) совпавших ячеек из (\d+) нужных",
+     "Not enough evidence: {0} matching cells of {1} needed"),
+    (r"Нет кадров достаточного качества в одном из осмотров", "One of the inspections has no frame of sufficient quality"),
+    (r"(\d+) фото повторяют снимки эталонного осмотра и исключены из доказательств",
+     "{0} photo(s) repeat the reference inspection and are excluded from evidence"),
+    (r"Все фото текущего осмотра — копии эталонных снимков: нужен новый осмотр",
+     "Every current photo is a copy of a reference photo: a new inspection is needed"),
+]
+
+
+def reason_en(text: str) -> str:
+    for pattern, template in REASONS_EN:
+        m = re.fullmatch(pattern, text)
+        if m:
+            return template.format(*m.groups())
+    return text
 
 
 class VerificationIn(BaseModel):
@@ -404,6 +439,7 @@ async def compare(images_a: list[UploadFile] = File(...), images_b: list[UploadF
             _ingest(ins, await f.read(), "extra", "gallery")
         insp.append(ins)
     result = _verify(insp[0], insp[1])
+    result["inspections"] = {"reference": insp[0].inspection_id, "current": insp[1].inspection_id}
     with compute_lock:
         result["analysis_a"] = [analyze_frame(sf) for sf in insp[0].frames]
         result["analysis_b"] = [analyze_frame(sf) for sf in insp[1].frames]
@@ -500,4 +536,13 @@ from api.compat import build_router  # noqa: E402
 app.include_router(build_router(sys.modules[__name__]))
 WEB_DIST = Path(os.environ.get("CARPRINT_WEB_DIST", ROOT / "web" / "dist"))
 if WEB_DIST.exists():
-    app.mount("/", StaticFiles(directory=WEB_DIST, html=True), name="web")
+    app.mount("/assets", StaticFiles(directory=WEB_DIST / "assets"), name="assets")
+
+    @app.get("/{path:path}", include_in_schema=False)
+    def spa(path: str):
+        target = (WEB_DIST / path).resolve()
+        if path and target.is_file() and WEB_DIST.resolve() in target.parents:
+            return FileResponse(target)
+        if path.startswith("api/"):
+            err(404, "NOT_FOUND", "Нет такого метода API")
+        return FileResponse(WEB_DIST / "index.html", headers={"Cache-Control": "no-cache"})
