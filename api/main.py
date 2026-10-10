@@ -15,7 +15,7 @@ from pathlib import Path
 
 import cv2
 import numpy as np
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import BackgroundTasks, FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse, Response
 from pydantic import BaseModel
@@ -222,9 +222,20 @@ def _ingest(ins: Inspection, data: bytes, slot: str, capture_mode: str) -> tuple
     return sf, flags
 
 
+def _precompute_weights(sf: StoredFrame, model_hint: str):
+    """Cohort distinctiveness of a frame is needed whenever it later serves as a reference: compute it off the
+    request path so a verification does not pay K extra matches per reference frame."""
+    try:
+        with compute_lock:
+            weights_for(sf, model_hint)
+    except Exception as e:  # never fail an upload because of a cache warm-up
+        print(f"[carprint] weight precompute failed for {sf.frame_id}: {e!r}")
+
+
 @app.post("/api/v1/inspections/{inspection_id}/frames")
-async def upload_frame(inspection_id: str, file: UploadFile = File(...), slot: str = Form("extra"),
-                       nonce: str = Form(...), capture_mode: str = Form("gallery"), client_ts: str | None = Form(None)):
+async def upload_frame(inspection_id: str, background: BackgroundTasks, file: UploadFile = File(...),
+                       slot: str = Form("extra"), nonce: str = Form(...), capture_mode: str = Form("gallery"),
+                       client_ts: str | None = Form(None)):
     ins = _get_inspection(inspection_id)
     if not hmac.compare_digest(nonce, ins.nonce):
         err(409, "NONCE_MISMATCH", "Неверный код сессии съёмки")
@@ -232,6 +243,8 @@ async def upload_frame(inspection_id: str, file: UploadFile = File(...), slot: s
         err(409, "NONCE_EXPIRED", "Сессия съёмки истекла — начните осмотр заново")
     sf, flags = _ingest(ins, await file.read(), slot, capture_mode)
     q = sf.frame.quality
+    if q.ok:
+        background.add_task(_precompute_weights, sf, ins.model_hint)
     return {"frame_id": sf.frame_id, "sha256": sf.sha256, "server_ts": sf.server_ts, "quality": q.to_dict(),
             "integrity_flags": flags, "recapture_required": not q.ok,
             "message_ru": "Кадр принят" if q.ok else "; ".join(MESSAGES_RU[i] for i in q.issues)}

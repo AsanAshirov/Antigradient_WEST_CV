@@ -1,0 +1,814 @@
+[
+ {
+  "file": "matiz/g0/00.jpg",
+  "car_id": "matiz_pink_g0",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "same car, same session, alternating views"
+ },
+ {
+  "file": "matiz/g0/01.jpg",
+  "car_id": "matiz_pink_g0",
+  "session": "s1",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "same car, same session, alternating views"
+ },
+ {
+  "file": "matiz/g0/02.jpg",
+  "car_id": "matiz_pink_g0",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "same car, same session, alternating views"
+ },
+ {
+  "file": "matiz/g0/03.jpg",
+  "car_id": "matiz_pink_g0",
+  "session": "s1",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "same car, same session, alternating views"
+ },
+ {
+  "file": "matiz/g0/04.jpg",
+  "car_id": "matiz_pink_g0",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "same car, same session, alternating views"
+ },
+ {
+  "file": "matiz/g0/05.jpg",
+  "car_id": "matiz_pink_g0",
+  "session": "s1",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "same car, same session, alternating views"
+ },
+ {
+  "file": "matiz/g0/06.jpg",
+  "car_id": "matiz_pink_g0",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "same car, same session, alternating views"
+ },
+ {
+  "file": "matiz/g0/07.jpg",
+  "car_id": "matiz_pink_g0",
+  "session": "s1",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "same car, same session, alternating views"
+ },
+ {
+  "file": "matiz/g2/00.jpg",
+  "car_id": "matiz_black_g2",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "same car, minutes apart"
+ },
+ {
+  "file": "matiz/g2/01.jpg",
+  "car_id": "matiz_black_g2",
+  "session": "s1",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "same car, minutes apart"
+ },
+ {
+  "file": "matiz/g2/04.jpg",
+  "car_id": "matiz_green_g2",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "same car, walk-around"
+ },
+ {
+  "file": "matiz/g2/05.jpg",
+  "car_id": "matiz_green_g2",
+  "session": "s1",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "same car, walk-around"
+ },
+ {
+  "file": "matiz/g2/06.jpg",
+  "car_id": "matiz_green_g2",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "same car, walk-around"
+ },
+ {
+  "file": "matiz/g2/07.jpg",
+  "car_id": "matiz_green_g2",
+  "session": "s1",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "same car, walk-around"
+ },
+ {
+  "file": "matiz/g2/02.jpg",
+  "car_id": "matiz_red_g2_2",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "distinct car"
+ },
+ {
+  "file": "matiz/g2/03.jpg",
+  "car_id": "matiz_grey_g2_3",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "distinct car"
+ },
+ {
+  "file": "matiz/g1/01.jpg",
+  "car_id": "matiz_g1_1",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "distinct car, same photographer as other g1 cars",
+  "distinct_group": "matiz/g1"
+ },
+ {
+  "file": "matiz/g1/03.jpg",
+  "car_id": "matiz_g1_3",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "distinct car, same photographer as other g1 cars",
+  "distinct_group": "matiz/g1"
+ },
+ {
+  "file": "matiz/g1/04.jpg",
+  "car_id": "matiz_g1_4",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "distinct car, same photographer as other g1 cars",
+  "distinct_group": "matiz/g1"
+ },
+ {
+  "file": "matiz/g1/05.jpg",
+  "car_id": "matiz_g1_5",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "distinct car, same photographer as other g1 cars",
+  "distinct_group": "matiz/g1"
+ },
+ {
+  "file": "matiz/g1/06.jpg",
+  "car_id": "matiz_g1_6",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual",
+  "note": "distinct car, same photographer as other g1 cars",
+  "distinct_group": "matiz/g1"
+ },
+ {
+  "file": "matiz/g3/00.jpg",
+  "car_id": "matiz_white_g3",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "same car as 01 (same title date, night, same wall)",
+  "distinct_group": "matiz/g3"
+ },
+ {
+  "file": "matiz/g3/01.jpg",
+  "car_id": "matiz_white_g3",
+  "session": "s1",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "",
+  "distinct_group": "matiz/g3"
+ },
+ {
+  "file": "matiz/g3/02.jpg",
+  "car_id": "matiz_twotone_g3",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "custom two-tone, same as 03",
+  "distinct_group": "matiz/g3"
+ },
+ {
+  "file": "matiz/g3/03.jpg",
+  "car_id": "matiz_twotone_g3",
+  "session": "s1",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "",
+  "distinct_group": "matiz/g3"
+ },
+ {
+  "file": "matiz/g3/04.jpg",
+  "car_id": "matiz_blue_g3",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "matiz/g3"
+ },
+ {
+  "file": "matiz/g3/07.jpg",
+  "car_id": "matiz_silver_creative_g3",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "matiz/g3"
+ },
+ {
+  "file": "matiz/g4/00.jpg",
+  "car_id": "matiz_g4_m300_lightblue",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "two shots seconds apart",
+  "distinct_group": "matiz/g4"
+ },
+ {
+  "file": "matiz/g4/01.jpg",
+  "car_id": "matiz_g4_m300_lightblue",
+  "session": "s1",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "",
+  "distinct_group": "matiz/g4"
+ },
+ {
+  "file": "matiz/g4/02.jpg",
+  "car_id": "matiz_g4_m150_twotone",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "two shots seconds apart",
+  "distinct_group": "matiz/g4"
+ },
+ {
+  "file": "matiz/g4/03.jpg",
+  "car_id": "matiz_g4_m150_twotone",
+  "session": "s1",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "",
+  "distinct_group": "matiz/g4"
+ },
+ {
+  "file": "matiz/g4/04.jpg",
+  "car_id": "matiz_g4_m200_red",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "two shots seconds apart",
+  "distinct_group": "matiz/g4"
+ },
+ {
+  "file": "matiz/g4/05.jpg",
+  "car_id": "matiz_g4_m200_red",
+  "session": "s1",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "",
+  "distinct_group": "matiz/g4"
+ },
+ {
+  "file": "matiz/g4/06.jpg",
+  "car_id": "matiz_g4_m100_red",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "two shots seconds apart",
+  "distinct_group": "matiz/g4"
+ },
+ {
+  "file": "matiz/g4/07.jpg",
+  "car_id": "matiz_g4_m100_red",
+  "session": "s1",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "",
+  "distinct_group": "matiz/g4"
+ },
+ {
+  "file": "matiz/g5/00.jpg",
+  "car_id": "matiz_g5_blue",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "72 s apart",
+  "distinct_group": "matiz/g5"
+ },
+ {
+  "file": "matiz/g5/01.jpg",
+  "car_id": "matiz_g5_blue",
+  "session": "s1",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "",
+  "distinct_group": "matiz/g5"
+ },
+ {
+  "file": "matiz/g5/02.jpg",
+  "car_id": "matiz_g5_orange",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "23 s apart",
+  "distinct_group": "matiz/g5"
+ },
+ {
+  "file": "matiz/g5/03.jpg",
+  "car_id": "matiz_g5_orange",
+  "session": "s1",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "",
+  "distinct_group": "matiz/g5"
+ },
+ {
+  "file": "matiz/g5/04.jpg",
+  "car_id": "matiz_g5_red",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "matiz/g5"
+ },
+ {
+  "file": "matiz/g5/05.jpg",
+  "car_id": "matiz_g5_silver",
+  "session": "s0",
+  "model": "matiz",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "matiz/g5"
+ },
+ {
+  "file": "spark/g0/03.jpg",
+  "car_id": "spark_g0_white",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "90 s apart",
+  "distinct_group": "spark/g0"
+ },
+ {
+  "file": "spark/g0/04.jpg",
+  "car_id": "spark_g0_white",
+  "session": "s1",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "",
+  "distinct_group": "spark/g0"
+ },
+ {
+  "file": "spark/g0/01.jpg",
+  "car_id": "spark_g0_green",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g0"
+ },
+ {
+  "file": "spark/g0/05.jpg",
+  "car_id": "spark_g0_silver",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g0"
+ },
+ {
+  "file": "spark/g0/06.jpg",
+  "car_id": "spark_g0_red",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g0"
+ },
+ {
+  "file": "spark/g1/00.jpg",
+  "car_id": "spark_g1_lime_show",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "same display car",
+  "distinct_group": "spark/g1"
+ },
+ {
+  "file": "spark/g1/01.jpg",
+  "car_id": "spark_g1_lime_show",
+  "session": "s1",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "",
+  "distinct_group": "spark/g1"
+ },
+ {
+  "file": "spark/g1/02.jpg",
+  "car_id": "spark_g1_beige_show",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "same display car",
+  "distinct_group": "spark/g1"
+ },
+ {
+  "file": "spark/g1/03.jpg",
+  "car_id": "spark_g1_beige_show",
+  "session": "s1",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "same display car",
+  "distinct_group": "spark/g1"
+ },
+ {
+  "file": "spark/g1/04.jpg",
+  "car_id": "spark_g1_beige_show",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "same display car",
+  "distinct_group": "spark/g1"
+ },
+ {
+  "file": "spark/g1/06.jpg",
+  "car_id": "spark_g1_blue_show",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g1"
+ },
+ {
+  "file": "spark/g1/07.jpg",
+  "car_id": "spark_g1_cream_show",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g1"
+ },
+ {
+  "file": "spark/g2/00.jpg",
+  "car_id": "spark_g2_00",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g2"
+ },
+ {
+  "file": "spark/g2/01.jpg",
+  "car_id": "spark_g2_01",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g2"
+ },
+ {
+  "file": "spark/g2/02.jpg",
+  "car_id": "spark_g2_02",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g2"
+ },
+ {
+  "file": "spark/g2/03.jpg",
+  "car_id": "spark_g2_03",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g2"
+ },
+ {
+  "file": "spark/g2/04.jpg",
+  "car_id": "spark_g2_04",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g2"
+ },
+ {
+  "file": "spark/g2/05.jpg",
+  "car_id": "spark_g2_05",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g2"
+ },
+ {
+  "file": "spark/g2/06.jpg",
+  "car_id": "spark_g2_06",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g2"
+ },
+ {
+  "file": "spark/g2/07.jpg",
+  "car_id": "spark_g2_07",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g2"
+ },
+ {
+  "file": "spark/g3/00.jpg",
+  "car_id": "spark_g3_00",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g3"
+ },
+ {
+  "file": "spark/g3/01.jpg",
+  "car_id": "spark_g3_01",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g3"
+ },
+ {
+  "file": "spark/g3/03.jpg",
+  "car_id": "spark_g3_03",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g3"
+ },
+ {
+  "file": "spark/g3/05.jpg",
+  "car_id": "spark_g3_05",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g3"
+ },
+ {
+  "file": "spark/g3/06.jpg",
+  "car_id": "spark_g3_06",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g3"
+ },
+ {
+  "file": "spark/g3/07.jpg",
+  "car_id": "spark_g3_07",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g3"
+ },
+ {
+  "file": "spark/g4/00.jpg",
+  "car_id": "nhtsa_8455",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "front",
+  "distinct_group": "nhtsa_spark_2014"
+ },
+ {
+  "file": "spark/g5/00.jpg",
+  "car_id": "nhtsa_8455",
+  "session": "s1",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "rear (uploaded by another user)",
+  "distinct_group": "nhtsa_spark_2014"
+ },
+ {
+  "file": "spark/g4/01.jpg",
+  "car_id": "nhtsa_8465",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "front",
+  "distinct_group": "nhtsa_spark_2014"
+ },
+ {
+  "file": "spark/g4/02.jpg",
+  "car_id": "nhtsa_8465",
+  "session": "s1",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "rear",
+  "distinct_group": "nhtsa_spark_2014"
+ },
+ {
+  "file": "spark/g4/03.jpg",
+  "car_id": "nhtsa_8466",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "front",
+  "distinct_group": "nhtsa_spark_2014"
+ },
+ {
+  "file": "spark/g4/04.jpg",
+  "car_id": "nhtsa_8466",
+  "session": "s1",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "rear",
+  "distinct_group": "nhtsa_spark_2014"
+ },
+ {
+  "file": "spark/g5/01.jpg",
+  "car_id": "spark_g5_01",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g5"
+ },
+ {
+  "file": "spark/g5/02.jpg",
+  "car_id": "spark_g5_02",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g5"
+ },
+ {
+  "file": "spark/g5/03.jpg",
+  "car_id": "spark_g5_03",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g5"
+ },
+ {
+  "file": "spark/g5/04.jpg",
+  "car_id": "spark_g5_04",
+  "session": "s0",
+  "model": "spark",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "spark/g5"
+ },
+ {
+  "file": "nexia/g2/01.jpg",
+  "car_id": "nexia_green_lordmmx",
+  "session": "s0",
+  "model": "nexia",
+  "verified_by": "visual+timestamp",
+  "note": "2011-03-23 in service bay (front)",
+  "distinct_group": "nexia/g2"
+ },
+ {
+  "file": "nexia/g2/02.jpg",
+  "car_id": "nexia_green_lordmmx",
+  "session": "s1",
+  "model": "nexia",
+  "verified_by": "visual+timestamp",
+  "note": "2011-03-29 dirt road (front)",
+  "distinct_group": "nexia/g2"
+ },
+ {
+  "file": "nexia/g2/03.jpg",
+  "car_id": "nexia_green_lordmmx",
+  "session": "s2",
+  "model": "nexia",
+  "verified_by": "visual+timestamp",
+  "note": "2011-03-31 street, a second Nexia in frame",
+  "distinct_group": "nexia/g2"
+ },
+ {
+  "file": "nexia/g2/06.jpg",
+  "car_id": "nexia_green_lordmmx",
+  "session": "s3",
+  "model": "nexia",
+  "verified_by": "visual+timestamp",
+  "note": "2011-09-07 door/wheel close-up",
+  "distinct_group": "nexia/g2"
+ },
+ {
+  "file": "nexia/g0/01.jpg",
+  "car_id": "nexia_blue_hatch_waw",
+  "session": "s0",
+  "model": "nexia",
+  "verified_by": "visual+timestamp",
+  "note": "rear",
+  "distinct_group": "nexia/g0"
+ },
+ {
+  "file": "nexia/g0/02.jpg",
+  "car_id": "nexia_blue_hatch_waw",
+  "session": "s1",
+  "model": "nexia",
+  "verified_by": "visual+timestamp",
+  "note": "hood/front, 42 s later",
+  "distinct_group": "nexia/g0"
+ },
+ {
+  "file": "nexia/g0/03.jpg",
+  "car_id": "nexia_g0_green_hatch_poz",
+  "session": "s0",
+  "model": "nexia",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "nexia/g0"
+ },
+ {
+  "file": "nexia/g0/04.jpg",
+  "car_id": "nexia_g0_yellow_pia",
+  "session": "s0",
+  "model": "nexia",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "nexia/g0"
+ },
+ {
+  "file": "nexia/g0/06.jpg",
+  "car_id": "nexia_g0_lightblue_tashkent",
+  "session": "s0",
+  "model": "nexia",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car (Tashkent)",
+  "distinct_group": "nexia/g0"
+ },
+ {
+  "file": "nexia/g3/01.jpg",
+  "car_id": "nexia_gl_junior_g3",
+  "session": "s0",
+  "model": "nexia",
+  "verified_by": "visual+timestamp",
+  "note": "rear",
+  "distinct_group": "nexia/g3"
+ },
+ {
+  "file": "nexia/g3/02.jpg",
+  "car_id": "nexia_gl_junior_g3",
+  "session": "s1",
+  "model": "nexia",
+  "verified_by": "visual+timestamp",
+  "note": "front, same day",
+  "distinct_group": "nexia/g3"
+ },
+ {
+  "file": "nexia/g3/00.jpg",
+  "car_id": "nexia_g3_00",
+  "session": "s0",
+  "model": "nexia",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "nexia/g3"
+ },
+ {
+  "file": "nexia/g3/03.jpg",
+  "car_id": "nexia_g3_03",
+  "session": "s0",
+  "model": "nexia",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "nexia/g3"
+ },
+ {
+  "file": "nexia/g3/04.jpg",
+  "car_id": "nexia_g3_04",
+  "session": "s0",
+  "model": "nexia",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "nexia/g3"
+ },
+ {
+  "file": "nexia/g3/05.jpg",
+  "car_id": "nexia_g3_05",
+  "session": "s0",
+  "model": "nexia",
+  "verified_by": "visual+timestamp",
+  "note": "distinct car",
+  "distinct_group": "nexia/g3"
+ }
+]

@@ -2,7 +2,8 @@
 
 Manifest (JSON list): {"path", "car_id", "session", "model", "slot"}.
 Genuine comparisons: same car_id, different session. Impostor comparisons: different car_id (pairs by the same
-photographer of the same model are excluded as unknown ground truth), split into
+photographer of the same model are excluded as unknown ground truth unless they were visually verified as distinct
+cars of one "distinct_group"), split into
 "hard" (same model) and "other". Error rates are reported per comparison AND bounded per vehicle, with
 exact Clopper-Pearson 95% upper bounds; when there are 0 errors the bound is ~3/N (rule of three).
 """
@@ -62,11 +63,13 @@ def main(manifest_path: str, cohort_dir: str, out_path: str, max_impostor_per_st
     model_of = {k: v[0]["model"] for k, v in sessions.items()}
     author_of = {k: {w.lower() for w in v[0].get("author", "").replace(",", " ").split() if len(w) >= 4}
                  for k, v in sessions.items()}
+    group_of = {k: v[0].get("distinct_group") for k, v in sessions.items()}
     keys = sorted(sessions)
     genuine = [(a, b) for a, b in itertools.combinations(keys, 2) if a[0] == b[0]]
     # Same photographer + same model is often the same car shot twice: unknown ground truth, excluded.
     impostor = [(a, b) for a, b in itertools.combinations(keys, 2) if a[0] != b[0]
-                and not (author_of[a] & author_of[b] and model_of[a] == model_of[b])]
+                and (not (author_of[a] & author_of[b] and model_of[a] == model_of[b])
+                     or (group_of[a] is not None and group_of[a] == group_of[b]))]
     rng = np.random.default_rng(0)
     strata = {"hard": [p for p in impostor if model_of[p[0]] == model_of[p[1]]],
               "other": [p for p in impostor if model_of[p[0]] != model_of[p[1]]]}

@@ -1,6 +1,7 @@
 """Local features (ALIKED, BSD-3) and matching (LightGlue, Apache-2.0)."""
 from __future__ import annotations
 
+import os
 import threading
 from dataclasses import dataclass
 
@@ -13,6 +14,9 @@ _models: dict = {}
 
 
 def device() -> torch.device:
+    forced = os.environ.get("CARPRINT_DEVICE")
+    if forced:
+        return torch.device(forced)
     return torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
@@ -23,7 +27,9 @@ def _get(max_keypoints: int):
 
             dev = device()
             _models["aliked"] = ALIKED(max_num_keypoints=max_keypoints, detection_threshold=0.01).eval().to(dev)
-            _models["lightglue"] = LightGlue(features="aliked", depth_confidence=-1, width_confidence=-1).eval().to(dev)
+            # Adaptive depth/width (LightGlue's early exit) keeps accuracy while cutting latency; fp16 on GPU.
+            _models["lightglue"] = LightGlue(features="aliked", depth_confidence=0.95, width_confidence=0.99,
+                                             mp=dev.type == "cuda").eval().to(dev)
     return _models["aliked"], _models["lightglue"]
 
 
