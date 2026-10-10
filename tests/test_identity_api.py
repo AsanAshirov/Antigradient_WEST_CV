@@ -143,3 +143,29 @@ def test_api_confirm_builds_valid_chain(client):
     assert t["chain_valid"] and len(t["records"]) == 2
     pdf = client.get(f"/api/v1/inspections/{ins['inspection_id']}/report.pdf")
     assert pdf.status_code == 200 and pdf.content[:4] == b"%PDF"
+
+
+# ---------- web studio compatibility ----------
+
+STUDIO_FIELDS = {"decision", "geometry", "message", "inliers", "candidate_matches", "reprojection_error_px",
+                 "coverage_percent", "elapsed_ms", "warnings", "evidence_image", "reference_image", "aligned_image",
+                 "algorithm", "sha256", "limitations"}
+
+
+def test_studio_compare_schema_and_alignment(client):
+    car = scene(11)
+    # a genuinely different capture: shifted framing + new viewpoint (pHash distance well above the copy threshold)
+    shifted = cv2.resize(car[90:, 140:], (car.shape[1], car.shape[0]))
+    r = client.post("/api/compare", files={"reference": ("a.jpg", jpeg(car), "image/jpeg"),
+                                           "current": ("b.jpg", jpeg(view(shifted, 3)), "image/jpeg")})
+    assert r.status_code == 200, r.text
+    body = r.json()
+    assert STUDIO_FIELDS <= set(body)
+    assert body["geometry"] == "MATCHED" and body["aligned_image"].startswith("data:image/jpeg;base64,")
+    assert body["evidence_image"].startswith("data:image/jpeg;base64,")
+
+
+def test_studio_errors_are_plain_strings(client):
+    r = client.post("/api/compare", files={"reference": ("a.txt", b"not an image", "text/plain"),
+                                           "current": ("b.jpg", jpeg(scene(12)), "image/jpeg")})
+    assert r.status_code == 415 and isinstance(r.json()["detail"], str)

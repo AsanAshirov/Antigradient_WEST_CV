@@ -18,6 +18,7 @@ import numpy as np
 from fastapi import BackgroundTasks, FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse, Response
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -87,6 +88,7 @@ class Inspection:
 
 
 INSPECTIONS: dict[str, Inspection] = {}
+LAST_ZONES: dict[str, list] = {}  # verification_id -> ZoneEvidence (for the web studio's aligned view)
 FRAMES: dict[str, StoredFrame] = {}
 COHORT_CACHE: dict[str, list[Frame]] = {}
 WEIGHTS: dict[str, np.ndarray] = {}
@@ -300,7 +302,11 @@ def _verify(ref: Inspection, cur: Inspection) -> dict:
     level = "red" if recycled else ("yellow" if flags else "green")
     if recycled:
         v.reasons.insert(0, f"{len(recycled)} фото повторяют снимки эталонного осмотра и исключены из доказательств")
-    return {"verification_id": f"ver_{uuid.uuid4().hex[:12]}", "decision": v.decision, "score_raw": v.score_raw,
+    vid = f"ver_{uuid.uuid4().hex[:12]}"
+    LAST_ZONES[vid] = v.zones
+    if len(LAST_ZONES) > 256:
+        LAST_ZONES.pop(next(iter(LAST_ZONES)))
+    return {"verification_id": vid, "decision": v.decision, "score_raw": v.score_raw,
             "score_note": "Число совпавших независимых ячеек с индивидуальными признаками; не вероятность",
             "reasons_ru": v.reasons, "cohort_size": v.cohort_size, "evidence": evidence, "damage_timeline": timeline,
             "integrity": {"flags": flags, "level": level}, "latency_ms": round((time.perf_counter() - t0) * 1000)}
@@ -415,3 +421,12 @@ def health():
             "models": {"parts": getattr(segmenter.load("parts", MODELS), "name", None),
                        "damage": getattr(segmenter.load("damage", MODELS), "name", None),
                        "matcher": "aliked+lightglue"}}
+
+
+# Web studio: compatibility endpoints, then the built frontend (mounted last so API routes win).
+from api.compat import build_router  # noqa: E402
+
+app.include_router(build_router(sys.modules[__name__]))
+WEB_DIST = Path(os.environ.get("CARPRINT_WEB_DIST", ROOT / "web" / "dist"))
+if WEB_DIST.exists():
+    app.mount("/", StaticFiles(directory=WEB_DIST, html=True), name="web")

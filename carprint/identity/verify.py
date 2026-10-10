@@ -53,7 +53,7 @@ class ZoneEvidence:
 
     def to_dict(self) -> dict:
         z = self.zone
-        return {"ref_frame": self.ref_frame, "cur_frame": self.cur_frame, "inliers": z.n_inliers,
+        return {"ref_frame": self.ref_frame, "cur_frame": self.cur_frame, "inliers": z.n_inliers, "tentative": z.n_tentative,
                 "distinct_inliers": round(self.distinct_inliers, 1), "reproj_err_px": round(z.reproj_err_px, 2),
                 "log10_nfa": round(z.log10_nfa, 1), "log10_nfa_distinct": round(self.log10_nfa_distinct, 1),
                 "ref_marks_in_zone": self.ref_marks_in_zone, "congruent_cells": len(self.cells),
