@@ -99,7 +99,7 @@ python scripts/api_smoke.py                         # end-to-end smoke test
 ```
 
 Trained segmentation weights go to `models/parts/` and `models/damage/` (each with `model_info.json` and a
-`checkpoint_best_*.pth`). Without them the API still runs identity and integrity; `/health` shows what is loaded.
+`checkpoint_best_*.pth`). Without them the API still runs identity and integrity; `/api/v1/health` shows what is loaded.
 
 ## Train
 
