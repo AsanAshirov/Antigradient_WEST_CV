@@ -410,29 +410,29 @@ def _verify(ref: Inspection, cur: Inspection) -> dict:
         new_idx: dict[str, set] = {}
         old_idx: dict[str, set] = {}
         try:
-          if v.decision != "DIFFERENT":
-              for (rf, cf), zone_maps in registered.items():
-                  r, c = by_id[rf], by_id[cf]
-                  for item in timeline_compare(r.damages, c.damages, zone_maps, r.frame.rgb, c.frame.rgb.shape,
-                                               part_of=lambda inst, sf=c: part_at(sf, inst),
-                                               part_of_ref=lambda inst, sf=r: part_at(sf, inst)):
-                      timeline.append({"status": item.status, "class": item.cls, "part": item.part, "slot": c.slot,
-                                       "ref_frame": rf, "cur_frame": cf, "cur_bbox": item.cur_bbox, "ref_bbox": item.ref_bbox,
-                                       "damage_id": f"dmg_{cf}_{item.cur_index}" if item.cur_index is not None else None,
-                                       "ref_damage_id": f"dmg_{rf}_{item.ref_index}" if item.ref_index is not None else None,
-                                       "first_seen_inspection_id": ref.inspection_id if item.status == "previously_recorded" else None})
-                      if item.cur_index is not None and item.status in ("newly_detected", "previously_recorded"):
-                          target = new_idx if item.status == "newly_detected" else old_idx
-                          target.setdefault(cf, set()).add(item.cur_index)
-          timeline = dedupe_timeline(timeline)
-          # New = new in some registered view and recorded in none (a damage seen as old from another angle is old).
-          only_new = {f: ids - old_idx.get(f, set()) for f, ids in new_idx.items()}
-          model = ref.model_hint or cur.model_hint
-          cost_new = inspection_cost(cur.frames, model, only_new) if any(only_new.values()) else None
-          cost_all = inspection_cost(cur.frames, model)
+            if v.decision != "DIFFERENT":
+                for (rf, cf), zone_maps in registered.items():
+                    r, c = by_id[rf], by_id[cf]
+                    for item in timeline_compare(r.damages, c.damages, zone_maps, r.frame.rgb, c.frame.rgb.shape,
+                                                 part_of=lambda inst, sf=c: part_at(sf, inst),
+                                                 part_of_ref=lambda inst, sf=r: part_at(sf, inst)):
+                        timeline.append({"status": item.status, "class": item.cls, "part": item.part, "slot": c.slot,
+                                         "ref_frame": rf, "cur_frame": cf, "cur_bbox": item.cur_bbox, "ref_bbox": item.ref_bbox,
+                                         "damage_id": f"dmg_{cf}_{item.cur_index}" if item.cur_index is not None else None,
+                                         "ref_damage_id": f"dmg_{rf}_{item.ref_index}" if item.ref_index is not None else None,
+                                         "first_seen_inspection_id": ref.inspection_id if item.status == "previously_recorded" else None})
+                        if item.cur_index is not None and item.status in ("newly_detected", "previously_recorded"):
+                            target = new_idx if item.status == "newly_detected" else old_idx
+                            target.setdefault(cf, set()).add(item.cur_index)
+            timeline = dedupe_timeline(timeline)
+            # New = new in some registered view and recorded in none (a damage seen as old from another angle is old).
+            only_new = {f: ids - old_idx.get(f, set()) for f, ids in new_idx.items()}
+            model = ref.model_hint or cur.model_hint
+            cost_new = inspection_cost(cur.frames, model, only_new) if any(only_new.values()) else None
+            cost_all = inspection_cost(cur.frames, model)
         except Exception as e:  # timeline and cost are additions to the verdict, never a reason to lose it
-          print(f"[carprint] timeline/cost failed: {e!r}")
-          timeline, cost_new, cost_all = [], None, None
+            print(f"[carprint] timeline/cost failed: {e!r}")
+            timeline, cost_new, cost_all = [], None, None
         vid = f"ver_{uuid.uuid4().hex[:12]}"
         LAST_ZONES[vid] = v.zones
         while len(LAST_ZONES) > 256:
