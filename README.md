@@ -9,7 +9,7 @@ Second channel: insurers (KASKO pre-inspection and claims).
 | | |
 |---|---|
 | **Live demo + API** (Gradio on Hugging Face: photos, video, same-car check; examples one click) | https://huggingface.co/spaces/Azamaka/carprint-demo · API for the team site: [space/INTEGRATION.md](space/INTEGRATION.md) |
-| **Model report** (models, weights, data, metrics, speed, cost) | [docs/model_report.html](docs/model_report.html) · [docs/EVALUATION.md](docs/EVALUATION.md) |
+| **Model report** (models, weights, data, metrics, speed, cost) | [docs/MODEL_REPORT.md](docs/MODEL_REPORT.md) · designed page: https://claude.ai/artifact/2BiC1Seyz1qAyA1wzUsgLs |
 | Defence deck (Claude Slides) | https://claude.ai/artifact/Hga6Km2HXvmizwBST95TAA |
 | Design canvas (Claude Design) | https://claude.ai/artifact/W1CzfcWXVE9LsvLLDkJeHN |
 | Architecture · design · DevOps | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) · [docs/DESIGN.md](docs/DESIGN.md) · [docs/DEVOPS.md](docs/DEVOPS.md) |
