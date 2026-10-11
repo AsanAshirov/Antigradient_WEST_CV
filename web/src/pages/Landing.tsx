@@ -4,6 +4,7 @@ import { CostCard } from "../components/CostCard";
 import { MatchView } from "../components/EvidenceViewer";
 import { HeroFilm, PipelineFilm } from "../components/HeroFilm";
 import { Arrow, Play, VerdictMark } from "../components/Icons";
+import { CountUp, Marquee } from "../components/Motion";
 import { LandingNav } from "../components/Nav";
 import { DimensionLine, MaskLine, Reveal, rise, SectionHead, stagger, Viewfinder, Wipe } from "../components/Primitives";
 import sampleCost from "../data/sample_cost.json";
@@ -25,6 +26,8 @@ export default function Landing() {
       <LandingNav />
       <main id="main">
         <Hero />
+        <Marquee label="Стек" items={["ALIKED", "LightGlue", "MAGSAC++", "ORSA · NFA < 10⁻³", "когорта K = 8", "RF-DETR-Seg",
+          "силуэт машины", "Монте-Карло · 4 000", "SHA-256", "Ed25519", "HMAC", "WCAG AA"]} />
         <Problem />
         <How />
         <EvidenceSection />
@@ -67,7 +70,7 @@ function Hero() {
           variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1, delayChildren: 0.9 } } }}>
           {t.hero.stats.map((s) => (
             <motion.div key={s.value} variants={rise} className="stats__item">
-              <dt className="stats__value">{s.value}</dt>
+              <dt className="stats__value"><CountUp value={s.value} /></dt>
               <dd className="stats__text">{s.text}</dd>
             </motion.div>
           ))}
@@ -91,7 +94,7 @@ function Problem() {
             <dl className="facts">
               {t.problem.facts.map((f, i) => (
                 <Reveal key={f.value} delay={0.06 * i} className="facts__item">
-                  <dt className="facts__value">{f.value}</dt>
+                  <dt className="facts__value"><CountUp value={f.value} /></dt>
                   <dd>
                     <span className="facts__text">{f.text}</span>
                     <span className="source">{f.source}</span>
@@ -138,12 +141,12 @@ function How() {
         </div>
         <ol className="steps">
           {t.how.steps.map((s, i) => (
-            <li key={s.title} className={`steps__item ${i <= active ? "is-active" : ""}`}>
+            <Reveal as="li" key={s.title} delay={0.07 * i} className={`steps__item ${i <= active ? "is-active" : ""}`}>
               <span className="steps__num mono">{String(i + 1).padStart(2, "0")}</span>
               <h3 className="steps__title">{s.title}</h3>
               <p className="steps__text">{s.text}</p>
               <span className="steps__tag mono">{s.tag}</span>
-            </li>
+            </Reveal>
           ))}
         </ol>
         <Reveal className="how__film"><PipelineFilm /></Reveal>
@@ -189,8 +192,8 @@ function EvidenceSection() {
           </label>
         </div>
         <dl className="readouts">
-          <div><dt className="label">{t.evidence.statCells}</dt><dd>{s?.congruent_cells ?? "—"} <small>{t.evidence.statCellsNeed}</small></dd></div>
-          <div><dt className="label">{t.evidence.statZones}</dt><dd>{s?.strong_zones ?? "—"} <small>{t.evidence.statZonesNote}</small></dd></div>
+          <div><dt className="label">{t.evidence.statCells}</dt><dd>{s ? <CountUp value={String(s.congruent_cells)} /> : "—"} <small>{t.evidence.statCellsNeed}</small></dd></div>
+          <div><dt className="label">{t.evidence.statZones}</dt><dd>{s ? <CountUp value={String(s.strong_zones)} /> : "—"} <small>{t.evidence.statZonesNote}</small></dd></div>
           <div><dt className="label">{t.evidence.statCohort}</dt><dd>K = {s?.cohort_size ?? 8} <small>{t.evidence.statCohortNote}</small></dd></div>
           <div><dt className="label">{t.evidence.statVerdict}</dt><dd className="readouts__same">SAME</dd></div>
         </dl>
@@ -321,7 +324,7 @@ function Business() {
               <span className={`mono columns__tag ${i === 0 ? "is-signal" : ""}`}>{c.tag}</span>
               <h3 className="h3">{c.title}</h3>
               <p>{c.text}</p>
-              <div className="columns__value">{c.value}</div>
+              <div className="columns__value"><CountUp value={c.value} /></div>
               <div className="columns__note">{c.note}</div>
             </Reveal>
           ))}

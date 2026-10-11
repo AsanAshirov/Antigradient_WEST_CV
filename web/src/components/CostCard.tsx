@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { useI18n } from "../i18n";
 import type { Cost } from "../lib/api";
 import { millions, money, pct, usd } from "../lib/format";
+import { CountUp } from "./Motion";
 
 const PART_RU: Record<string, string> = {
   front_bumper: "Передний бампер", back_bumper: "Задний бампер", hood: "Капот", trunk: "Крышка багажника", roof: "Крыша",
@@ -76,7 +77,7 @@ export function CostCard({ cost, title, note }: { cost: Cost; title: string; not
       <header className="cost__head">
         <div>
           <div className="label">{title}</div>
-          <div className="cost__value">{money(cost.p50, lang)}</div>
+          <div className="cost__value"><CountUp value={money(cost.p50, lang)} /></div>
           <div className="cost__sub">{t.estimate.median} · ≈ {usd(cost.usd.p50, lang)}</div>
         </div>
         <div className="cost__pq mono">

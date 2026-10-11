@@ -1445,3 +1445,140 @@
     top: -30px;
   }
 }
+
+/* ---------- motion design: marquee and scroll-driven depth ---------- */
+.marquee {
+  background: var(--ink-2);
+  color: var(--ink-muted);
+  border-top: 1px solid var(--ink-line);
+  border-bottom: 1px solid var(--ink-line);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee 48s linear infinite;
+}
+
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+.marquee__row {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.marquee__row li {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 28px 18px 0;
+  white-space: nowrap;
+}
+
+.marquee__dot {
+  width: 6px;
+  height: 6px;
+  background: var(--signal);
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.photo {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .film__video,
+    .film__poster {
+      animation: hero-push linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 100vh;
+    }
+
+    .hero__content,
+    .hud {
+      animation: hero-lift linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 75vh;
+    }
+
+    .sheet-number {
+      animation: sheet-drift linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+
+    .photo img {
+      animation: photo-drift linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+
+    .evidence__frame,
+    .pipefilm video {
+      animation: frame-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 35%;
+    }
+  }
+}
+
+@keyframes hero-push {
+  to {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes hero-lift {
+  to {
+    opacity: 0;
+    transform: translateY(-90px);
+  }
+}
+
+@keyframes sheet-drift {
+  from {
+    transform: translateY(70px);
+  }
+  to {
+    transform: translateY(-70px);
+  }
+}
+
+@keyframes photo-drift {
+  from {
+    transform: scale(1.12) translateY(-24px);
+  }
+  to {
+    transform: scale(1.12) translateY(24px);
+  }
+}
+
+@keyframes frame-rise {
+  from {
+    opacity: 0.4;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
