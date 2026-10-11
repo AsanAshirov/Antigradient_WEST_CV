@@ -131,7 +131,7 @@ footer { display: flex; flex-wrap: wrap; gap: 10px 28px; border-top: 2px solid v
     <div class="kpis" role="list">
       <div class="kpi" role="listitem"><b class="mono">0 <em>/</em> 400</b><span>ложных «та же машина» на разных машинах; верхняя граница 95 % — 1,5 %</span></div>
       <div class="kpi" role="listitem"><b class="mono">0,248</b><span>mAP@0,5 сегментации повреждений; после 12 эпох было 0,177 (+40 %)</span></div>
-      <div class="kpi" role="listitem"><b class="mono">1,5 <em>с</em></b><span>фото → повреждения → смета на GPU; 12 с на бесплатном CPU</span></div>
+      <div class="kpi" role="listitem"><b class="mono">3,3 <em>с</em></b><span>фото → повреждения → детали → смета на ZeroGPU в демо; 12–16 с на бесплатном CPU</span></div>
       <div class="kpi" role="listitem"><b class="mono">$0,0003</b><span>GPU-время одного осмотра из 8 кадров на T4 по $0,40 в час</span></div>
     </div>
   </header>
@@ -174,7 +174,7 @@ footer { display: flex; flex-wrap: wrap; gap: 10px 28px; border-top: 2px solid v
   <section aria-labelledby="models-title">
     <div class="head">
       <span class="label rule">Модели в работе</span>
-      <h2 id="models-title">Шесть компонентов, четыре нейросети, все лицензии допускают коммерческое использование</h2>
+      <h2 id="models-title">Шесть компонентов, пять нейросетей, все лицензии допускают коммерческое использование</h2>
     </div>
     <div class="scroll">
       <table>
@@ -185,7 +185,7 @@ footer { display: flex; flex-wrap: wrap; gap: 10px 28px; border-top: 2px solid v
           <tr><td><strong>Ключевые точки</strong></td><td>до 2 048 точек на кузове</td><td>ALIKED-n16 · BSD-3</td><td class="num">2,7 МБ</td><td class="num">0,68 M</td><td>готовые веса</td><td><span class="pill live">в демо</span></td></tr>
           <tr><td><strong>Сопоставление</strong></td><td>пары точек между визитами</td><td>LightGlue · Apache-2.0</td><td class="num">47,6 МБ</td><td class="num">11,9 M</td><td>готовые веса</td><td><span class="pill live">в демо</span></td></tr>
           <tr><td><strong>Смета</strong></td><td>диапазон P10–P50–P90</td><td>вероятностная модель, 4 000 сценариев Монте-Карло</td><td class="num">5 КБ цен</td><td class="num">—</td><td>цены uz-2026-10-public-v1, курс ЦБ 12 000 сум/$</td><td><span class="pill live">в демо</span></td></tr>
-          <tr><td><strong>Детали кузова</strong></td><td>21 деталь, колёса, номер: масштаб и цена по детали</td><td>RF-DETR-Seg Small · Apache-2.0</td><td class="num">—</td><td class="num">—</td><td>HITL, 998 фото, Kaggle T4</td><td><span class="pill wip">обучается</span></td></tr>
+          <tr><td><strong>Детали кузова</strong></td><td>21 деталь, колёса, номер: масштаб, деталь и цена по детали</td><td>RF-DETR-Seg Small · Apache-2.0</td><td class="num">134 МБ</td><td class="num">33,5 M</td><td>10 эпох на HITL (CC0), Kaggle T4, 22 мин</td><td><span class="pill live">в демо</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -220,6 +220,19 @@ footer { display: flex; flex-wrap: wrap; gap: 10px 28px; border-top: 2px solid v
         <svg id="ch-cls" viewBox="0 0 520 250" role="img" aria-label="Обучающих объектов: царапина 2599, вмятина 1407, поломка детали 1280, ЛКП 1192, нет детали 531, коррозия 219, трещина 71"></svg>
         <p>7 299 размеченных объектов; трещин всего 71, поэтому этот класс самый слабый.</p>
       </figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="parts-title">
+    <div class="head">
+      <span class="label rule">Детали кузова · качество</span>
+      <h2 id="parts-title">Детали распознаются почти безошибочно: mAP@0,5 = 0,88</h2>
+      <p>RF-DETR-Seg Small, 21 класс (бамперы, двери, крылья, стёкла, фары, колёса, номер), 10 эпох. Проверка на отложенных 15 % части «детали» HITL: 2 323 объекта, модель их не видела. Деталь даёт повреждению имя, цену по прайсу этой детали и масштаб: колесо и номер — эталоны размера.</p>
+    </div>
+    <div class="cols">
+      <div class="card"><span class="label">box mAP@0,5</span><b class="mono">0,880</b><span>рамки деталей; после первой эпохи было 0,41</span></div>
+      <div class="card"><span class="label">mask mAP@0,5</span><b class="mono">0,859</b><span>контуры деталей; mAP@0,5:0,95 — 0,603</span></div>
+      <div class="card"><span class="label">Обучение</span><b class="mono">13 443</b><span>размеченных деталей, 22 минуты на одной T4</span></div>
     </div>
   </section>
 
@@ -264,16 +277,16 @@ footer { display: flex; flex-wrap: wrap; gap: 10px 28px; border-top: 2px solid v
     </div>
     <div class="scroll">
       <table>
-        <thead><tr><th>Операция (измерено, end-to-end)</th><th>GPU GTX 1650, локально</th><th>Бесплатный CPU HF, 2 vCPU</th><th>T4, прошлый сервер</th></tr></thead>
+        <thead><tr><th>Операция (измерено)</th><th>ZeroGPU в демо, расчёт</th><th>GPU GTX 1650, локально</th><th>Бесплатный CPU HF, 2 vCPU</th></tr></thead>
         <tbody>
-          <tr><td>Фото → повреждения → размер → смета</td><td class="num">1,5 с</td><td class="num">12,3 с</td><td class="num">—</td></tr>
-          <tr><td>Та же машина? Пара фото + что нового</td><td class="num">3,3 с</td><td class="num">37,8 с*</td><td class="num">2,7 с</td></tr>
-          <tr><td>Видео 6 с → 6 ключевых кадров → повреждения</td><td class="num">5,2 с</td><td class="num">32,4 с</td><td class="num">—</td></tr>
-          <tr><td>Сегментация повреждений, только модель</td><td class="num">0,2 с</td><td class="num">≈ 1 с на 2 потоках (локальный CPU)</td><td class="num">—</td></tr>
+          <tr><td>Фото → повреждения → детали → размер → смета</td><td class="num">3,3 с</td><td class="num">2,2 с</td><td class="num">12–16 с</td></tr>
+          <tr><td>Та же машина? Пара фото + что нового</td><td class="num">2,4 с</td><td class="num">2,1 с</td><td class="num">20 с*</td></tr>
+          <tr><td>Видео 6 с → 6 ключевых кадров → повреждения</td><td class="num">2,8 с</td><td class="num">2,6 с</td><td class="num">36 с</td></tr>
+          <tr><td>Сегментация повреждений, только модель</td><td class="num">—</td><td class="num">0,2 с</td><td class="num">≈ 1 с на 2 потоках (локальный CPU)</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="label">* первый вызов модели строит банк когорты; дальше быстрее</p>
+    <p class="label">ZeroGPU: NVIDIA RTX PRO 6000 Blackwell (MIG 2g.48gb); к расчёту добавляется 3–8 с на выделение GPU и передачу файлов. * после прогрева когорты. Если дневная квота ZeroGPU посетителя исчерпана, запрос автоматически считается на CPU.</p>
     <div class="cols">
       <div class="card"><span class="label">Осмотр, 8 кадров</span><b class="mono">$0,0003</b><span>≈ 3 с GPU на T4 по $0,40 в час; 1 000 осмотров ≈ $0,33</span></div>
       <div class="card"><span class="label">Обучение модели повреждений</span><b class="mono">68 мин</b><span>Kaggle T4, бесплатно; по тарифу T4 это ≈ $0,45</span></div>
@@ -289,8 +302,8 @@ footer { display: flex; flex-wrap: wrap; gap: 10px 28px; border-top: 2px solid v
     <ul class="limits">
       <li><strong>Повреждения: mAP@0,5 = 0,25</strong><span>это подсказка мастеру, а не судья. Всё ниже 0,6 помечено «проверить мастеру»; смета считается для подтверждённых находок.</span></li>
       <li><strong>Ложная тревога на чистых машинах</strong><span>29 % чистых фото получают хотя бы одну находку при пороге 0,45 (часть может быть реальными мелкими дефектами).</span></li>
-      <li><strong>Перекос в данных HITL</strong><span>снятые номера аукционных машин размечены как «нет детали», и модель это выучила. На машинах с номерами не проявляется; модель деталей уберёт это по классу «номер».</span></li>
-      <li><strong>Модель деталей ещё обучается</strong><span>пока деталь «не определена», размер считается по высоте кузова, смета шире.</span></li>
+      <li><strong>Перекос в данных HITL</strong><span>снятые номера аукционных машин размечены как «нет детали», и модель это выучила: на таких фото смета включает лишнюю замену крышки багажника. На машинах с номерами не проявляется.</span></li>
+      <li><strong>Квота ZeroGPU</strong><span>у анонимных посетителей дневной лимит GPU; после него ответ приходит с CPU — дольше (12–36 с), но без ошибки.</span></li>
       <li><strong>Разные ракурсы</strong><span>при случайных ракурсах автоматическое «та же» редкое — система говорит REVIEW вместо угадывания. В продукте приёмка и выдача снимаются по одному плану из 8 ракурсов.</span></li>
     </ul>
   </section>
