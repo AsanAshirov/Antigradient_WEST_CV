@@ -16,3 +16,7 @@ data/kaggle_*/
 eval/runs_dl/
 web/node_modules/
 web/dist/
+
+# build output and dependencies anywhere in the repo
+node_modules/
+dist/
