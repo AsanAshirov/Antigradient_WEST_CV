@@ -55,7 +55,7 @@ class Segmenter:
             det = self.model.predict(Image.fromarray(rgb), threshold=threshold)
         if len(det):
             # one query can pass the threshold for two classes: keep one instance per object
-            det = det.with_nms(threshold=0.8, class_agnostic=True)
+            det = det.with_nms(threshold=0.5, class_agnostic=True)
         names = det.data.get("class_name") if getattr(det, "data", None) else None
         out = []
         masks = det.mask if det.mask is not None else [None] * len(det)

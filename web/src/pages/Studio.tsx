@@ -6,7 +6,7 @@ import { Arrow, Camera, Check, Close, Doc, Plus, VerdictMark, Warn } from "../co
 import { LangToggle, Wordmark } from "../components/Nav";
 import { useI18n } from "../i18n";
 import { api, ApiError, type CompareResult, type Cost, type FrameAnalysis, type FrameUpload, type Inspection,
-  type Verification } from "../lib/api";
+  type DamageFinding, type Verification } from "../lib/api";
 import { money, num, pct, seconds } from "../lib/format";
 import { Link } from "../lib/router";
 
@@ -391,6 +391,46 @@ function FrameList({ title, frames, srcs }: { title: string; frames: FrameAnalys
   );
 }
 
+/** What the damage model found on each frame: the server overlay and a readable list with size and confidence. */
+function Findings({ frames }: { frames: FrameAnalysis[] }) {
+  const { t, lang } = useI18n();
+  const withDamage = frames.filter((f) => f.damages.length > 0);
+  const total = withDamage.reduce((n, f) => n + f.damages.length, 0);
+  const size = (d: DamageFinding) => {
+    if (!d.size?.metric) return null;
+    if (d.size.length_mm != null) return `${num(d.size.length_mm / 10, lang, 0)} ${lang === "ru" ? "см" : "cm"}`;
+    if (d.size.area_cm2 != null) return `${num(d.size.area_cm2, lang, 0)} ${lang === "ru" ? "см²" : "cm²"}`;
+    return null;
+  };
+  return (
+    <section className="findings" aria-label={t.studio.findingsTitle}>
+      <div className="label">{t.studio.findingsTitle} · {total}</div>
+      {withDamage.length === 0 ? <p className="timeline__empty">{t.studio.noFindings}</p> : (
+        <ul className="findings__grid">
+          {withDamage.map((f) => (
+            <li key={f.frame_id}>
+              {f.overlay_url && <img src={f.overlay_url} alt={`${t.studio.findingsTitle}: ${f.slot}`} loading="lazy" />}
+              <span className="mono findings__slot">{f.slot}</span>
+              <ul className="findings__list">
+                {f.damages.map((d) => (
+                  <li key={d.damage_id}>
+                    <strong>{damageName(d.class, lang)}</strong>
+                    <span>{d.part ? partName(d.part, lang) : partName("unknown_part", lang)}</span>
+                    <span className="mono">
+                      {[size(d), pct(d.score, lang)].filter(Boolean).join(" · ")}
+                      {d.score < 0.6 && <em className="timeline__check"> · {t.studio.checkByStaff}</em>}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  );
+}
+
 /* ---------------- guided inspection ---------------- */
 
 type Stored = { inspection_id: string; vehicle_key: string; created: string; type: string; model: string };
@@ -559,6 +599,7 @@ function GuidedInspection() {
       </div>
       {analysis && (
         <div className="plan__after">
+          <Findings frames={analysis.frames} />
           {analysis.cost_estimate && <CostCard cost={analysis.cost_estimate} title={t.studio.costCurrent} />}
           <div className="plan__compare">
             <div className="label">{t.studio.planCompareWith}</div>
