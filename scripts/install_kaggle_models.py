@@ -27,7 +27,9 @@ def main():
     a = ap.parse_args()
     dst = ROOT / "models" / a.task
     with tempfile.TemporaryDirectory() as tmp:
-        subprocess.run(["kaggle", "kernels", "output", a.kernel, "-p", tmp, "-o"], check=True)
+        # only what serving needs: the per-epoch checkpoints in the kernel output weigh gigabytes
+        pattern = r"(model_info\.json|checkpoint_best_(total|ema|regular)\.pth|log\.txt|results\.json|dataset_\w+\.json)$"
+        subprocess.run(["kaggle", "kernels", "output", a.kernel, "-p", tmp, "-o", "--file-pattern", pattern], check=True)
         found = {p.name: p for p in Path(tmp).rglob("*") if p.is_file()}
         print("kernel output:", sorted(found)[:40])
         if "model_info.json" not in found:

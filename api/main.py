@@ -28,7 +28,7 @@ sys.path.insert(0, str(ROOT))
 from carprint.core.image_io import load_image  # noqa: E402
 from carprint.core.quality import MESSAGES_RU  # noqa: E402
 from carprint.damage import segmenter  # noqa: E402
-from carprint.damage.estimate import DamageInput, estimate as cost_estimate, group_key, near_part_edge  # noqa: E402
+from carprint.damage.estimate import SIDED_PARTS, DamageInput, estimate as cost_estimate, group_key, near_part_edge  # noqa: E402
 from carprint.damage.scale import estimate_scale, measure, vehicle_spec  # noqa: E402
 from carprint.identity.cohort import bank_paths  # noqa: E402
 from carprint.identity.pipeline import make_frame  # noqa: E402
@@ -96,6 +96,7 @@ class StoredFrame:
     scale: object = None  # carprint.damage.scale.Scale
     sizes: list = field(default_factory=list)  # measure() per damage
     damage_inputs: list = field(default_factory=list)  # DamageInput per damage (cost model)
+    response: dict | None = None  # analysis already rendered (overlay written once)
 
 
 @dataclass
@@ -200,7 +201,10 @@ def inspection_cost(frames: list[StoredFrame], model_hint: str, only: dict[str, 
         for i, di in enumerate(sf.damage_inputs):
             if only is not None and i not in only.get(sf.frame_id, ()):
                 continue
-            per_group.setdefault(group_key(di.part, sf.slot), []).append(di)
+            key = group_key(di.part, sf.slot)
+            if sf.slot in ("", "extra") and (di.part is None or di.part in SIDED_PARTS):
+                key += f"@{sf.frame_id}"  # unknown side: a left and a right door must not collapse into one
+            per_group.setdefault(key, []).append(di)
         for key, ds in per_group.items():
             views.setdefault(key, []).append((sum(d.rel_area or 0.0 for d in ds) or len(ds), ds))
     chosen = [(key, d) for key, v in views.items() for d in max(v, key=lambda t: t[0])[1]]
@@ -212,11 +216,17 @@ def _size_dict(size: dict) -> dict:
 
 
 def analyze_frame(sf: StoredFrame) -> dict:
+    if sf.response is not None:
+        return sf.response
     if not sf.analyzed:
-        parts_model, dmg_model = segmenter.load("parts", MODELS), segmenter.load("damage", MODELS)
-        sf.parts = parts_model.predict(sf.frame.rgb, 0.4) if parts_model else []
-        sf.damages = dmg_model.predict(sf.frame.rgb, 0.35) if dmg_model else []
-        _measure_damages(sf)
+        try:
+            parts_model, dmg_model = segmenter.load("parts", MODELS), segmenter.load("damage", MODELS)
+            sf.parts = parts_model.predict(sf.frame.rgb, 0.4) if parts_model else []
+            sf.damages = dmg_model.predict(sf.frame.rgb, 0.35) if dmg_model else []
+            _measure_damages(sf)
+        except Exception as e:  # a damage-model failure must never cost the identity verdict
+            print(f"[carprint] damage analysis failed for {sf.frame_id}: {e!r}")
+            sf.parts, sf.damages, sf.sizes, sf.damage_inputs, sf.scale = [], [], [], [], None
         sf.analyzed = True
     plates = [p.mask for p in sf.parts if p.cls == "license_plate"]
     overlay = blur_regions(sf.frame.rgb, plates)
@@ -226,7 +236,7 @@ def analyze_frame(sf: StoredFrame) -> dict:
         cv2.rectangle(overlay, (x, y), (x + w, y + h), (231, 76, 60), 2)
         cv2.putText(overlay, f"{d.cls} {d.score:.2f}", (x, max(12, y - 4)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
     sf.overlay_url = save_artifact(overlay, "ovl")
-    return {
+    sf.response = {
         "frame_id": sf.frame_id, "slot": sf.slot, "quality": sf.frame.quality.to_dict(),
         "privacy": {"plates_blurred": len(plates), "persons_blurred": 0},
         "parts": [{"part": p.cls, "score": round(p.score, 3), "bbox": list(p.bbox)} for p in sf.parts if p.cls != "license_plate"],
@@ -237,6 +247,7 @@ def analyze_frame(sf: StoredFrame) -> dict:
         "scale": sf.scale.to_dict() if sf.scale is not None else None,
         "overlay_url": sf.overlay_url,
     }
+    return sf.response
 
 
 # ---------- endpoints ----------
@@ -280,7 +291,7 @@ def _ingest(ins: Inspection, data: bytes, slot: str, capture_mode: str) -> tuple
     flags = []
     if capture_mode != "camera":
         flags.append("gallery_upload")
-    for other in FRAMES.values():
+    for other in list(FRAMES.values()):
         if other.inspection_id != ins.inspection_id and hamming(ph, other.phash) <= DUPLICATE_MAX_DISTANCE:
             flags.append(f"duplicate_of:{other.frame_id}")
             break
@@ -304,7 +315,7 @@ def _precompute_weights(sf: StoredFrame, model_hint: str):
 
 
 @app.post("/api/v1/inspections/{inspection_id}/frames")
-async def upload_frame(inspection_id: str, background: BackgroundTasks, file: UploadFile = File(...),
+def upload_frame(inspection_id: str, background: BackgroundTasks, file: UploadFile = File(...),
                        slot: str = Form("extra"), nonce: str = Form(...), capture_mode: str = Form("gallery"),
                        client_ts: str | None = Form(None)):
     ins = _get_inspection(inspection_id)
@@ -312,7 +323,7 @@ async def upload_frame(inspection_id: str, background: BackgroundTasks, file: Up
         err(409, "NONCE_MISMATCH", "Неверный код сессии съёмки")
     if now() > ins.expires_at:
         err(409, "NONCE_EXPIRED", "Сессия съёмки истекла — начните осмотр заново")
-    sf, flags = _ingest(ins, await file.read(), slot, capture_mode)
+    sf, flags = _ingest(ins, file.file.read(), slot, capture_mode)
     q = sf.frame.quality
     if q.ok:
         background.add_task(_precompute_weights, sf, ins.model_hint)
@@ -331,6 +342,29 @@ def analyze(inspection_id: str):
     status = "PROCESSED" if any(sf.frame.quality.ok for sf in ins.frames) else "RECAPTURE_REQUIRED"
     return {"inspection_id": ins.inspection_id, "status": status, "frames": frames, "cost_estimate": cost,
             "latency_ms": round((time.perf_counter() - t0) * 1000)}
+
+
+_TL_RANK = {"previously_recorded": 3, "newly_detected": 2, "previously_seen_now_absent": 1, "insufficient_evidence": 0}
+
+
+def dedupe_timeline(items: list[dict]) -> list[dict]:
+    """Every (reference, current) frame pair yields its own timeline; merge them so each damage appears once.
+    A current damage keeps its strongest status (recorded > new > not visible); a reference damage that was recorded
+    from any angle is not "gone", and "gone" yields to "not visible" when the views disagree."""
+    recorded_refs = {t["ref_damage_id"] for t in items if t["status"] == "previously_recorded" and t.get("ref_damage_id")}
+    best: dict[str, dict] = {}
+    for t in items:
+        if t.get("damage_id"):
+            key = t["damage_id"]
+            if key not in best or _TL_RANK[t["status"]] > _TL_RANK[best[key]["status"]]:
+                best[key] = t
+        else:
+            key = t.get("ref_damage_id") or f"ref:{t['ref_frame']}:{t['ref_bbox']}"
+            if key in recorded_refs:
+                continue
+            if key not in best or t["status"] == "insufficient_evidence":
+                best[key] = t
+    return list(best.values())
 
 
 def _verify(ref: Inspection, cur: Inspection) -> dict:
@@ -370,33 +404,39 @@ def _verify(ref: Inspection, cur: Inspection) -> dict:
         # The timeline only makes sense for the same car; each pair of frames contributes its registered panels.
         new_idx: dict[str, set] = {}
         old_idx: dict[str, set] = {}
-        if v.decision != "DIFFERENT":
-            for (rf, cf), zone_maps in registered.items():
-                r, c = by_id[rf], by_id[cf]
-                for item in timeline_compare(r.damages, c.damages, zone_maps, r.frame.rgb, c.frame.rgb.shape,
-                                             part_of=lambda inst, sf=c: part_at(sf, inst),
-                                             part_of_ref=lambda inst, sf=r: part_at(sf, inst)):
-                    timeline.append({"status": item.status, "class": item.cls, "part": item.part, "slot": c.slot,
-                                     "ref_frame": rf, "cur_frame": cf, "cur_bbox": item.cur_bbox, "ref_bbox": item.ref_bbox,
-                                     "damage_id": f"dmg_{cf}_{item.cur_index}" if item.cur_index is not None else None,
-                                     "first_seen_inspection_id": ref.inspection_id if item.status == "previously_recorded" else None})
-                    if item.cur_index is not None and item.status in ("newly_detected", "previously_recorded"):
-                        target = new_idx if item.status == "newly_detected" else old_idx
-                        target.setdefault(cf, set()).add(item.cur_index)
-        # New = new in some registered view and recorded in none (a damage seen as old from another angle is old).
-        only_new = {f: ids - old_idx.get(f, set()) for f, ids in new_idx.items()}
-        model = ref.model_hint or cur.model_hint
-        cost_new = inspection_cost(cur.frames, model, only_new) if any(only_new.values()) else None
-        cost_all = inspection_cost(cur.frames, model)
+        try:
+          if v.decision != "DIFFERENT":
+              for (rf, cf), zone_maps in registered.items():
+                  r, c = by_id[rf], by_id[cf]
+                  for item in timeline_compare(r.damages, c.damages, zone_maps, r.frame.rgb, c.frame.rgb.shape,
+                                               part_of=lambda inst, sf=c: part_at(sf, inst),
+                                               part_of_ref=lambda inst, sf=r: part_at(sf, inst)):
+                      timeline.append({"status": item.status, "class": item.cls, "part": item.part, "slot": c.slot,
+                                       "ref_frame": rf, "cur_frame": cf, "cur_bbox": item.cur_bbox, "ref_bbox": item.ref_bbox,
+                                       "damage_id": f"dmg_{cf}_{item.cur_index}" if item.cur_index is not None else None,
+                                       "ref_damage_id": f"dmg_{rf}_{item.ref_index}" if item.ref_index is not None else None,
+                                       "first_seen_inspection_id": ref.inspection_id if item.status == "previously_recorded" else None})
+                      if item.cur_index is not None and item.status in ("newly_detected", "previously_recorded"):
+                          target = new_idx if item.status == "newly_detected" else old_idx
+                          target.setdefault(cf, set()).add(item.cur_index)
+          timeline = dedupe_timeline(timeline)
+          # New = new in some registered view and recorded in none (a damage seen as old from another angle is old).
+          only_new = {f: ids - old_idx.get(f, set()) for f, ids in new_idx.items()}
+          model = ref.model_hint or cur.model_hint
+          cost_new = inspection_cost(cur.frames, model, only_new) if any(only_new.values()) else None
+          cost_all = inspection_cost(cur.frames, model)
+        except Exception as e:  # timeline and cost are additions to the verdict, never a reason to lose it
+          print(f"[carprint] timeline/cost failed: {e!r}")
+          timeline, cost_new, cost_all = [], None, None
+        vid = f"ver_{uuid.uuid4().hex[:12]}"
+        LAST_ZONES[vid] = v.zones
+        while len(LAST_ZONES) > 256:
+            LAST_ZONES.pop(next(iter(LAST_ZONES)), None)
     flags = sorted({"gallery_upload" for sf in cur.frames if sf.capture_mode != "camera"})
     flags += [f"recycled_reference_photo:{cid}->{rid}" for cid, rid in recycled.items()]
     level = "red" if recycled else ("yellow" if flags else "green")
     if recycled:
         v.reasons.insert(0, f"{len(recycled)} фото повторяют снимки эталонного осмотра и исключены из доказательств")
-    vid = f"ver_{uuid.uuid4().hex[:12]}"
-    LAST_ZONES[vid] = v.zones
-    if len(LAST_ZONES) > 256:
-        LAST_ZONES.pop(next(iter(LAST_ZONES)))
     return {"verification_id": vid, "decision": v.decision, "score_raw": v.score_raw,
             "score_note": "Число совпавших независимых ячеек с индивидуальными признаками; не вероятность",
             "reasons_ru": v.reasons, "reasons_en": [reason_en(r) for r in v.reasons], "cohort_size": v.cohort_size,
@@ -443,7 +483,7 @@ def verifications(body: VerificationIn):
 
 
 @app.post("/api/v1/compare")
-async def compare(images_a: list[UploadFile] = File(...), images_b: list[UploadFile] = File(...),
+def compare(images_a: list[UploadFile] = File(...), images_b: list[UploadFile] = File(...),
                   model_hint: str = Form("")):
     if not (1 <= len(images_a) <= 16 and 1 <= len(images_b) <= 16):
         err(422, "BAD_REQUEST", "Нужно от 1 до 16 фото в каждой группе")
@@ -453,7 +493,7 @@ async def compare(images_a: list[UploadFile] = File(...), images_b: list[UploadF
                          "", now() + timedelta(hours=2), model_hint.strip().lower())
         INSPECTIONS[ins.inspection_id] = ins
         for f in group:
-            _ingest(ins, await f.read(), "extra", "gallery")
+            _ingest(ins, f.file.read(), "extra", "gallery")
         insp.append(ins)
     result = _verify(insp[0], insp[1])
     result["inspections"] = {"reference": insp[0].inspection_id, "current": insp[1].inspection_id}
