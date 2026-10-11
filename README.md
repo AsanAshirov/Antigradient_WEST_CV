@@ -8,11 +8,26 @@ Second channel: insurers (KASKO pre-inspection and claims).
 
 | | |
 |---|---|
+| **Live demo** (site + studio, processes your photos) | https://azamaka-carprint.hf.space · studio: `/studio` |
+| Defence deck (Claude Slides) | https://claude.ai/artifact/Hga6Km2HXvmizwBST95TAA |
+| Design canvas (Claude Design) | https://claude.ai/artifact/W1CzfcWXVE9LsvLLDkJeHN |
+| Architecture · design · DevOps | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) · [docs/DESIGN.md](docs/DESIGN.md) · [docs/DEVOPS.md](docs/DEVOPS.md) |
 | Evaluation protocol & current numbers | [docs/EVALUATION.md](docs/EVALUATION.md) |
 | API for the web app | [docs/API_CONTRACT.md](docs/API_CONTRACT.md) |
 | Data and licences | [DATA_SOURCES.md](DATA_SOURCES.md), [data/README.md](data/README.md) |
 | Research (RU): ideas, global problems & business, science/models/data | [docs/research/](docs/research/) |
 | Team concept (RU) | [docs/concept/](docs/concept/) |
+
+## Results in one table
+
+| What | Number | How measured |
+|---|---|---|
+| False "same car", different cars of one model | **0 / 200**, 95% upper bound 1.5% | frozen test v1, vehicle silhouette, Clopper–Pearson |
+| False "same car", different models | **0 / 200**, upper bound 1.5% | same |
+| False "different", same car | **0 / 25**, upper bound 11% | same |
+| Automatic SAME, same car, uncontrolled Commons angles | 1 / 25 (rest REVIEW) | same; the product compares the same shot-plan angle |
+| Quick check, pair of photos, live server | 2.7 s on T4 · ≈10 s on free CPU | browser to answer, `/api/v1/compare` |
+| Repair estimate | P10–P50–P90 from 4,000 Monte Carlo scenarios | `carprint/damage/estimate.py`, Tashkent public prices |
 
 ## Repository layout
 
