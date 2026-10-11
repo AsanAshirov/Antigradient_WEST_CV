@@ -66,7 +66,10 @@ def match(f0: Features, f1: Features) -> tuple[np.ndarray, np.ndarray]:
     if len(f0.keypoints) < 8 or len(f1.keypoints) < 8:
         return np.empty((0, 2), int), np.empty(0)
     _, lg = _get(2048)
-    out = lg({"image0": f0.raw, "image1": f1.raw})
+    # Cached features (e.g. the cohort bank built on the CPU) may sit on another device than the matcher.
+    dev = next(lg.parameters()).device
+    on = lambda raw: {k: (v.to(dev) if torch.is_tensor(v) else v) for k, v in raw.items()}  # noqa: E731
+    out = lg({"image0": on(f0.raw), "image1": on(f1.raw)})
     m = out["matches"][0].cpu().numpy()
     s = out["scores"][0].cpu().numpy()
     keep = s >= MIN_MATCH_SCORE

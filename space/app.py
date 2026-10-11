@@ -6,8 +6,9 @@ Three endpoints, each callable from the UI or from a website with @gradio/client
   /compare  reference photos + current photos -> same car? (ALIKED + LightGlue + a-contrario test), what is new
 The code is the repository's own (carprint/, api/main.py); this file only adapts inputs and outputs.
 
-Device: CPU by default. On ZeroGPU hardware the models are moved to CUDA at import (ZeroGPU defers that) and every
-endpoint runs inside @spaces.GPU. DEMO_CPU=1 forces the CPU even on ZeroGPU.
+Device: CPU by default. On ZeroGPU every endpoint first tries @spaces.GPU: inside the GPU worker (a fork of this
+process) the CPU models are moved to CUDA; if the visitor's ZeroGPU quota is used up or no GPU is free, the same
+request runs on the CPU here, so it always gets an answer. DEMO_CPU=1 forces the CPU even on ZeroGPU.
 """
 import os
 
@@ -18,8 +19,6 @@ except ImportError:
 
 ZERO_GPU = (spaces is not None and os.environ.get("SPACES_ZERO_GPU", "").lower() in ("1", "t", "true")
             and os.environ.get("DEMO_CPU") != "1")
-if ZERO_GPU:
-    os.environ["CARPRINT_DEVICE"] = "cuda"
 
 import json  # noqa: E402
 import tempfile  # noqa: E402
@@ -28,12 +27,15 @@ import uuid  # noqa: E402
 from datetime import timedelta  # noqa: E402
 from pathlib import Path  # noqa: E402
 
+import functools  # noqa: E402
+import threading  # noqa: E402
+
 import cv2  # noqa: E402
 import gradio as gr  # noqa: E402
 import numpy as np  # noqa: E402
 import torch  # noqa: E402
 
-if not ZERO_GPU and not torch.cuda.is_available():
+if ZERO_GPU or not torch.cuda.is_available():  # on ZeroGPU the main process must never touch CUDA
     os.environ["CARPRINT_DEVICE"] = "cpu"
 os.environ.setdefault("CARPRINT_WARM", "")
 
@@ -47,9 +49,33 @@ MAX_PHOTOS = 8
 MAX_VIDEO_S = 90
 VIDEO_FRAMES = 6
 DEVICE = "ZeroGPU" if ZERO_GPU else ("GPU" if torch.cuda.is_available() else "CPU")
+RUN = {"device": "CPU" if os.environ.get("CARPRINT_DEVICE") == "cpu" else DEVICE}  # where this process computes
 
 RU = {"broken_part": "поломка детали", "corrosion": "коррозия", "crack": "трещина", "dent": "вмятина",
       "missing_part": "нет детали", "paint_damage": "повреждение ЛКП", "scratch": "царапина"}
+PART_RU = {"front_bumper": "передний бампер", "back_bumper": "задний бампер", "hood": "капот", "trunk": "крышка багажника",
+           "roof": "крыша", "front_door": "передняя дверь", "back_door": "задняя дверь", "fender": "переднее крыло",
+           "quarter_panel": "заднее крыло", "rocker_panel": "порог", "windshield": "лобовое стекло",
+           "back_windshield": "заднее стекло", "front_window": "переднее боковое стекло",
+           "back_window": "заднее боковое стекло", "headlight": "фара", "tail_light": "задний фонарь",
+           "mirror": "зеркало", "grille": "решётка", "front_wheel": "переднее колесо", "back_wheel": "заднее колесо",
+           "license_plate": "номер", "unknown_part": "деталь не определена"}
+OP_RU = {"polish": "полировка", "spot": "локальный ремонт", "glass_chip": "ремонт скола", "pdr": "PDR без покраски",
+         "wheel_repair": "ремонт диска", "plastic_repair": "ремонт пластика", "repair_paint": "ремонт с покраской",
+         "replace": "замена"}
+
+
+def _part(key: str | None) -> str:
+    """'left_back_door@frm_x' -> 'задняя дверь (левая)'."""
+    if not key:
+        return PART_RU["unknown_part"]
+    key = key.split("@", 1)[0]
+    side = "левая" if key.startswith("left_") else "правая" if key.startswith("right_") else ""
+    base = key.split("_", 1)[1] if side else key
+    name = PART_RU.get(base, base.replace("_", " "))
+    return f"{name} ({side})" if side else name
+
+
 VERDICT = {"SAME": "ТА ЖЕ МАШИНА", "DIFFERENT": "ДРУГАЯ МАШИНА", "REVIEW": "НУЖНА ПРОВЕРКА ЧЕЛОВЕКОМ",
            "RECAPTURE": "ПЕРЕСНИМИТЕ"}
 STATUS = {"newly_detected": "новое", "previously_recorded": "было раньше", "previously_seen_now_absent": "исчезло",
@@ -60,8 +86,10 @@ t0 = time.time()
 DAMAGE_MODEL = segmenter.load("damage", M.MODELS)
 subject._detector()
 features._get(2048)
-print(f"[carprint] models ready on {DEVICE} in {time.time() - t0:.1f} s; damage model: "
-      f"{DAMAGE_MODEL.name if DAMAGE_MODEL else 'missing'}", flush=True)
+PARTS_MODEL = segmenter.load("parts", M.MODELS)
+print(f"[carprint] models ready on {RUN['device']} ({DEVICE} host) in {time.time() - t0:.1f} s; damage model: "
+      f"{DAMAGE_MODEL.name if DAMAGE_MODEL else 'missing'}; parts model: {PARTS_MODEL.name if PARTS_MODEL else 'missing'}",
+      flush=True)
 
 
 def _warm(models: list[str]):
@@ -76,14 +104,63 @@ def _warm(models: list[str]):
             print(f"[carprint] cohort warm-up failed for {m}: {e!r}", flush=True)
 
 
-if not ZERO_GPU:
-    import threading
-
-    threading.Thread(target=_warm, args=(["matiz", "cobalt"],), daemon=True).start()
+threading.Thread(target=_warm, args=(["matiz", "cobalt"],), daemon=True).start()
 
 
-def gpu(duration):
-    return spaces.GPU(duration=duration) if ZERO_GPU else (lambda fn: fn)
+def _rfdetr_to(inst, dev):
+    ctx = getattr(inst, "model", None)  # RFDETR.model is a ModelContext: .model (nn.Module) and .device
+    if ctx is not None and hasattr(ctx, "device"):
+        if getattr(ctx, "model", None) is not None:
+            ctx.model.to(dev)
+        ctx.device = dev
+
+
+def _gpu_worker_setup():
+    """Runs first inside the ZeroGPU worker: fresh locks (a lock held by the warm-up thread at fork time would never be
+    released in the child) and every model moved to CUDA. The parent's CPU models are untouched."""
+    M.compute_lock = threading.Lock()
+    M.ledger._lock = threading.Lock()
+    features._lock = threading.Lock()
+    subject._lock = threading.Lock()
+    dev = torch.device("cuda")
+    os.environ["CARPRINT_DEVICE"] = "cuda"
+    RUN["device"] = f"ZeroGPU ({torch.cuda.get_device_name(0)})"
+    for seg in (DAMAGE_MODEL, PARTS_MODEL):
+        if seg is not None:
+            seg._lock = threading.Lock()
+            _rfdetr_to(seg.model, dev)
+    det = subject._model.get("det")
+    if det:
+        _rfdetr_to(det[0], dev)
+    for k, m in list(features._models.items()):
+        features._models[k] = m.to(dev)
+
+
+def _with_zero_gpu(cpu_fn, seconds):
+    """Endpoint = GPU attempt, then the CPU on any ZeroGPU failure (quota, no free GPU, worker error)."""
+    if not ZERO_GPU:
+        return cpu_fn
+
+    def on_gpu(*args):
+        _gpu_worker_setup()
+        return cpu_fn(*args)
+
+    on_gpu.__name__ = on_gpu.__qualname__ = f"{cpu_fn.__name__}_on_gpu"
+    gpu_fn = spaces.GPU(duration=seconds)(on_gpu)
+
+    @functools.wraps(cpu_fn)
+    def endpoint(*args):
+        try:
+            return gpu_fn(*args)
+        except gr.Error as e:
+            if any(w in str(e) for w in ("Загрузите", "Нужны", "Видео длиннее", "Не удалось прочитать")):
+                raise  # the visitor's input, not the GPU
+            print(f"[carprint] ZeroGPU unavailable ({str(e)[:160]}); answering on the CPU", flush=True)
+        except Exception as e:
+            print(f"[carprint] ZeroGPU failed ({type(e).__name__}: {str(e)[:160]}); answering on the CPU", flush=True)
+        return cpu_fn(*args)
+
+    return endpoint
 
 
 def _paths(files) -> list[str]:
@@ -119,7 +196,7 @@ def _rows(frames: list[dict], labels: list[str]) -> list[list]:
     rows = []
     for label, f in zip(labels, frames):
         for d in f["damages"]:
-            rows.append([label, RU.get(d["class"], d["class"]), d["part"] or "не определена", _size(d),
+            rows.append([label, RU.get(d["class"], d["class"]), _part(d["part"]), _size(d),
                          f"{d['score']:.0%}", "авто" if d["status"] == "auto" else "проверить мастеру"])
     return rows
 
@@ -135,7 +212,8 @@ def _cost_md(cost: dict | None, title: str) -> str:
              f"диапазон P10–P90: {_money(cost['p10'])} – {_money(cost['p90'])}"]
     for p in cost.get("parts", []):
         ops = sorted(((k, v) for k, v in p["operation_probs"].items() if k != "none"), key=lambda t: -t[1])[:2]
-        lines.append(f"- {p['part_key']}: " + ", ".join(f"{k} {v:.0%}" for k, v in ops) + f" · P50 {_money(p['cost_p50'])}")
+        lines.append(f"- {_part(p['part_key'])}: " + ", ".join(f"{OP_RU.get(k, k)} {v:.0%}" for k, v in ops)
+                     + f" · P50 {_money(p['cost_p50'])}")
     lines.append(f"\n_{cost.get('note_ru', '')}_")
     return "\n".join(lines)
 
@@ -150,7 +228,6 @@ def _analyze(ins) -> list[dict]:
         return [M.analyze_frame(sf) for sf in ins.frames]
 
 
-@gpu(60)
 def damage(photos, model="cobalt"):
     paths = _paths(photos)[:MAX_PHOTOS]
     if not paths:
@@ -164,7 +241,7 @@ def damage(photos, model="cobalt"):
     labels = [f"фото {i}" for i in range(1, len(frames) + 1)]
     gallery = [(_artifact(f["overlay_url"]), f"{lab}: находок {len(f['damages'])}") for lab, f in zip(labels, frames)
                if f.get("overlay_url")]
-    result = {"device": DEVICE, "latency_ms": round((time.time() - t) * 1000), "threshold": M.DAMAGE_SCORE,
+    result = {"device": RUN["device"], "latency_ms": round((time.time() - t) * 1000), "threshold": M.DAMAGE_SCORE,
               "frames": _clean(frames), "cost_estimate": cost}
     return gallery, _rows(frames, labels), _cost_md(cost, "Ремонт всех видимых повреждений"), result
 
@@ -208,7 +285,6 @@ def _key_frames(path: str, n: int) -> tuple[list[tuple[float, np.ndarray]], floa
     return picks, duration
 
 
-@gpu(60)
 def video(clip, model="cobalt"):
     path = _paths(clip)[0] if _paths(clip) else None
     if not path:
@@ -227,7 +303,7 @@ def video(clip, model="cobalt"):
     labels = [f"{ts:.1f} с" for ts, _ in picks]
     gallery = [(_artifact(f["overlay_url"]), f"{lab}: находок {len(f['damages'])}") for lab, f in zip(labels, frames)
                if f.get("overlay_url")]
-    result = {"device": DEVICE, "latency_ms": round((time.time() - t) * 1000), "duration_s": round(duration, 1),
+    result = {"device": RUN["device"], "latency_ms": round((time.time() - t) * 1000), "duration_s": round(duration, 1),
               "key_frames_s": [round(ts, 2) for ts, _ in picks], "frames": _clean(frames), "cost_estimate": cost,
               "cost_frame_s": worst_ts, "note": "cost_estimate is the range of the most damaged key frame: neighbouring "
               "frames show the same damage and are not added up."}
@@ -235,7 +311,6 @@ def video(clip, model="cobalt"):
     return gallery, _rows(frames, labels), _cost_md(cost, title), result
 
 
-@gpu(90)
 def compare(reference, current, model="cobalt"):
     ref_paths, cur_paths = _paths(reference)[:MAX_PHOTOS], _paths(current)[:MAX_PHOTOS]
     if not ref_paths or not cur_paths:
@@ -254,14 +329,20 @@ def compare(reference, current, model="cobalt"):
                f"Совпавших ячеек с меткой: **{ev[0].get('congruent_cells', 0) if ev else 0}** (нужно ≥ 6) · "
                f"когорта той же модели: {res.get('cohort_size', 0)} машин\n\n" +
                "\n".join(f"- {r}" for r in res.get("reasons_ru", [])))
-    timeline = [[STATUS.get(x["status"], x["status"]), RU.get(x["class"], x["class"]), x["part"] or "не определена",
+    timeline = [[STATUS.get(x["status"], x["status"]), RU.get(x["class"], x["class"]), _part(x["part"]),
                  f"{x['score']:.0%}" if x.get("score") is not None else "—"] for x in res.get("damage_timeline", [])]
-    result = {"device": DEVICE, "latency_ms": round((time.time() - t) * 1000),
+    result = {"device": RUN["device"], "latency_ms": round((time.time() - t) * 1000),
               **{k: res.get(k) for k in ("decision", "score_raw", "reasons_ru", "reasons_en", "cohort_size",
                                           "damage_timeline", "cost_estimate_new", "integrity")},
               "evidence": [{k: e.get(k) for k in ("slot", "congruent_cells", "inliers", "distinct_inliers", "log10_nfa")}
                            for e in ev], "current_frames": _clean(frames_b)}
     return verdict, match_img, timeline, _cost_md(res.get("cost_estimate_new"), "Ремонт нового с прошлого визита"), result
+
+
+# GPU seconds requested from ZeroGPU per call (admission needs this much of the visitor's quota): small on purpose.
+damage_endpoint = _with_zero_gpu(damage, 30)
+video_endpoint = _with_zero_gpu(video, 40)
+compare_endpoint = _with_zero_gpu(compare, 45)
 
 
 def _ex(name: str) -> str:
@@ -295,7 +376,7 @@ with gr.Blocks(title="CarPrint · Antigradient") as demo:
         d_tab = gr.Dataframe(headers=["кадр", "повреждение", "деталь", "размер", "уверенность", "статус"],
                              label="Находки", wrap=True)
         d_json = gr.JSON(label="Ответ API (JSON)")
-        d_btn.click(damage, [d_in, d_model], [d_gal, d_tab, d_cost, d_json], api_name="damage", concurrency_limit=2)
+        d_btn.click(damage_endpoint, [d_in, d_model], [d_gal, d_tab, d_cost, d_json], api_name="damage", concurrency_limit=2)
         if DAMAGE_EXAMPLES:
             gr.Examples(DAMAGE_EXAMPLES, [d_in, d_model], label="Примеры: битые машины, которых модель не видела")
     with gr.Tab("Повреждения: видео"):
@@ -310,7 +391,7 @@ with gr.Blocks(title="CarPrint · Antigradient") as demo:
         v_tab = gr.Dataframe(headers=["кадр", "повреждение", "деталь", "размер", "уверенность", "статус"],
                              label="Находки", wrap=True)
         v_json = gr.JSON(label="Ответ API (JSON)")
-        v_btn.click(video, [v_in, v_model], [v_gal, v_tab, v_cost, v_json], api_name="video", concurrency_limit=1)
+        v_btn.click(video_endpoint, [v_in, v_model], [v_gal, v_tab, v_cost, v_json], api_name="video", concurrency_limit=1)
     with gr.Tab("Та же машина?"):
         with gr.Row():
             c_ref = gr.File(label="Эталон: прошлый визит", file_count="multiple", file_types=["image"])
@@ -322,7 +403,7 @@ with gr.Blocks(title="CarPrint · Antigradient") as demo:
         c_tab = gr.Dataframe(headers=["статус", "повреждение", "деталь", "уверенность"], label="Что изменилось")
         c_cost = gr.Markdown()
         c_json = gr.JSON(label="Ответ API (JSON)")
-        c_btn.click(compare, [c_ref, c_cur, c_model], [c_verdict, c_img, c_tab, c_cost, c_json], api_name="compare",
+        c_btn.click(compare_endpoint, [c_ref, c_cur, c_model], [c_verdict, c_img, c_tab, c_cost, c_json], api_name="compare",
                     concurrency_limit=1)
         if PAIR_EXAMPLE:
             gr.Examples(PAIR_EXAMPLE, [c_ref, c_cur, c_model], label="Пример: одна машина, два визита")
