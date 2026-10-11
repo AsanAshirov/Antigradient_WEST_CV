@@ -3,6 +3,12 @@
 TASK is substituted per kernel ("damage" or "parts"). On Kaggle the "Car damages dataset" folder
 holds PART labels and "Car parts dataset" holds DAMAGE labels, so the subset is chosen by meta.json.
 """
+import os
+
+# Kaggle's T4 accelerator is now two GPUs: Lightning would start DDP worker processes, which die silently in a script
+# kernel (no log, status ERROR). One GPU is plenty for this dataset.
+os.environ.setdefault("CUDA_VISIBLE_DEVICES", "0")
+
 import base64
 import glob
 import io

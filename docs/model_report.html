@@ -1,0 +1,390 @@
+<title>Паспорт моделей CarPrint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an engineering datasheet — one sheet of paper, mono figures, dimension-line rules, signal orange marks only the numbers that matter */
+:root {
+  --paper: #f2f1ed;
+  --sheet: #ffffff;
+  --ink: #111214;
+  --muted: #55585e;
+  --line: #d6d4ce;
+  --soft: #eceae4;
+  --signal: #ff5b1f;
+  --signal-text: #b6400c;
+  --blue: #1d5bd6;
+  --ok: #2c6e49;
+  --display: "Onest", "Segoe UI", system-ui, sans-serif;
+  --body: "Onest", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0c0d0f; --sheet: #16181b; --ink: #f2f1ed; --muted: #a9a8a4; --line: #2f3237; --soft: #1f2226;
+    --signal: #ff6a33; --signal-text: #ff8a5c; --blue: #7fa6f5; --ok: #7cd992; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0c0d0f; --sheet: #16181b; --ink: #f2f1ed; --muted: #a9a8a4; --line: #2f3237; --soft: #1f2226;
+  --signal: #ff6a33; --signal-text: #ff8a5c; --blue: #7fa6f5; --ok: #7cd992; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+.page { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 72px; display: flex; flex-direction: column; gap: 64px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: clamp(34px, 5.4vw, 58px); font-weight: 700; line-height: 1.04; }
+h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 650; line-height: 1.15; }
+h3 { font-size: 18px; font-weight: 600; }
+p { margin: 0; max-width: 68ch; }
+a { color: var(--signal-text); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+.label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.lead { font-size: 19px; color: var(--muted); }
+section { display: flex; flex-direction: column; gap: 22px; }
+.head { display: flex; flex-direction: column; gap: 10px; }
+.rule { display: flex; align-items: center; gap: 12px; }
+.rule::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+/* hero */
+header { display: flex; flex-direction: column; gap: 18px; padding-bottom: 8px; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 2px solid var(--ink); }
+.kpi { padding: 18px 18px 6px 0; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.kpi + .kpi { padding-left: 18px; border-left: 1px solid var(--line); }
+.kpi b { font-family: var(--display); font-size: clamp(30px, 3.6vw, 44px); font-weight: 700; line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.kpi b em { font-style: normal; color: var(--signal-text); }
+.kpi span { font-size: 14px; color: var(--muted); }
+
+/* pipeline */
+.flow { display: grid; gap: 12px; }
+.lanes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.lane { background: var(--sheet); border: 1px solid var(--line); padding: 18px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.lane h3 { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.lane h3 small { font-family: var(--mono); font-size: 12px; font-weight: 400; color: var(--muted); }
+.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.steps li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; padding: 9px 0; border-top: 1px dashed var(--line); }
+.steps li:first-child { border-top: 0; }
+.steps .n { font-family: var(--mono); font-size: 13px; color: var(--signal-text); padding-top: 1px; }
+.steps strong { display: block; font-weight: 600; }
+.steps span { color: var(--muted); font-size: 14px; }
+.band { background: var(--sheet); border: 1px solid var(--line); padding: 14px 18px; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; }
+.band .n { font-family: var(--mono); font-size: 13px; color: var(--signal-text); }
+.band span { color: var(--muted); font-size: 14px; }
+
+/* tables */
+.scroll { overflow-x: auto; border: 1px solid var(--line); background: var(--sheet); }
+table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 14px; }
+th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--mono); font-size: 11.5px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); background: var(--soft); }
+tr:last-child td { border-bottom: 0; }
+td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+td strong { font-weight: 600; }
+.pill { display: inline-block; font-family: var(--mono); font-size: 11.5px; padding: 2px 7px; border: 1px solid currentColor; border-radius: 3px; white-space: nowrap; }
+.pill.live { color: var(--ok); }
+.pill.wip { color: var(--signal-text); }
+
+/* charts */
+.charts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.chart { background: var(--sheet); border: 1px solid var(--line); padding: 16px 16px 10px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.chart p { font-size: 14px; color: var(--muted); }
+.chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--muted); }
+.legend i { display: inline-block; width: 10px; height: 10px; margin-right: 6px; vertical-align: -1px; }
+svg text { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
+svg .val { fill: var(--ink); font-size: 11.5px; }
+svg .grid { stroke: var(--line); stroke-width: 1; }
+svg .axis { stroke: var(--muted); stroke-width: 1; }
+.s-a { fill: var(--line); } .s-b { fill: var(--signal); }
+.l-a { stroke: var(--signal); } .l-b { stroke: var(--blue); }
+.wide { grid-column: 1 / -1; }
+
+/* cards */
+.cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--sheet); border: 1px solid var(--line); padding: 18px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.card b { font-family: var(--display); font-size: 28px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.card span { font-size: 14px; color: var(--muted); }
+.limits { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.limits li { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.limits strong { font-weight: 600; }
+.limits span { color: var(--muted); }
+footer { display: flex; flex-wrap: wrap; gap: 10px 28px; border-top: 2px solid var(--ink); padding-top: 16px; font-size: 14px; color: var(--muted); }
+
+@media (max-width: 860px) {
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kpi:nth-child(3) { padding-left: 0; border-left: 0; }
+  .lanes, .charts, .cols { grid-template-columns: minmax(0, 1fr); }
+  .limits li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}
+@media (max-width: 480px) {
+  .kpis { grid-template-columns: minmax(0, 1fr); }
+  .kpi + .kpi { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+}
+</style>
+
+<main class="page">
+  <header>
+    <span class="label">CarPrint · команда Antigradient · WEST Hackathon 2026 · трек Computer Vision</span>
+    <h1>Паспорт моделей CarPrint</h1>
+    <p class="lead">Что распознаёт система, на каких данных обучена, как мы её проверяли, с какой скоростью она работает и сколько это стоит. Все цифры получены в наших прогонах 10–11 октября 2026 года; код, данные и методика лежат в репозитории.</p>
+    <div class="kpis" role="list">
+      <div class="kpi" role="listitem"><b class="mono">0 <em>/</em> 400</b><span>ложных «та же машина» на разных машинах; верхняя граница 95 % — 1,5 %</span></div>
+      <div class="kpi" role="listitem"><b class="mono">0,248</b><span>mAP@0,5 сегментации повреждений; после 12 эпох было 0,177 (+40 %)</span></div>
+      <div class="kpi" role="listitem"><b class="mono">1,5 <em>с</em></b><span>фото → повреждения → смета на GPU; 12 с на бесплатном CPU</span></div>
+      <div class="kpi" role="listitem"><b class="mono">$0,0003</b><span>GPU-время одного осмотра из 8 кадров на T4 по $0,40 в час</span></div>
+    </div>
+  </header>
+
+  <section aria-labelledby="flow-title">
+    <div class="head">
+      <span class="label rule">Как это работает</span>
+      <h2 id="flow-title">Один кадр проходит общий контроль и две ветки: личность машины и повреждения</h2>
+    </div>
+    <div class="flow">
+      <div class="band"><span class="n">1</span><div><strong>Гейт качества кадра</strong> <span>резкость, экспозиция, блики не больше 25 %, машина занимает не меньше 8 % кадра. Пороги откалиброваны на 224 фото: отсекаются худшие 3–5 %.</span></div></div>
+      <div class="band"><span class="n">2</span><div><strong>Силуэт машины — RF-DETR-Seg Nano (COCO)</strong> <span>дальше считаются только точки и повреждения на кузове; фон, соседние машины и асфальт не участвуют.</span></div></div>
+      <div class="lanes">
+        <div class="lane">
+          <h3>Та же машина? <small>ветка A</small></h3>
+          <ol class="steps">
+            <li><span class="n">3</span><div><strong>ALIKED</strong><span>до 2 048 ключевых точек на кузове</span></div></li>
+            <li><span class="n">4</span><div><strong>LightGlue</strong><span>пары точек между прошлым визитом и сегодняшним</span></div></li>
+            <li><span class="n">5</span><div><strong>MAGSAC++</strong><span>последовательные гомографии: каждая панель кузова — своя плоскость</span></div></li>
+            <li><span class="n">6</span><div><strong>Тест a-contrario (ORSA)</strong><span>панель засчитывается, если случайное совпадение невозможно: NFA &lt; 10⁻³</span></div></li>
+            <li><span class="n">7</span><div><strong>Веса когорты, K = 8</strong><span>точки, которые есть у других машин этой модели, — дизайн, а не метка; их вес падает</span></div></li>
+            <li><span class="n">8</span><div><strong>Совпавшие ячейки</strong><span>не меньше 6 ячеек с индивидуальными метками → «ТА ЖЕ»; иначе REVIEW или «ДРУГАЯ»</span></div></li>
+          </ol>
+        </div>
+        <div class="lane">
+          <h3>Что повреждено и сколько стоит <small>ветка B</small></h3>
+          <ol class="steps">
+            <li><span class="n">3</span><div><strong>RF-DETR-Seg Medium</strong><span>маски 7 классов: царапина, вмятина, поломка детали, ЛКП, нет детали, коррозия, трещина</span></div></li>
+            <li><span class="n">4</span><div><strong>Масштаб</strong><span>колесо (D = 25,4·d + 2·W·AR/100 мм), номер 520 × 110 мм, высота кузова; оценки сводятся по обратной дисперсии</span></div></li>
+            <li><span class="n">5</span><div><strong>Размер</strong><span>сантиметры с поправкой на ракурс 1/cos ψ и с погрешностью</span></div></li>
+            <li><span class="n">6</span><div><strong>Операция</strong><span>полировка, PDR, ремонт с покраской или замена — с вероятностями по классу, размеру и детали</span></div></li>
+            <li><span class="n">7</span><div><strong>Цена</strong><span>4 000 сценариев Монте-Карло по открытым ценам Ташкента → P10, P50, P90</span></div></li>
+          </ol>
+        </div>
+      </div>
+      <div class="band"><span class="n">9</span><div><strong>Паспорт визита</strong> <span>SHA-256 каждого кадра, перцептивный хеш против повторно присланных фото (не больше 10 бит из 63), запись подписана Ed25519 и сцеплена с предыдущей. Номер и VIN хранятся только как HMAC.</span></div></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="models-title">
+    <div class="head">
+      <span class="label rule">Модели в работе</span>
+      <h2 id="models-title">Шесть компонентов, четыре нейросети, все лицензии допускают коммерческое использование</h2>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Компонент</th><th>Что делает</th><th>Архитектура · лицензия</th><th>Веса</th><th>Параметры</th><th>Обучение</th><th>Статус</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Повреждения</strong></td><td>маски 7 классов повреждений</td><td>RF-DETR-Seg Medium · Apache-2.0</td><td class="num">142 МБ</td><td class="num">35,4 M</td><td>дообучена 28 эпох на HITL (CC0), Kaggle T4, 68 мин</td><td><span class="pill live">в демо</span></td></tr>
+          <tr><td><strong>Силуэт машины</strong></td><td>где на кадре кузов</td><td>RF-DETR-Seg Nano · Apache-2.0</td><td class="num">134,5 МБ</td><td class="num">33,6 M</td><td>готовые веса COCO</td><td><span class="pill live">в демо</span></td></tr>
+          <tr><td><strong>Ключевые точки</strong></td><td>до 2 048 точек на кузове</td><td>ALIKED-n16 · BSD-3</td><td class="num">2,7 МБ</td><td class="num">0,68 M</td><td>готовые веса</td><td><span class="pill live">в демо</span></td></tr>
+          <tr><td><strong>Сопоставление</strong></td><td>пары точек между визитами</td><td>LightGlue · Apache-2.0</td><td class="num">47,6 МБ</td><td class="num">11,9 M</td><td>готовые веса</td><td><span class="pill live">в демо</span></td></tr>
+          <tr><td><strong>Смета</strong></td><td>диапазон P10–P50–P90</td><td>вероятностная модель, 4 000 сценариев Монте-Карло</td><td class="num">5 КБ цен</td><td class="num">—</td><td>цены uz-2026-10-public-v1, курс ЦБ 12 000 сум/$</td><td><span class="pill live">в демо</span></td></tr>
+          <tr><td><strong>Детали кузова</strong></td><td>21 деталь, колёса, номер: масштаб и цена по детали</td><td>RF-DETR-Seg Small · Apache-2.0</td><td class="num">—</td><td class="num">—</td><td>HITL, 998 фото, Kaggle T4</td><td><span class="pill wip">обучается</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="dmg-title">
+    <div class="head">
+      <span class="label rule">Повреждения · качество</span>
+      <h2 id="dmg-title">Длинное обучение подняло точность на 40 %; рабочий порог выбран по данным</h2>
+      <p>Проверка на отложенных 15 % датасета HITL: 122 фото, 1 225 объектов, разбиение seed 42. Модель эти фото не видела. mAP — средняя точность по классам по правилам COCO; mask mAP считает совпадение контуров, а не рамок.</p>
+    </div>
+    <div class="charts">
+      <figure class="chart" style="margin:0">
+        <h3>12 эпох против 28</h3>
+        <div class="legend"><span><i style="background:var(--line)"></i>12 эпох</span><span><i style="background:var(--signal)"></i>28 эпох (в демо)</span></div>
+        <svg id="ch-bars" viewBox="0 0 520 250" role="img" aria-label="mAP после 12 и 28 эпох: box mAP@0,5 0,177 и 0,248; box mAP@0,5:0,95 0,103 и 0,155; mask mAP@0,5 0,156 и 0,222; mask mAP@0,5:0,95 0,077 и 0,126"></svg>
+      </figure>
+      <figure class="chart" style="margin:0">
+        <h3>Кривая обучения</h3>
+        <div class="legend"><span><i style="background:var(--signal)"></i>box mAP@0,5</span><span><i style="background:var(--blue)"></i>mask mAP@0,5</span></div>
+        <svg id="ch-curve" viewBox="0 0 520 250" role="img" aria-label="mAP@0,5 по 28 эпохам: рост с 0,008 до пика 0,248 на эпохе 19, затем плато около 0,23"></svg>
+        <p>Пик на 20-й эпохе из 28; в демо стоит именно этот чекпойнт.</p>
+      </figure>
+      <figure class="chart" style="margin:0">
+        <h3>Выбор порога уверенности</h3>
+        <div class="legend"><span><i style="background:var(--signal)"></i>битые машины с находкой (60 фото)</span><span><i style="background:var(--blue)"></i>ложная тревога на чистых (132 фото)</span></div>
+        <svg id="ch-op" viewBox="0 0 520 250" role="img" aria-label="Порог 0,35: 95 % битых и 50 % чистых с находкой; 0,45: 82 % и 29 %; 0,6: 48 % и 17 %"></svg>
+        <p>На 0,45 ложных тревог в 1,7 раза меньше, чем на 0,35, а четыре битые машины из пяти по-прежнему находятся. Находки ниже 0,6 помечаются «проверить мастеру».</p>
+      </figure>
+      <figure class="chart" style="margin:0">
+        <h3>Объекты в обучении по классам</h3>
+        <svg id="ch-cls" viewBox="0 0 520 250" role="img" aria-label="Обучающих объектов: царапина 2599, вмятина 1407, поломка детали 1280, ЛКП 1192, нет детали 531, коррозия 219, трещина 71"></svg>
+        <p>7 299 размеченных объектов; трещин всего 71, поэтому этот класс самый слабый.</p>
+      </figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="id-title">
+    <div class="head">
+      <span class="label rule">Та же машина · качество</span>
+      <h2 id="id-title">Ноль ложных совпадений на 400 сравнениях разных машин</h2>
+      <p>Протокол в духе ISO/IEC 19795: «своя» пара — та же машина в разные сессии, «чужая» — разные машины той же или другой модели. Тестовый набор заморожен по хешу до первого прогона, пороги на нём не подбирались. Для нуля ошибок указана верхняя граница 95 % по Клопперу — Пирсону.</p>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Срез</th><th>Сравнений</th><th>Результат</th><th>Верхняя граница 95 %</th></tr></thead>
+        <tbody>
+          <tr><td>Разные машины одной модели (самый трудный случай)</td><td class="num">200</td><td><strong>0</strong> ложных «та же»</td><td class="num">1,5 %</td></tr>
+          <tr><td>Разные модели</td><td class="num">200</td><td><strong>0</strong> ложных «та же»</td><td class="num">1,5 %</td></tr>
+          <tr><td>Та же машина, другая съёмка</td><td class="num">25</td><td><strong>0</strong> ложных «другая»</td><td class="num">11 %</td></tr>
+          <tr><td>Автоматическое «та же» для своей машины, случайные ракурсы</td><td class="num">25</td><td>1 автоматически, 24 → REVIEW (решает человек)</td><td class="num">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="data-title">
+    <div class="head">
+      <span class="label rule">Данные</span>
+      <h2 id="data-title">Только открытые данные с лицензиями, разрешающими коммерческое использование</h2>
+    </div>
+    <div class="cols">
+      <div class="card"><span class="label">HITL Car Parts &amp; Damages · CC0</span><b class="mono">814 + 998</b><span>фото: повреждения (692 обучение / 122 проверка, 8 исходных классов → 7) и детали кузова (21 класс)</span></div>
+      <div class="card"><span class="label">Wikimedia Commons · CC0/PD/BY/BY-SA</span><b class="mono">132</b><span>фото 9 моделей рынка Узбекистана (Cobalt, Nexia, Gentra, Spark, Matiz, Damas, Lacetti, Camry, BYD Song Plus) — когорта для весов «дизайн или метка»</span></div>
+      <div class="card"><span class="label">Тест «та же машина» v1</span><b class="mono">425</b><span>сравнений: 200 + 200 чужих пар и 25 своих; манифест заморожен по хешу</span></div>
+      <div class="card"><span class="label">Цены uz-2026-10-public-v1</span><b class="mono">5 КБ</b><span>открытые цены Ташкента: prom.uz, ustabor.uz, olx.uz; курс ЦБ 12 000 сум/$</span></div>
+      <div class="card"><span class="label">Отклонены по лицензии</span><b class="mono">6</b><span>CarDD, VehiDE, AutoDamageIQ, VeRi-776, SuperPoint, MASt3R — некоммерческие или неясные условия</span></div>
+      <div class="card"><span class="label">Примеры для жюри</span><b class="mono">6</b><span>битых машин из отложенной части HITL — модель их не видела; открываются в демо одним кликом</span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="speed-title">
+    <div class="head">
+      <span class="label rule">Скорость и стоимость</span>
+      <h2 id="speed-title">Секунды на GPU, доли цента за осмотр</h2>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Операция (измерено, end-to-end)</th><th>GPU GTX 1650, локально</th><th>Бесплатный CPU HF, 2 vCPU</th><th>T4, прошлый сервер</th></tr></thead>
+        <tbody>
+          <tr><td>Фото → повреждения → размер → смета</td><td class="num">1,5 с</td><td class="num">12,3 с</td><td class="num">—</td></tr>
+          <tr><td>Та же машина? Пара фото + что нового</td><td class="num">3,3 с</td><td class="num">37,8 с*</td><td class="num">2,7 с</td></tr>
+          <tr><td>Видео 6 с → 6 ключевых кадров → повреждения</td><td class="num">5,2 с</td><td class="num">32,4 с</td><td class="num">—</td></tr>
+          <tr><td>Сегментация повреждений, только модель</td><td class="num">0,2 с</td><td class="num">≈ 1 с на 2 потоках (локальный CPU)</td><td class="num">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="label">* первый вызов модели строит банк когорты; дальше быстрее</p>
+    <div class="cols">
+      <div class="card"><span class="label">Осмотр, 8 кадров</span><b class="mono">$0,0003</b><span>≈ 3 с GPU на T4 по $0,40 в час; 1 000 осмотров ≈ $0,33</span></div>
+      <div class="card"><span class="label">Обучение модели повреждений</span><b class="mono">68 мин</b><span>Kaggle T4, бесплатно; по тарифу T4 это ≈ $0,45</span></div>
+      <div class="card"><span class="label">Хостинг демо</span><b class="mono">$0 – $9</b><span>бесплатный CPU на HF или ZeroGPU в подписке HF PRO ($9 в месяц); выделенный T4 — $0,40 в час</span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="lim-title">
+    <div class="head">
+      <span class="label rule">Пределы</span>
+      <h2 id="lim-title">Где система ошибается и что она делает в этом случае</h2>
+    </div>
+    <ul class="limits">
+      <li><strong>Повреждения: mAP@0,5 = 0,25</strong><span>это подсказка мастеру, а не судья. Всё ниже 0,6 помечено «проверить мастеру»; смета считается для подтверждённых находок.</span></li>
+      <li><strong>Ложная тревога на чистых машинах</strong><span>29 % чистых фото получают хотя бы одну находку при пороге 0,45 (часть может быть реальными мелкими дефектами).</span></li>
+      <li><strong>Перекос в данных HITL</strong><span>снятые номера аукционных машин размечены как «нет детали», и модель это выучила. На машинах с номерами не проявляется; модель деталей уберёт это по классу «номер».</span></li>
+      <li><strong>Модель деталей ещё обучается</strong><span>пока деталь «не определена», размер считается по высоте кузова, смета шире.</span></li>
+      <li><strong>Разные ракурсы</strong><span>при случайных ракурсах автоматическое «та же» редкое — система говорит REVIEW вместо угадывания. В продукте приёмка и выдача снимаются по одному плану из 8 ракурсов.</span></li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>Демо и API: <a href="https://huggingface.co/spaces/Azamaka/carprint-demo">huggingface.co/spaces/Azamaka/carprint-demo</a></span>
+    <span>Код и методика: <a href="https://github.com/AsanAshirov/Antigradient_WEST_CV">github.com/AsanAshirov/Antigradient_WEST_CV</a></span>
+    <span class="mono">Цифры: прогоны 10–11.10.2026</span>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var NS = "http://www.w3.org/2000/svg";
+  function el(name, attrs, text) {
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function fmt(v, d) { return v.toFixed(d).replace(".", ","); }
+  var W = 520, H = 250, L = 44, R = 12, T = 14, B = 34;
+  function frame(svg, max, ticks, d) {
+    for (var i = 0; i <= ticks; i++) {
+      var v = max * i / ticks, y = T + (H - T - B) * (1 - v / max);
+      svg.appendChild(el("line", { x1: L, x2: W - R, y1: y, y2: y, "class": "grid" }));
+      svg.appendChild(el("text", { x: L - 6, y: y + 4, "text-anchor": "end" }, fmt(v, d)));
+    }
+  }
+  function yOf(v, max) { return T + (H - T - B) * (1 - v / max); }
+
+  // grouped bars: 12 vs 28 epochs
+  var bars = document.getElementById("ch-bars");
+  var groups = [["box @0,5", 0.177, 0.248], ["box @0,5:0,95", 0.103, 0.155], ["mask @0,5", 0.156, 0.222], ["mask @0,5:0,95", 0.077, 0.126]];
+  frame(bars, 0.3, 3, 1);
+  var gw = (W - L - R) / groups.length, bw = gw * 0.3;
+  groups.forEach(function (g, i) {
+    var x0 = L + gw * i + gw * 0.17;
+    [[g[1], "s-a"], [g[2], "s-b"]].forEach(function (b, j) {
+      var x = x0 + j * (bw + 4), y = yOf(b[0], 0.3);
+      bars.appendChild(el("rect", { x: x, y: y, width: bw, height: H - B - y, "class": b[1] }));
+      bars.appendChild(el("text", { x: x + bw / 2, y: y - 4, "text-anchor": "middle", "class": "val" }, fmt(b[0], 3)));
+    });
+    bars.appendChild(el("text", { x: L + gw * i + gw / 2, y: H - 12, "text-anchor": "middle" }, g[0]));
+  });
+
+  // learning curve
+  var box = [0.008, 0.044, 0.066, 0.089, 0.114, 0.14, 0.152, 0.161, 0.17, 0.185, 0.187, 0.21, 0.186, 0.197, 0.217, 0.231, 0.225, 0.237, 0.247, 0.248, 0.229, 0.243, 0.233, 0.23, 0.231, 0.233, 0.226, 0.227];
+  var seg = [0.006, 0.038, 0.054, 0.067, 0.096, 0.121, 0.13, 0.138, 0.149, 0.164, 0.162, 0.182, 0.162, 0.175, 0.193, 0.209, 0.203, 0.212, 0.221, 0.222, 0.207, 0.217, 0.211, 0.206, 0.207, 0.209, 0.202, 0.204];
+  var cv = document.getElementById("ch-curve");
+  frame(cv, 0.3, 3, 1);
+  function xOf(i) { return L + (W - L - R) * i / (box.length - 1); }
+  [[box, "l-a"], [seg, "l-b"]].forEach(function (s) {
+    var d = s[0].map(function (v, i) { return (i ? "L" : "M") + xOf(i).toFixed(1) + " " + yOf(v, 0.3).toFixed(1); }).join(" ");
+    cv.appendChild(el("path", { d: d, fill: "none", "class": s[1], "stroke-width": 2.2, "stroke-linejoin": "round" }));
+  });
+  [0, 9, 19, 27].forEach(function (i) {
+    cv.appendChild(el("text", { x: xOf(i), y: H - 12, "text-anchor": "middle" }, String(i + 1)));
+  });
+  var px = xOf(19), py = yOf(0.248, 0.3);
+  cv.appendChild(el("line", { x1: px, x2: px, y1: py, y2: H - B, "class": "axis", "stroke-dasharray": "3 3" }));
+  cv.appendChild(el("circle", { cx: px, cy: py, r: 4.5, fill: "var(--signal)" }));
+  cv.appendChild(el("text", { x: px - 8, y: py - 9, "text-anchor": "end", "class": "val" }, "эпоха 20: 0,248"));
+  cv.appendChild(el("text", { x: W - R, y: H - 12, "text-anchor": "end" }, "эпоха"));
+
+  // operating point
+  var thr = [0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60];
+  var dmg = [98, 95, 90, 82, 70, 63, 48], cln = [71, 50, 40, 29, 21, 18, 17];
+  var op = document.getElementById("ch-op");
+  frame(op, 100, 4, 0);
+  function xT(t) { return L + (W - L - R) * (t - 0.3) / 0.3; }
+  [[dmg, "l-a"], [cln, "l-b"]].forEach(function (s) {
+    var d = s[0].map(function (v, i) { return (i ? "L" : "M") + xT(thr[i]).toFixed(1) + " " + yOf(v, 100).toFixed(1); }).join(" ");
+    op.appendChild(el("path", { d: d, fill: "none", "class": s[1], "stroke-width": 2.2 }));
+    s[0].forEach(function (v, i) {
+      op.appendChild(el("circle", { cx: xT(thr[i]), cy: yOf(v, 100), r: 2.6, fill: s[1] === "l-a" ? "var(--signal)" : "var(--blue)" }));
+    });
+  });
+  thr.forEach(function (t) { op.appendChild(el("text", { x: xT(t), y: H - 12, "text-anchor": "middle" }, fmt(t, 2))); });
+  var ox = xT(0.45);
+  op.appendChild(el("line", { x1: ox, x2: ox, y1: T, y2: H - B, "class": "axis", "stroke-dasharray": "3 3" }));
+  op.appendChild(el("text", { x: ox + 6, y: yOf(82, 100) - 8, "class": "val" }, "82 %"));
+  op.appendChild(el("text", { x: ox + 6, y: yOf(29, 100) + 16, "class": "val" }, "29 %"));
+  op.appendChild(el("text", { x: ox + 6, y: T + 10 }, "порог в демо"));
+
+  // class distribution (horizontal bars)
+  var cls = [["царапина", 2599], ["вмятина", 1407], ["поломка детали", 1280], ["ЛКП", 1192], ["нет детали", 531], ["коррозия", 219], ["трещина", 71]];
+  var cs = document.getElementById("ch-cls");
+  var LL = 118, max = 2800, rowH = (H - 10) / cls.length;
+  cls.forEach(function (c, i) {
+    var y = 6 + i * rowH, w = (W - LL - 56) * c[1] / max;
+    cs.appendChild(el("text", { x: LL - 8, y: y + rowH * 0.62, "text-anchor": "end" }, c[0]));
+    cs.appendChild(el("rect", { x: LL, y: y + rowH * 0.18, width: w, height: rowH * 0.62, "class": i === cls.length - 1 ? "s-b" : "s-a" }));
+    cs.appendChild(el("text", { x: LL + w + 6, y: y + rowH * 0.62, "class": "val" }, c[1].toLocaleString("ru-RU")));
+  });
+})();
+</script>
