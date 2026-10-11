@@ -54,6 +54,7 @@ function QuickCheck() {
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<CompareResult | null>(null);
   const [started, setStarted] = useState(0);
+  const [loadingExample, setLoadingExample] = useState(false);
 
   const run = async () => {
     if (!refShots.length || !curShots.length) {
@@ -74,14 +75,23 @@ function QuickCheck() {
   };
 
   const loadExample = async () => {
-    const files = await Promise.all(["ref", "cur"].map(async (n) => {
-      const blob = await (await fetch(`/evidence/${n}.jpg`)).blob();
-      return new File([blob], `${n}-example.jpg`, { type: "image/jpeg" });
-    }));
-    setRefShots([{ file: files[0], url: URL.createObjectURL(files[0]) }]);
-    setCurShots([{ file: files[1], url: URL.createObjectURL(files[1]) }]);
-    setModel("matiz");
-    setResult(null);
+    setLoadingExample(true);
+    setError(null);
+    try {
+      const files = await Promise.all(["ref", "cur"].map(async (n) => {
+        const res = await fetch(`/evidence/${n}.jpg`);
+        if (!res.ok) throw new Error(String(res.status));
+        return new File([await res.blob()], `${n}-example.jpg`, { type: "image/jpeg" });
+      }));
+      setRefShots([{ file: files[0], url: URL.createObjectURL(files[0]) }]);
+      setCurShots([{ file: files[1], url: URL.createObjectURL(files[1]) }]);
+      setModel("matiz");
+      setResult(null);
+    } catch {
+      setError(t.studio.errorGeneric);
+    } finally {
+      setLoadingExample(false);
+    }
   };
 
   const reset = () => {
@@ -106,7 +116,8 @@ function QuickCheck() {
           <h1 className="h2" id="quick-title">{t.studio.tabQuick}</h1>
           <p className="lead quick__intro">{t.studio.intro}</p>
         </div>
-        <button type="button" className="btn btn--line btn--small" onClick={loadExample} disabled={busy}>{t.studio.example}</button>
+        <button type="button" className="btn btn--line btn--small" onClick={loadExample} disabled={busy || loadingExample}
+          aria-busy={loadingExample}>{loadingExample ? "…" : t.studio.example}</button>
       </div>
       <div className="quick__drops">
         <DropZone title={t.studio.reference} hint={t.studio.referenceHint} shots={refShots} setShots={setRefShots} disabled={busy} />
@@ -120,7 +131,7 @@ function QuickCheck() {
             <option value="">{t.studio.modelOther}</option>
           </select>
         </label>
-        <button type="button" className="btn btn--signal" onClick={run} disabled={busy}>
+        <button type="button" className="btn btn--signal" onClick={run} disabled={busy || loadingExample}>
           {busy ? t.studio.running : t.studio.run}<Arrow />
         </button>
       </div>
