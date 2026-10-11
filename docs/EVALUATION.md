@@ -71,18 +71,22 @@ same shot-plan angle. A same-angle test (two sessions × 8 slots for several car
 
 ### Damage segmentation (RF-DETR-Seg Medium on HITL, CC0)
 
-Held-out 15% split of HITL Car Parts & Damages (seed 42), 7 classes, 12 epochs on a Kaggle T4 (images downscaled once
-to 1024 px; the first 40-epoch run on raw 3,000 px PNGs was CPU-bound and hit Kaggle's 12-hour limit).
+Held-out 15% split of HITL Car Parts & Damages (seed 42), 7 classes, Kaggle T4 (images downscaled once to 1024 px;
+the first 40-epoch run on raw 3,000 px PNGs was CPU-bound and hit Kaggle's 12-hour limit). Served: the 28-epoch run.
 
-| Metric (validation) | Value |
-|---|---|
-| Box mAP@0.5 | 0.177 |
-| Box mAP@0.5:0.95 | 0.103 |
-| Mask mAP@0.5 | 0.156 |
+| Metric (validation) | 12 epochs | 28 epochs (best epoch 19, served) |
+|---|---|---|
+| Box mAP@0.5 | 0.177 | **0.248** |
+| Box mAP@0.5:0.95 | 0.103 | 0.155 |
+| Mask mAP@0.5 | 0.156 | 0.222 |
+| Mask mAP@0.5:0.95 | 0.077 | 0.126 |
+| Training time on a T4 | 50 min | 68 min |
 | Training instances | 7,299 (scratch 2,599 · dent 1,407 · broken part 1,280 · paint damage 1,192 · missing part 531 · corrosion 219 · crack 71) |
 
-Honest reading: a suggestion tool for a person, not an automatic judge. The curve was still rising at the last epoch
-(a 28-epoch run is training); cracks have only 71 training instances. Every finding is confirmed by staff, and the
+Honest reading: a suggestion tool for a person, not an automatic judge. Longer training gave +40% relative mAP; the
+validation curve peaked at epoch 19. Cracks have only 71 training instances. Detector scores are not probabilities:
+on clean cars it still proposes findings at 0.40–0.45, so anything below 0.6 is marked "staff to confirm" and a
+reference finding is reported as gone only above 0.6. Every finding is confirmed by staff, and the
 timeline only compares damages inside registered panels of the same car.
 
 ### Latency on the live server
