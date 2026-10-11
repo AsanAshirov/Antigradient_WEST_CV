@@ -1582,3 +1582,96 @@
     transform: scale(1);
   }
 }
+
+/* ---------- motion design: drawn rules, table rows, closing scan ---------- */
+.closing {
+  position: relative;
+  overflow: hidden;
+}
+
+.closing::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--signal) 30%, var(--signal) 70%, transparent);
+  opacity: 0.55;
+  box-shadow: 0 0 24px 2px rgba(255, 91, 31, 0.35);
+  animation: closing-scan 9s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes closing-scan {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10%,
+  90% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateX(100vw);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .closing::before {
+    display: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .section-head__rule {
+      transform-origin: left center;
+      animation: rule-draw linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 30%;
+    }
+
+    .data tbody tr {
+      animation: row-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 90%;
+    }
+
+    .science__formula {
+      animation: formula-ink linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 45%;
+    }
+  }
+}
+
+@keyframes rule-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes row-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes formula-ink {
+  from {
+    box-shadow: inset 0 0 0 0 rgba(255, 91, 31, 0);
+    color: var(--ink-muted);
+  }
+  to {
+    box-shadow: inset 3px 0 0 0 var(--signal);
+    color: inherit;
+  }
+}

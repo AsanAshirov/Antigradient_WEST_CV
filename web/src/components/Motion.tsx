@@ -31,7 +31,12 @@ export function CountUp({ value, duration = 1.3, className }: { value: string; d
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView, value, reduce]);
 
-  return <span ref={ref} className={className}>{text}</span>;
+  return (
+    <span ref={ref} className={className}>
+      <span aria-hidden="true">{text}</span>
+      <span className="visually-hidden">{value}</span>
+    </span>
+  );
 }
 
 function zero(raw: string) {

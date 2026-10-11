@@ -26,8 +26,7 @@ export default function Landing() {
       <LandingNav />
       <main id="main">
         <Hero />
-        <Marquee label="Стек" items={["ALIKED", "LightGlue", "MAGSAC++", "ORSA · NFA < 10⁻³", "когорта K = 8", "RF-DETR-Seg",
-          "силуэт машины", "Монте-Карло · 4 000", "SHA-256", "Ed25519", "HMAC", "WCAG AA"]} />
+        <StackBand />
         <Problem />
         <How />
         <EvidenceSection />
@@ -40,6 +39,11 @@ export default function Landing() {
       </main>
     </>
   );
+}
+
+function StackBand() {
+  const { t } = useI18n();
+  return <Marquee label={t.stack.label} items={t.stack.items} />;
 }
 
 function Hero() {

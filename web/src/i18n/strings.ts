@@ -22,6 +22,11 @@ const ru = {
     menu: "Меню",
     skip: "Перейти к содержанию",
   },
+  stack: {
+    label: "Стек",
+    items: ["ALIKED", "LightGlue", "MAGSAC++", "ORSA · NFA < 10⁻³", "когорта K = 8", "RF-DETR-Seg", "силуэт машины",
+      "Монте-Карло · 4 000", "SHA-256", "Ed25519", "HMAC", "WCAG AA"],
+  },
   hero: {
     eyebrow: "Доказательная приёмка автомобиля",
     line1: "Машина та же.",
@@ -273,6 +278,11 @@ const en: Strings = {
     language: "Language",
     menu: "Menu",
     skip: "Skip to content",
+  },
+  stack: {
+    label: "Stack",
+    items: ["ALIKED", "LightGlue", "MAGSAC++", "ORSA · NFA < 10⁻³", "cohort K = 8", "RF-DETR-Seg", "vehicle silhouette",
+      "Monte Carlo · 4,000", "SHA-256", "Ed25519", "HMAC", "WCAG AA"],
   },
   hero: {
     eyebrow: "Evidence-grade vehicle check-in",
