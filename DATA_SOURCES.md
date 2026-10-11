@@ -53,6 +53,7 @@ Images with visible plates or people from Commons are used only server-side for 
 |---|---|---|---|---|
 | `images/hero.jpg` | [Commons: After polishing in the painting of Chevrolet](https://commons.wikimedia.org/wiki/File:After_polishing_int_the_painting_of_Chevrolet._(24872172236).jpg) | Marinelson Almeida | CC BY 2.0 | resized, licence plate blurred |
 | `images/tashkent.jpg` | [Commons: Chevrolet Cobalt, Chilonzor-5 avenue, Tashkent](https://commons.wikimedia.org/wiki/File:Chevrolet_Cobalt._Chilonzor-5_avenue,_Tashkent,_Uzbekistan.jpg) | Jamshid Nurkulov | CC BY-SA 4.0 | resized, licence plate blurred |
+| `examples/damage/*.jpg`, `examples/carprint_examples.zip` (studio tab "Examples for the jury") | HITL Car Parts & Damages, damage subset, **held-out split** (seed 42, the 15% never used in training); list in `web/public/examples/index.json` | Humans in the Loop | CC0 1.0 | resized to 1280 px |
 | `evidence/ref.jpg`, `evidence/cur.jpg`, `evidence/pair.json` | [Commons: Daewoo Matiz Groove M300 Monaco Pink](https://commons.wikimedia.org/wiki/File:Daewoo_Matiz_Groove_M300_Monaco_Pink_(23).jpg) series | Damian B Oh | CC BY-SA 4.0 | resized; `pair.json` is the output of our pipeline on these photos (CC BY-SA 4.0) |
 
 Datasets rejected for licence reasons: AutoDamageIQ (labelled CC BY 4.0 but built partly from CarDD, which is

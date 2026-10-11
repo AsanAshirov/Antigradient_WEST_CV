@@ -22,7 +22,8 @@ type Shot = { file: File; url: string };
 
 export default function Studio() {
   const { t } = useI18n();
-  const [tab, setTab] = useState<"quick" | "plan">("quick");
+  const [tab, setTab] = useState<"quick" | "plan" | "examples">(() =>
+    typeof window !== "undefined" && window.location.hash === "#examples" ? "examples" : "quick");
   return (
     <div className="studio">
       <header className="studio__bar on-ink">
@@ -30,6 +31,7 @@ export default function Studio() {
         <div role="tablist" aria-label={t.studio.title} className="studio__tabs">
           <button role="tab" type="button" aria-selected={tab === "quick"} onClick={() => setTab("quick")}>{t.studio.tabQuick}</button>
           <button role="tab" type="button" aria-selected={tab === "plan"} onClick={() => setTab("plan")}>{t.studio.tabPlan}</button>
+          <button role="tab" type="button" aria-selected={tab === "examples"} onClick={() => setTab("examples")}>{t.studio.tabExamples}</button>
         </div>
         <div className="studio__bar-right">
           <LangToggle />
@@ -37,7 +39,7 @@ export default function Studio() {
         </div>
       </header>
       <main id="main" className="studio__main">
-        {tab === "quick" ? <QuickCheck /> : <GuidedInspection />}
+        {tab === "quick" ? <QuickCheck /> : tab === "plan" ? <GuidedInspection /> : <Examples />}
       </main>
     </div>
   );
@@ -426,6 +428,84 @@ function Findings({ frames }: { frames: FrameAnalysis[] }) {
             </li>
           ))}
         </ul>
+      )}
+    </section>
+  );
+}
+
+/* ---------------- examples for the jury ---------------- */
+
+type ExampleIndex = {
+  note_ru: string;
+  note_en: string;
+  damage: { file: string; title_ru: string; title_en: string; truth: string[]; source: string; license: string }[];
+};
+
+/** Damaged-car photos the model never saw (held-out HITL split, public domain): one click runs the real pipeline. */
+function Examples() {
+  const { t, lang } = useI18n();
+  const [index, setIndex] = useState<ExampleIndex | null>(null);
+  const [active, setActive] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [analysis, setAnalysis] = useState<{ frames: FrameAnalysis[]; cost_estimate: Cost | null } | null>(null);
+  const resultRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    fetch("/examples/index.json").then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((d: ExampleIndex) => setIndex(d)).catch(() => setError(t.studio.errorGeneric));
+  }, [t.studio.errorGeneric]);
+
+  useEffect(() => {
+    if (analysis) resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [analysis]);
+
+  const run = async (file: string) => {
+    setActive(file);
+    setBusy(true);
+    setError(null);
+    setAnalysis(null);
+    try {
+      const res = await fetch(`/examples/${file}`);
+      if (!res.ok) throw new Error(String(res.status));
+      const photo = new File([await res.blob()], file.split("/").pop() ?? "example.jpg", { type: "image/jpeg" });
+      const ins = await api.createInspection({ model: "cobalt", type: "checkin" });
+      await api.uploadFrame(ins.inspection_id, photo, "extra", ins.nonce, "gallery");
+      setAnalysis(await api.analyze(ins.inspection_id));
+    } catch (e) {
+      setError(e instanceof ApiError ? e.message : t.studio.errorGeneric);
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <section className="examples wrap" aria-labelledby="examples-title">
+      <div className="quick__head">
+        <div>
+          <h1 className="h2" id="examples-title">{t.studio.tabExamples}</h1>
+          <p className="lead quick__intro">{index ? (lang === "ru" ? index.note_ru : index.note_en) : ""} {t.studio.examplesHint}</p>
+        </div>
+        <a className="btn btn--line btn--small" href="/examples/carprint_examples.zip" download>{t.studio.examplesZip}</a>
+      </div>
+      <ul className="examples__grid">
+        {index?.damage.map((d) => (
+          <li key={d.file} className={active === d.file ? "is-active" : undefined}>
+            <img src={`/examples/${d.file}`} alt={lang === "ru" ? d.title_ru : d.title_en} loading="lazy" />
+            <strong>{lang === "ru" ? d.title_ru : d.title_en}</strong>
+            <span className="source">{t.studio.examplesTruth}: {d.truth.map((c) => damageName(c, lang)).join(", ")} · {d.license}</span>
+            <button type="button" className="btn btn--signal btn--small" disabled={busy} onClick={() => void run(d.file)}>
+              {busy && active === d.file ? t.studio.examplesBusy : t.studio.examplesRun}
+            </button>
+          </li>
+        ))}
+      </ul>
+      {error && <p className="alert" role="alert"><Warn /> {error}</p>}
+      {analysis && (
+        <div className="plan__after" ref={resultRef}>
+          <Findings frames={analysis.frames} />
+          {analysis.cost_estimate && <CostCard cost={analysis.cost_estimate} title={t.studio.costCurrent} />}
+        </div>
       )}
     </section>
   );

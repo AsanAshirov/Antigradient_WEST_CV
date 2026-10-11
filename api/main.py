@@ -41,6 +41,9 @@ from carprint.timeline.diff import ZoneMap, compare as timeline_compare  # noqa:
 
 DATA = Path(os.environ.get("CARPRINT_DATA", ROOT / "data" / "store"))
 MODELS = Path(os.environ.get("CARPRINT_MODELS", ROOT / "models"))
+# Operating point of the damage model, chosen on data (docs/EVALUATION.md): at 0.45 it flags 82% of 60 held-out damaged
+# photos and 29% of 132 clean cohort photos (0.35: 95% and 50%). Findings below 0.6 are shown as "staff to confirm".
+DAMAGE_SCORE = float(os.environ.get("CARPRINT_DAMAGE_SCORE", "0.45"))
 COHORT = Path(os.environ.get("CARPRINT_COHORT", ROOT / "data" / "cohort"))
 ARTIFACTS = DATA / "artifacts"
 for d in (DATA, ARTIFACTS):
@@ -187,7 +190,9 @@ def _measure_damages(sf: StoredFrame):
         size = measure(d.mask, part.cls if part else None, sf.scale)
         rel = float(d.mask.sum() / part.mask.sum()) if part is not None and part.mask.any() else None
         sf.sizes.append(size)
-        sf.damage_inputs.append(DamageInput(d.cls, part.cls if part else None, d.score, size["length_mm"],
+        # q = 1: the estimate is "what it costs if staff confirms the finding"; detector scores are not probabilities
+        # (findings below AUTO_SCORE are shown as "staff to confirm"), so they must not zero the median
+        sf.damage_inputs.append(DamageInput(d.cls, part.cls if part else None, 1.0, size["length_mm"],
                                             size.get("rel_unc_length"), rel,
                                             near_part_edge(d.mask, part.mask if part else None), f"dmg_{sf.frame_id}_{i}"))
 
@@ -208,7 +213,12 @@ def inspection_cost(frames: list[StoredFrame], model_hint: str, only: dict[str, 
         for key, ds in per_group.items():
             views.setdefault(key, []).append((sum(d.rel_area or 0.0 for d in ds) or len(ds), ds))
     chosen = [(key, d) for key, v in views.items() for d in max(v, key=lambda t: t[0])[1]]
-    return cost_estimate(chosen, model=model_hint) if chosen else None
+    if not chosen:
+        return None
+    est = cost_estimate(chosen, model=model_hint)
+    est["note_ru"] = (est.get("note_ru", "") + " Диапазон для подтверждённых мастером находок.").strip()
+    est["note_en"] = (est.get("note_en", "") + " Range for findings confirmed by staff.").strip()
+    return est
 
 
 def _size_dict(size: dict) -> dict:
@@ -222,7 +232,7 @@ def analyze_frame(sf: StoredFrame) -> dict:
         try:
             parts_model, dmg_model = segmenter.load("parts", MODELS), segmenter.load("damage", MODELS)
             sf.parts = parts_model.predict(sf.frame.rgb, 0.4) if parts_model else []
-            sf.damages = dmg_model.predict(sf.frame.rgb, 0.35) if dmg_model else []
+            sf.damages = dmg_model.predict(sf.frame.rgb, DAMAGE_SCORE) if dmg_model else []
             _measure_damages(sf)
         except Exception as e:  # a damage-model failure must never cost the identity verdict
             print(f"[carprint] damage analysis failed for {sf.frame_id}: {e!r}")

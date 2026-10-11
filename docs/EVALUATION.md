@@ -89,6 +89,27 @@ on clean cars it still proposes findings at 0.40–0.45, so anything below 0.6 i
 reference finding is reported as gone only above 0.6. Every finding is confirmed by staff, and the
 timeline only compares damages inside registered panels of the same car.
 
+#### Operating point of the damage model
+
+Image level, served 28-epoch model: 60 photos from the held-out HITL split (all damaged) and the 132 clean
+same-model cohort photos (`data/cohort`, Wikimedia Commons; some may carry small real damage, so this is an upper
+bound on false alarms).
+
+| Threshold | Damaged photos with a finding | Correct class found | Clean photos with a finding | Findings per clean photo |
+|---|---|---|---|---|
+| 0.35 | 95% | 92% | 50% | 1.05 |
+| 0.40 | 90% | 85% | 40% | 0.72 |
+| **0.45 (served)** | **82%** | **77%** | **29%** | **0.55** |
+| 0.50 | 70% | 67% | 21% | 0.40 |
+| 0.60 | 48% | 47% | 17% | 0.32 |
+
+0.45 halves false alarms on clean cars against 0.35 and still flags four damaged cars in five. Every finding below 0.6
+is shown as "staff to confirm"; the repair range is computed for findings staff confirms.
+
+Data bias found while choosing demo photos: HITL images come from car auctions with the number plates removed, and
+the empty plate holder is labelled "missing part". The model learned it (its most confident "missing part" findings,
+0.85+, sit on the plate holder). Cars with plates do not trigger it; the parts model (plate class) will mask it.
+
 ### Latency on the live server
 
 | Hardware | Pair of photos, browser to answer | Note |

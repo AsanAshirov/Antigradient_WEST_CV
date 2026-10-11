@@ -8,7 +8,7 @@ Second channel: insurers (KASKO pre-inspection and claims).
 
 | | |
 |---|---|
-| **Live demo** (site + studio, processes your photos) | https://azamaka-carprint.hf.space · studio: `/studio` |
+| **Live demo** (site + studio, processes your photos) | https://azamaka-carprint.hf.space · studio: `/studio` · jury examples: `/studio#examples` (zip: `/examples/carprint_examples.zip`) |
 | Defence deck (Claude Slides) | https://claude.ai/artifact/Hga6Km2HXvmizwBST95TAA |
 | Design canvas (Claude Design) | https://claude.ai/artifact/W1CzfcWXVE9LsvLLDkJeHN |
 | Architecture · design · DevOps | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) · [docs/DESIGN.md](docs/DESIGN.md) · [docs/DEVOPS.md](docs/DEVOPS.md) |
