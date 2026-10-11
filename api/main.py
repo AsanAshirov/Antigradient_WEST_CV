@@ -230,11 +230,16 @@ def analyze_frame(sf: StoredFrame) -> dict:
         sf.analyzed = True
     plates = [p.mask for p in sf.parts if p.cls == "license_plate"]
     overlay = blur_regions(sf.frame.rgb, plates)
+    signal = np.array([255, 91, 31])  # the site's accent: new damage reads the same everywhere
     for d in sf.damages:
-        overlay[d.mask] = (0.5 * overlay[d.mask] + 0.5 * np.array([231, 76, 60])).astype(np.uint8)
+        overlay[d.mask] = (0.55 * overlay[d.mask] + 0.45 * signal).astype(np.uint8)
+        contours, _ = cv2.findContours(d.mask.astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        cv2.drawContours(overlay, contours, -1, (255, 91, 31), 2, cv2.LINE_AA)
         x, y, w, h = d.bbox
-        cv2.rectangle(overlay, (x, y), (x + w, y + h), (231, 76, 60), 2)
-        cv2.putText(overlay, f"{d.cls} {d.score:.2f}", (x, max(12, y - 4)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
+        label = f"{d.cls} {d.score:.2f}"
+        (tw, th), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.55, 1)
+        cv2.rectangle(overlay, (x, max(0, y - th - 10)), (x + tw + 10, max(th + 10, y)), (255, 91, 31), -1)
+        cv2.putText(overlay, label, (x + 5, max(th + 5, y - 5)), cv2.FONT_HERSHEY_SIMPLEX, 0.55, (12, 13, 15), 1, cv2.LINE_AA)
     sf.overlay_url = save_artifact(overlay, "ovl")
     sf.response = {
         "frame_id": sf.frame_id, "slot": sf.slot, "quality": sf.frame.quality.to_dict(),

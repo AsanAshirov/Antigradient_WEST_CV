@@ -230,7 +230,7 @@ function ResultView({ result, srcs, analysisRef, analysisCur, inspectionId, onRe
   const { t, lang } = useI18n();
   const reduce = useReducedMotion();
   const [pick, setPick] = useState(0);
-  const [mode, setMode] = useState<"compare" | "matches">("matches");
+  const [mode, setMode] = useState<"compare" | "matches" | "damage">("matches");
   const ev = result.evidence[pick];
   const reasons = (lang === "en" && result.reasons_en?.length ? result.reasons_en : result.reasons_ru) ?? [];
   const damageMissing = !!analysisCur && analysisCur.every((a) => a.damages.length === 0 && a.parts.length === 0);
@@ -248,6 +248,8 @@ function ResultView({ result, srcs, analysisRef, analysisCur, inspectionId, onRe
     });
   }, [refSrc, curSrc, sizes]);
 
+  const damageFrame = (analysisCur ?? []).find((f) => f.frame_id === ev?.cur_frame)
+    ?? (analysisCur ?? []).find((f) => f.damages.length > 0) ?? analysisCur?.[0];
   const cost: Cost | null = result.cost_estimate_new ?? null;
   const decision = result.decision;
   const cells = Math.round(result.score_raw);
@@ -269,6 +271,7 @@ function ResultView({ result, srcs, analysisRef, analysisCur, inspectionId, onRe
           <div role="tablist" className="seg" aria-label={t.studio.viewer.compare}>
             <button role="tab" type="button" aria-selected={mode === "matches"} onClick={() => setMode("matches")}>{t.studio.viewer.matches}</button>
             <button role="tab" type="button" aria-selected={mode === "compare"} onClick={() => setMode("compare")}>{t.studio.viewer.compare}</button>
+            <button role="tab" type="button" aria-selected={mode === "damage"} onClick={() => setMode("damage")}>{t.studio.viewer.damage}</button>
           </div>
           {ev && (
             <span className="mono result__meta">
@@ -277,11 +280,14 @@ function ResultView({ result, srcs, analysisRef, analysisCur, inspectionId, onRe
           )}
         </div>
         <div className="result__viewer">
-          {!ev && <div className="result__empty">{t.studio.noAlignment}</div>}
+          {!ev && mode !== "damage" && <div className="result__empty">{t.studio.noAlignment}</div>}
           {ev && mode === "matches" && refSrc && curSrc && sizes[refSrc] && sizes[curSrc] && (
             <MatchView refSrc={refSrc} curSrc={curSrc} refSize={sizes[refSrc]} curSize={sizes[curSrc]}
               matches={ev.matches ?? []} label={t.evidence.hint} />
           )}
+          {mode === "damage" && (damageFrame?.overlay_url ? (
+            <img className="result__overlay" src={damageFrame.overlay_url} alt={t.studio.viewer.damage} />
+          ) : <div className="result__empty">{damageMissing ? t.studio.damageModelMissing : t.studio.noFindings}</div>)}
           {ev && mode === "compare" && (ev.aligned_url && refSrc ? (
             <CompareSlider beforeSrc={refSrc} afterSrc={ev.aligned_url} beforeLabel={t.studio.viewer.before}
               afterLabel={t.studio.viewer.after} sliderLabel={t.studio.viewer.compare} />

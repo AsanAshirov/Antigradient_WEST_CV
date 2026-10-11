@@ -861,3 +861,9 @@
     flex: 1 1 100%;
   }
 }
+
+.result__overlay {
+  width: 100%;
+  height: auto;
+  display: block;
+}
