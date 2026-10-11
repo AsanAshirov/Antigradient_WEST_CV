@@ -1,21 +1,26 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#0c0d0f" />
-    <meta name="color-scheme" content="light" />
-    <meta name="description" content="По фото с телефона CarPrint подтверждает, что на приёмке та же машина, показывает новые повреждения и оценивает ремонт — с доказательствами, которые можно проверить." />
-    <meta property="og:title" content="CarPrint — доказательная приёмка автомобиля" />
-    <meta property="og:description" content="Машина та же. Царапина — новая. Идентичность, таймлайн повреждений и смета диапазоном по фото с телефона." />
-    <meta property="og:image" content="/images/hero_poster.jpg" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preload" as="image" href="/images/hero_poster.jpg" fetchpriority="high" />
-    <title>CarPrint — доказательная приёмка автомобиля</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <meta
+      name="description"
+      content="Compare vehicle photos, explore matching details and keep visual evidence. CarPrint brings a clearer perspective to every inspection."
+    />
+    <title>CarPrint — Every detail has a story</title>
+
+    <!-- Instant Preloading for Zero-Lag Asset Readiness -->
+    <link rel="preload" as="image" href="/videos/hero-poster.jpg" fetchpriority="high" />
+    <link rel="preload" as="video" href="/videos/hero-sequence.mp4" type="video/mp4" />
+    <link rel="prefetch" as="image" href="/images/car-studio.webp" type="image/webp" />
+    <link rel="prefetch" as="image" href="/images/car-studio.png" type="image/png" />
+    <link rel="prefetch" as="video" href="/media/film.mp4" type="video/mp4" />
+    <link rel="prefetch" as="image" href="/images/film_poster.jpg" />
   </head>
   <body>
     <div id="root"></div>
-    <noscript>CarPrint требует JavaScript для работы студии осмотра.</noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

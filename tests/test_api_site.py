@@ -101,7 +101,7 @@ def test_analyze_and_pdf_include_the_estimate(site_client):
     assert pdf.status_code == 200 and pdf.headers["content-type"] == "application/pdf"
 
 
-@pytest.mark.skipif(not (ROOT / "web" / "dist" / "index.html").exists(), reason="site not built")
+@pytest.mark.skipif(not (ROOT / "web_legacy" / "dist" / "index.html").exists(), reason="site not built")
 def test_spa_fallback_serves_client_routes_but_not_unknown_api(site_client):
     client, _ = site_client
     page = client.get("/studio")

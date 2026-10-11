@@ -20,9 +20,9 @@ from deploy_space import SECRET  # noqa: E402
 
 SPACE_FILES = ["app.py", "README.md", "requirements.txt", "packages.txt", "INTEGRATION.md"]
 CODE = ["carprint", "api", "eval/evaluate_identity.py", "data/cohort", "models/damage", "models/parts"]
-EXAMPLES = {"examples/damage": ROOT / "web/public/examples/damage",
-            "examples/same_car/visit_1.jpg": ROOT / "web/public/evidence/ref.jpg",
-            "examples/same_car/visit_2.jpg": ROOT / "web/public/evidence/cur.jpg"}
+EXAMPLES = {"examples/damage": ROOT / "web_legacy/public/examples/damage",
+            "examples/same_car/visit_1.jpg": ROOT / "web_legacy/public/evidence/ref.jpg",
+            "examples/same_car/visit_2.jpg": ROOT / "web_legacy/public/evidence/cur.jpg"}
 
 
 def stage(dst: Path):

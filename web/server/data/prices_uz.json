@@ -1,0 +1,74 @@
+{
+ "version": "uz-2026-10-public-v1",
+ "status": "indicative",
+ "currency": "UZS",
+ "usd_rate": 12000,
+ "note_ru": "Ориентировочный диапазон по открытым ценам Ташкента (октябрь 2026). Не смета: окончательную цену даёт мастер по прайсу дилера.",
+ "note_en": "Indicative range from public Tashkent prices (Oct 2026). Not a quote: the final price comes from the dealer's price list.",
+ "provenance": {
+  "sourced": "parts (prom.uz listings), painting / dent / scratch / polishing 'from' prices (auto.ustabor.uz, olx.uz), USD rate (cbu.uz)",
+  "assumed": "labour norm-hour rate, repair hours by size, PDR price per dent, glass chip and wheel repair, refinish modes above the published 'from' price, upper bounds of parts ranges (original vs aftermarket)",
+  "to_calibrate_with": "Royal Motors DMS: labour rate, parts catalogue, refinish times; repair orders with photos for the operation prior"
+ },
+ "labour_rate": [100000, 150000, 250000],
+ "hours": {
+  "polish": [0.3, 0.6, 1.2],
+  "plastic_repair": [1.0, 1.8, 3.0],
+  "repair": {"s": [0.5, 0.8, 1.2], "m": [1.0, 1.6, 2.5], "l": [2.0, 3.0, 4.5], "xl": [3.5, 5.0, 7.0]},
+  "replace": {"_default": [0.5, 1.0, 2.0], "bumper": [0.8, 1.2, 2.0], "panel": [1.0, 2.0, 3.5],
+              "glass": [1.0, 1.5, 2.5], "lamp": [0.3, 0.6, 1.2], "trim": [0.2, 0.5, 1.0], "wheel": [0.2, 0.3, 0.5]}
+ },
+ "flat": {
+  "spot": [200000, 325000, 600000],
+  "pdr": {"s": [150000, 250000, 400000], "m": [300000, 500000, 800000]},
+  "glass_chip": [100000, 150000, 250000],
+  "wheel_repair": [200000, 350000, 600000]
+ },
+ "refinish": {
+  "_default": [295000, 600000, 1100000],
+  "front_bumper": [295000, 550000, 1000000], "back_bumper": [295000, 550000, 1000000],
+  "hood": [400000, 750000, 1300000], "roof": [450000, 850000, 1500000], "trunk": [350000, 650000, 1200000],
+  "front_door": [350000, 650000, 1200000], "back_door": [350000, 650000, 1200000],
+  "fender": [295000, 500000, 900000], "quarter_panel": [350000, 700000, 1300000], "rocker_panel": [295000, 450000, 800000]
+ },
+ "parts": {
+  "_default": {
+   "_any": [300000, 900000, 2500000],
+   "front_bumper": [400000, 650000, 2700000], "back_bumper": [400000, 620000, 2500000],
+   "hood": [650000, 1200000, 3000000], "trunk": [800000, 1250000, 3000000], "roof": [1500000, 3000000, 6000000],
+   "front_door": [950000, 1500000, 3500000], "back_door": [950000, 1300000, 3200000],
+   "fender": [130000, 450000, 1500000], "quarter_panel": [1500000, 3000000, 6000000], "rocker_panel": [300000, 600000, 1500000],
+   "windshield": [900000, 1600000, 4000000], "back_windshield": [700000, 1300000, 3000000],
+   "front_window": [300000, 600000, 1200000], "back_window": [300000, 550000, 1100000],
+   "headlight": [500000, 820000, 3000000], "tail_light": [250000, 500000, 1800000],
+   "mirror": [170000, 280000, 1200000], "grille": [150000, 350000, 1000000],
+   "front_wheel": [500000, 900000, 2500000], "back_wheel": [500000, 900000, 2500000]
+  },
+  "cobalt": {"front_bumper": [450000, 565000, 1200000], "back_bumper": [450000, 565000, 1200000],
+             "front_door": [800000, 950000, 1800000], "back_door": [800000, 950000, 1800000], "trunk": [800000, 950000, 1800000],
+             "mirror": [150000, 181500, 400000]},
+  "nexia": {"front_bumper": [500000, 650000, 1200000], "back_bumper": [500000, 650000, 1200000],
+            "headlight": [600000, 750000, 1300000], "front_door": [1200000, 1500000, 2200000],
+            "back_door": [1200000, 1500000, 2200000], "mirror": [140000, 170500, 350000]},
+  "gentra": {"front_bumper": [500000, 620000, 1200000], "back_bumper": [500000, 620000, 1200000],
+             "headlight": [700000, 922000, 1400000], "hood": [1400000, 1700000, 2500000], "mirror": [200000, 286000, 450000]},
+  "lacetti": {"front_bumper": [500000, 620000, 1200000], "back_bumper": [500000, 620000, 1200000],
+              "headlight": [700000, 922000, 1400000], "hood": [1400000, 1700000, 2500000], "mirror": [200000, 286000, 450000]},
+  "spark": {"front_bumper": [360000, 480000, 900000], "back_bumper": [360000, 480000, 900000],
+            "headlight": [650000, 820000, 1200000], "hood": [900000, 1100000, 1600000],
+            "front_door": [1200000, 1550000, 2200000], "back_door": [1100000, 1300000, 2000000]},
+  "matiz": {"headlight": [400000, 516000, 800000], "hood": [500000, 650000, 1000000]},
+  "damas": {"front_door": [1000000, 1250000, 1800000], "fender": [100000, 130000, 300000], "trunk": [1000000, 1250000, 1800000]},
+  "song_plus": {"front_bumper": [2200000, 2662000, 3500000], "back_bumper": [2000000, 2420000, 3200000]}
+ },
+ "sources": {
+  "parts_bumper_uz": "https://www.prom.uz/company/bumper-uz/",
+  "parts_bumpers": "https://www.prom.uz/section/bampery/",
+  "parts_headlights": "https://www.prom.uz/company/uzauto-market/avtomobilnye-perednie-fary/",
+  "parts_mirrors": "https://www.prom.uz/tags/zerkala-zadnego-vida/",
+  "body_work_prices": "https://auto.ustabor.uz/ru/price/body_work",
+  "polishing": "https://www.olx.uz/uslugi/tashkent/q-полировка-фар/",
+  "usd_rate": "https://cbu.uz/ru/arkhiv-kursov-valyut/ (11 808.76 on 2026-10-01; rounded to 12 000)",
+  "accessed": "2026-10-10"
+ }
+}

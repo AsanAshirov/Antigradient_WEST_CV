@@ -22,7 +22,7 @@ from carprint.integrity.hashing import DUPLICATE_MAX_DISTANCE, hamming, phash64,
 
 router = APIRouter()
 MAX_BYTES = 8 * 1024 * 1024
-WEB_ROOT = Path(os.environ.get("CARPRINT_WEB", Path(__file__).resolve().parents[1] / "web"))
+WEB_ROOT = Path(os.environ.get("CARPRINT_WEB", Path(__file__).resolve().parents[1] / "web_legacy"))
 
 DECISION_EN = {
     "SAME": "Same vehicle: individual marks agree in {cells} independent areas",

@@ -23,7 +23,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("kernel")
     ap.add_argument("task", choices=["damage", "parts"])
-    ap.add_argument("--image", default=str(ROOT / "web" / "public" / "evidence" / "cur.jpg"))
+    ap.add_argument("--image", default=str(ROOT / "web_legacy" / "public" / "evidence" / "cur.jpg"))
     a = ap.parse_args()
     dst = ROOT / "models" / a.task
     with tempfile.TemporaryDirectory() as tmp:

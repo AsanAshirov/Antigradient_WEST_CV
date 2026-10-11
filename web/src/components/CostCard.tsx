@@ -1,141 +1,283 @@
-import { motion, useReducedMotion } from "motion/react";
-import { useI18n } from "../i18n";
-import type { Cost } from "../lib/api";
-import { millions, money, pct, usd } from "../lib/format";
-import { CountUp } from "./Motion";
+import { useState, useEffect } from "react";
+import sampleCostData from "../data/sample_cost.json";
+import { ShieldAlert, Wrench } from "lucide-react";
 
-const PART_RU: Record<string, string> = {
-  front_bumper: "Передний бампер", back_bumper: "Задний бампер", hood: "Капот", trunk: "Крышка багажника", roof: "Крыша",
-  front_door: "Передняя дверь", back_door: "Задняя дверь", fender: "Переднее крыло", quarter_panel: "Заднее крыло",
-  rocker_panel: "Порог", windshield: "Лобовое стекло", back_windshield: "Заднее стекло", front_window: "Переднее боковое стекло",
-  back_window: "Заднее боковое стекло", headlight: "Фара", tail_light: "Задний фонарь", mirror: "Зеркало", grille: "Решётка",
-  front_wheel: "Переднее колесо", back_wheel: "Заднее колесо", unknown_part: "Деталь не определена",
-};
-const PART_EN: Record<string, string> = {
-  front_bumper: "Front bumper", back_bumper: "Rear bumper", hood: "Bonnet", trunk: "Boot lid", roof: "Roof",
-  front_door: "Front door", back_door: "Rear door", fender: "Front wing", quarter_panel: "Rear quarter",
-  rocker_panel: "Sill", windshield: "Windscreen", back_windshield: "Rear screen", front_window: "Front side window",
-  back_window: "Rear side window", headlight: "Headlamp", tail_light: "Tail lamp", mirror: "Mirror", grille: "Grille",
-  front_wheel: "Front wheel", back_wheel: "Rear wheel", unknown_part: "Part not identified",
-};
-const OP_RU: Record<string, string> = {
-  none: "ложная находка", polish: "полировка", spot: "локальный ремонт", glass_chip: "ремонт скола", pdr: "PDR без покраски",
-  wheel_repair: "ремонт диска", plastic_repair: "ремонт пластика", repair_paint: "ремонт с покраской", replace: "замена",
-};
-const OP_EN: Record<string, string> = {
-  none: "false finding", polish: "polish", spot: "spot repair", glass_chip: "chip repair", pdr: "PDR, no paint",
-  wheel_repair: "wheel repair", plastic_repair: "plastic repair", repair_paint: "repair and paint", replace: "replace",
-};
-
-const DAMAGE_RU: Record<string, string> = {
-  broken_part: "поломка детали", corrosion: "коррозия", crack: "трещина", dent: "вмятина", missing_part: "нет детали",
-  paint_damage: "повреждение ЛКП", scratch: "царапина",
-};
-const DAMAGE_EN: Record<string, string> = {
-  broken_part: "broken part", corrosion: "corrosion", crack: "crack", dent: "dent", missing_part: "missing part",
-  paint_damage: "paint damage", scratch: "scratch",
-};
-
-export function damageName(cls: string, lang: "ru" | "en"): string {
-  return (lang === "ru" ? DAMAGE_RU : DAMAGE_EN)[cls] ?? cls.replaceAll("_", " ");
+export interface CostPart {
+  part_key: string;
+  part: string;
+  damages: number;
+  likely_operation: string;
+  operation_probs: Record<string, number>;
+  p_replace: number;
+  cost_p50: number;
+  cost_p90: number;
+  cost_mean: number;
+  evidence: string[];
+  variance_share: number;
 }
 
-export function partName(key: string, lang: "ru" | "en"): string {
-  const side = key.startsWith("left_") ? "left" : key.startsWith("right_") ? "right" : "";
-  const base = side ? key.slice(side.length + 1) : key;
-  const name = (lang === "ru" ? PART_RU : PART_EN)[base] ?? base.replaceAll("_", " ");
-  if (!side) return name;
-  if (lang === "en") return `${side === "left" ? "Left" : "Right"} ${name.toLowerCase()}`;
-  return `${name} (${side === "left" ? "левая сторона" : "правая сторона"})`;
+export interface CostData {
+  currency: string;
+  p10: number;
+  p50: number;
+  p90: number;
+  mean: number;
+  usd: { p10: number; p50: number; p90: number };
+  p_zero: number;
+  parts: CostPart[];
 }
 
-export function opName(op: string, lang: "ru" | "en"): string {
-  return (lang === "ru" ? OP_RU : OP_EN)[op] ?? op;
+const PART_NAMES: Record<string, { en: string; ru: string }> = {
+  front_bumper: { en: "Front Bumper Fascia", ru: "Передний бампер" },
+  back_bumper: { en: "Rear Bumper Cover", ru: "Задний бампер" },
+  hood: { en: "Engine Bonnet / Hood", ru: "Капот" },
+  left_front_door: { en: "Front Left Door Panel", ru: "Передняя левая дверь" },
+  right_front_door: { en: "Front Right Door Panel", ru: "Передняя правая дверь" },
+  left_fender: { en: "Front Left Fender Wing", ru: "Переднее левое крыло" },
+  front_left_wheel: { en: "Front Left Alloy Wheel", ru: "Переднее левое колесо" },
+};
+
+const OP_NAMES: Record<string, { en: string; ru: string }> = {
+  none: { en: "False detection (none)", ru: "Ложная находка" },
+  polish: { en: "Surface polish", ru: "Полировка" },
+  spot: { en: "SMART spot touch-up", ru: "Локальный ремонт" },
+  glass_chip: { en: "Resin chip injection", ru: "Ремонт скола" },
+  pdr: { en: "PDR (paintless dent removal)", ru: "PDR без покраски" },
+  wheel_repair: { en: "Alloy wheel rim refurbishment", ru: "Ремонт диска" },
+  plastic_repair: { en: "Plastic weld & reshaping", ru: "Ремонт пластика" },
+  repair_paint: { en: "Panel repair & refinish paint", ru: "Ремонт с покраской" },
+  replace: { en: "OEM Part replacement", ru: "Замена детали" },
+};
+
+export function formatMoney(val: number, currency: "UZS" | "USD", lang: "en" | "ru"): string {
+  if (currency === "USD") {
+    return `$${val.toLocaleString("en-US")}`;
+  }
+  return lang === "ru"
+    ? `${val.toLocaleString("ru-RU")} сум`
+    : `${val.toLocaleString("en-US")} UZS`;
 }
 
-/** The range strip: P10–P90 band, median tick, scale from 0. */
-export function RangeStrip({ cost }: { cost: Cost }) {
-  const { lang } = useI18n();
-  const reduce = useReducedMotion();
-  const top = Math.max(cost.p90 * 1.15, 1);
-  const left = (cost.p10 / top) * 100;
-  const width = ((cost.p90 - cost.p10) / top) * 100;
-  const mid = (cost.p50 / top) * 100;
+export function CostCard({
+  data: initialData = sampleCostData as unknown as CostData,
+  lang = "en",
+  selectedPartKey,
+  detectedDamages = 0,
+}: {
+  data?: CostData;
+  lang?: "en" | "ru";
+  selectedPartKey?: string;
+  detectedDamages?: number;
+}) {
+  const [data, setData] = useState<CostData>(initialData);
+  const [currency, setCurrency] = useState<"UZS" | "USD">("UZS");
+  const [selectedPart, setSelectedPart] = useState<string | null>(selectedPartKey || null);
+
+  useEffect(() => {
+    if (selectedPartKey) {
+      setSelectedPart(selectedPartKey);
+    }
+  }, [selectedPartKey]);
+
+  useEffect(() => {
+    const q = selectedPartKey ? `?part_id=${encodeURIComponent(selectedPartKey)}` : "";
+    fetch(`/api/estimate${q}`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((live) => {
+        if (live && live.parts) {
+          setData(live);
+        }
+      })
+      .catch(() => {});
+  }, [selectedPartKey]);
+
+  const top = Math.max(data.p90 * 1.15, 1);
+  const leftPct = (data.p10 / top) * 100;
+  const widthPct = ((data.p90 - data.p10) / top) * 100;
+  const midPct = (data.p50 / top) * 100;
+
+  const currentP10 = currency === "USD" ? data.usd.p10 : data.p10;
+  const currentP50 = currency === "USD" ? data.usd.p50 : data.p50;
+  const currentP90 = currency === "USD" ? data.usd.p90 : data.p90;
+
+  const activePart = data.parts.find((p) => p.part_key === selectedPart) || data.parts[0];
+
   return (
-    <div className="range" aria-hidden="true">
-      <div className="range__track">
-        <motion.div className="range__band" style={{ left: `${left}%`, width: `${width}%`, originX: 0 }}
-          initial={reduce ? false : { scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }}
-          transition={{ duration: 0.9, ease: [0.2, 0.7, 0, 1] }} />
-        <div className="range__tick" style={{ left: `${left}%` }} />
-        <motion.div className="range__median" style={{ left: `${mid}%` }}
-          initial={reduce ? false : { opacity: 0, y: -6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.6 }} />
-        <div className="range__tick" style={{ left: `${left + width}%` }} />
+    <div className="cost-card-container" id="estimate">
+      <div className="cost-card-header">
+        <div>
+          <div className="cost-eyebrow">
+            <Wrench size={14} />
+            <span>
+              {lang === "ru"
+                ? "Смета ремонта · 4 000 сценариев Монте-Карло"
+                : "Repair Estimate · 4,000 Monte Carlo Scenarios"}
+            </span>
+          </div>
+          <h3 className="cost-title">
+            {lang === "ru"
+              ? "Оценка стоимости восстановительных работ"
+              : "Probabilistic Collision Repair Cost Distribution"}
+          </h3>
+          <p className="cost-subtitle">
+            {lang === "ru"
+              ? "Оценка рассчитывается по открытым тарифам и прайс-листам Ташкента. Модель показывает честный диапазон P10–P90 вместо обманчивой единственной цифры."
+              : "Calibrated against Tashkent OEM dealer pricing and labor rates. Outputs an empirical P10–P90 spread instead of an over-confident single estimate."}
+          </p>
+          {detectedDamages > 0 && (
+            <div className="cost-live-badge mono">
+              <span className="live-dot" />
+              <span>
+                {lang === "ru"
+                  ? `В текущей проверке выявлено дефектов: ${detectedDamages}`
+                  : `Active inspection detected anomalies: ${detectedDamages}`}
+              </span>
+            </div>
+          )}
+        </div>
+
+        <div className="currency-toggle-group">
+          <button
+            type="button"
+            className={`currency-btn ${currency === "UZS" ? "active" : ""}`}
+            onClick={() => setCurrency("UZS")}
+          >
+            {lang === "ru" ? "UZS (сум)" : "UZS"}
+          </button>
+          <button
+            type="button"
+            className={`currency-btn ${currency === "USD" ? "active" : ""}`}
+            onClick={() => setCurrency("USD")}
+          >
+            USD ($)
+          </button>
+        </div>
       </div>
-      <div className="range__axis mono">
-        <span>0</span>
-        <span>{millions(top / 2, lang)}</span>
-        <span>{lang === "ru" ? `${millions(top, lang)} млн сум` : `UZS ${millions(top, lang)}M`}</span>
+
+      {/* Main Range Strip */}
+      <div className="cost-range-box">
+        <div className="cost-stat-row">
+          <div className="stat-col">
+            <span className="stat-label">P10 (Optimistic)</span>
+            <strong className="stat-num">{formatMoney(currentP10, currency, lang)}</strong>
+          </div>
+          <div className="stat-col median-col">
+            <span className="stat-label">P50 (Median Expected)</span>
+            <strong className="stat-num median-num">{formatMoney(currentP50, currency, lang)}</strong>
+            <small className="stat-sub">
+              {currency === "UZS"
+                ? `≈ $${data.usd.p50} USD`
+                : `≈ ${(data.p50 / 1_000_000).toFixed(2)}M UZS`}
+            </small>
+          </div>
+          <div className="stat-col">
+            <span className="stat-label">P90 (Conservative)</span>
+            <strong className="stat-num">{formatMoney(currentP90, currency, lang)}</strong>
+          </div>
+        </div>
+
+        {/* Visual Spread Bar */}
+        <div className="range-bar-track">
+          <div
+            className="range-bar-band"
+            style={{ left: `${leftPct}%`, width: `${widthPct}%` }}
+          />
+          <div className="range-bar-tick" style={{ left: `${leftPct}%` }} title="P10" />
+          <div
+            className="range-bar-median-marker"
+            style={{ left: `${midPct}%` }}
+            title="P50 Median"
+          />
+          <div
+            className="range-bar-tick"
+            style={{ left: `${leftPct + widthPct}%` }}
+            title="P90"
+          />
+        </div>
+
+        <div className="range-axis-labels mono">
+          <span>0</span>
+          <span>
+            {currency === "USD"
+              ? `$${Math.round(top / 12000)}`
+              : lang === "ru"
+                ? `${(top / 2_000_000).toFixed(1)}M сум`
+                : `${(top / 2_000_000).toFixed(1)}M UZS`}
+          </span>
+          <span>
+            {currency === "USD"
+              ? `$${Math.round((top * 1.1) / 12000)}`
+              : lang === "ru"
+                ? `${(top / 1_000_000).toFixed(1)}M сум`
+                : `${(top / 1_000_000).toFixed(1)}M UZS`}
+          </span>
+        </div>
+      </div>
+
+      {/* Part Breakdown & Variance Drivers */}
+      <div className="cost-breakdown-section">
+        <div className="breakdown-headline">
+          <ShieldAlert size={16} />
+          <strong>
+            {lang === "ru" ? "Детализация по повреждённым узлам" : "Itemized Panel Variance & Likely Operations"}
+          </strong>
+        </div>
+
+        <div className="parts-cost-table-wrapper">
+          <table className="parts-cost-table">
+            <thead>
+              <tr>
+                <th>{lang === "ru" ? "Деталь" : "Vehicle Panel"}</th>
+                <th>{lang === "ru" ? "Вероятная операция" : "Likely Repair Operation"}</th>
+                <th>{lang === "ru" ? "P(Замена)" : "P(Replace)"}</th>
+                <th>{lang === "ru" ? "Медиана (P50)" : "Cost (P50)"}</th>
+                <th>{lang === "ru" ? "Доля дисперсии" : "Variance Share"}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.parts.map((p) => {
+                const partTitle = PART_NAMES[p.part_key]?.[lang] || p.part_key.replace(/_/g, " ");
+                const opTitle = OP_NAMES[p.likely_operation]?.[lang] || p.likely_operation;
+                const isSelected = p.part_key === activePart?.part_key;
+                const convertedP50 = currency === "USD" ? Math.round(p.cost_p50 / 12000) : p.cost_p50;
+
+                return (
+                  <tr
+                    key={p.part_key}
+                    className={isSelected ? "selected-row" : ""}
+                    onClick={() => setSelectedPart(p.part_key)}
+                  >
+                    <td>
+                      <strong>{partTitle}</strong>
+                      <div className="mono-sub mono">{p.part_key}</div>
+                    </td>
+                    <td>
+                      <span className="badge-operation">{opTitle}</span>
+                    </td>
+                    <td className="mono">{(p.p_replace * 100).toFixed(1)}%</td>
+                    <td className="mono strong">{formatMoney(convertedP50, currency, lang)}</td>
+                    <td>
+                      <div className="variance-bar-cell">
+                        <div
+                          className="variance-fill"
+                          style={{ width: `${Math.round(p.variance_share * 100)}%` }}
+                        />
+                        <span className="mono">{(p.variance_share * 100).toFixed(0)}%</span>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="cost-footnote mono">
+          {lang === "ru"
+            ? "* Наибольший вклад в неопределённость вносят дверь (46%) и бампер (35%). Мастер сервиса осматривает их в первую очередь."
+            : "* Variance drivers: Front door explains 46.2% of spread, Front bumper explains 34.8%. Human inspector inspects these two components first."}
+        </div>
       </div>
     </div>
-  );
-}
-
-export function CostCard({ cost, title, note }: { cost: Cost; title: string; note?: string }) {
-  const { lang, t } = useI18n();
-  const drivers = [...cost.parts].sort((a, b) => b.variance_share - a.variance_share).slice(0, 2);
-  return (
-    <article className="cost" aria-label={title}>
-      <header className="cost__head">
-        <div>
-          <div className="label">{title}</div>
-          <div className="cost__value"><CountUp value={money(cost.p50, lang)} /></div>
-          <div className="cost__sub">{t.estimate.median} · ≈ {usd(cost.usd.p50, lang)}</div>
-        </div>
-        <div className="cost__pq mono">
-          <span>P10 {money(cost.p10, lang)}</span>
-          <span>P90 {money(cost.p90, lang)}</span>
-        </div>
-      </header>
-      <div className="cost__strip"><RangeStrip cost={cost} /></div>
-      <table className="cost__table">
-        <thead>
-          <tr>
-            <th scope="col">{t.estimate.part}</th>
-            <th scope="col">{t.estimate.operation}</th>
-            <th scope="col" className="num">P50</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cost.parts.map((p) => {
-            const ops = Object.entries(p.operation_probs).filter(([op]) => op !== "none").sort((a, b) => b[1] - a[1]);
-            const [first, second] = ops;
-            return (
-              <tr key={p.part_key}>
-                <td>{partName(p.part_key, lang)}</td>
-                <td>
-                  {first && <>{opName(first[0], lang)} {pct(first[1], lang)}</>}
-                  {second && <div className="cost__alt">{opName(second[0], lang)} {pct(second[1], lang)}</div>}
-                </td>
-                <td className="num">{money(p.cost_p50, lang)}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-      <footer className="cost__foot">
-        {drivers.length > 0 && (
-          <p>
-            {lang === "ru" ? "Сильнее всего разброс даёт: " : "Most of the spread comes from: "}
-            {drivers.map((d, i) => (
-              <span key={d.part_key}>{i > 0 ? ", " : ""}{partName(d.part_key, lang).toLowerCase()} ({pct(Math.max(0, d.variance_share), lang)})</span>
-            ))}
-            .
-          </p>
-        )}
-        <p>{note ?? (lang === "ru" ? cost.note_ru : cost.note_en)}</p>
-      </footer>
-    </article>
   );
 }

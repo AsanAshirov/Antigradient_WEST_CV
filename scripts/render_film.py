@@ -98,7 +98,7 @@ def cover(img: np.ndarray, zoom: float, focus=(0.55, 0.58)) -> tuple[np.ndarray,
 
 
 def hero_assets():
-    rgb = load_image((ROOT / "web" / "public" / "images" / "hero.jpg").read_bytes()).rgb
+    rgb = load_image((ROOT / "web_legacy" / "public" / "images" / "hero.jpg").read_bytes()).rgb
     fr = make_frame("hero", "front_left_45", rgb)
     kp, sc = fr.feats.keypoints, fr.feats.scores
     keep = np.argsort(-sc)[:420]

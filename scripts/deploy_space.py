@@ -15,8 +15,8 @@ from huggingface_hub import HfApi
 
 ROOT = Path(__file__).resolve().parents[1]
 INCLUDE = ["Dockerfile", "requirements.txt", "carprint", "api", "eval/evaluate_identity.py", "data/cohort", "models",
-           "web/src", "web/public", "web/index.html", "web/package.json", "web/package-lock.json", "web/tsconfig.json",
-           "web/vite.config.ts"]
+           "web_legacy/src", "web_legacy/public", "web_legacy/index.html", "web_legacy/package.json", "web_legacy/package-lock.json", "web_legacy/tsconfig.json",
+           "web_legacy/vite.config.ts"]
 SECRET = re.compile(rb"hf_[A-Za-z0-9]{30,}|-----BEGIN [A-Z ]*PRIVATE KEY-----|\"key\"\s*:\s*\"[0-9a-f]{32}\"")
 SPACE_README = """---
 title: CarPrint
@@ -67,7 +67,7 @@ def main():
     with tempfile.TemporaryDirectory() as tmp:
         stage(Path(tmp))
         api.upload_folder(repo_id=a.space, repo_type="space", folder_path=tmp, commit_message="deploy CarPrint",
-                          delete_patterns=["web/src/**", "web/public/**"])
+                          delete_patterns=["web_legacy/src/**", "web_legacy/public/**"])
     if not a.no_hardware:
         api.request_space_hardware(a.space, a.hardware)
     rt = api.get_space_runtime(a.space)

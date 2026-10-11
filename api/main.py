@@ -607,7 +607,7 @@ def health():
 from api.compat import build_router  # noqa: E402
 
 app.include_router(build_router(sys.modules[__name__]))
-WEB_DIST = Path(os.environ.get("CARPRINT_WEB_DIST", ROOT / "web" / "dist"))
+WEB_DIST = Path(os.environ.get("CARPRINT_WEB_DIST", ROOT / "web_legacy" / "dist"))
 if WEB_DIST.exists():
     app.mount("/assets", StaticFiles(directory=WEB_DIST / "assets"), name="assets")
 
