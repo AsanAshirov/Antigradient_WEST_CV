@@ -16,6 +16,7 @@ from carprint.damage.segmenter import Instance
 MATCH_IOU = 0.10  # dilated-mask IoU for "same damage"
 DILATE_PX = 15
 VISIBLE_MIN = 0.8  # share of a damage that must have been observable in the other frame
+ABSENT_MIN = 0.6  # "gone" is a claim about the past: only for reference findings the model was confident about
 ZONE_MARGIN = 0.25  # zone bbox expansion when assigning a damage to a panel
 
 
@@ -28,6 +29,7 @@ class TimelineItem:
     ref_bbox: tuple | None
     cur_index: int | None = None  # index into the current frame's damages (cost of what is new)
     ref_index: int | None = None
+    score: float | None = None  # detector confidence of the finding the item is about
 
 
 @dataclass
@@ -82,22 +84,23 @@ def compare(ref_dmg: list[Instance], cur_dmg: list[Instance], zones: list[ZoneMa
     for ci, d in enumerate(cur_dmg):
         z = _zone_for(d.bbox, zones, use_ref=False)
         if z is None:
-            items.append(TimelineItem("insufficient_evidence", d.cls, part_of(d), d.bbox, None, ci))
+            items.append(TimelineItem("insufficient_evidence", d.cls, part_of(d), d.bbox, None, ci, score=d.score))
             continue
         dm = _dilate(d.mask)
         cands = [(i, _iou(dm, w)) for i, w in enumerate(warped_ref) if w is not None and i not in used]
         best = max(cands, key=lambda t: t[1], default=(None, 0.0))
         if best[0] is not None and best[1] >= MATCH_IOU:
             used.add(best[0])
-            items.append(TimelineItem("previously_recorded", d.cls, part_of(d), d.bbox, ref_dmg[best[0]].bbox, ci, best[0]))
+            items.append(TimelineItem("previously_recorded", d.cls, part_of(d), d.bbox, ref_dmg[best[0]].bbox, ci, best[0],
+                                      score=d.score))
             continue
         seen = warp(observable_ref, z.H, cur_shape)
         visible = float(seen[d.mask].mean()) if d.mask.any() else 0.0
         status = "newly_detected" if visible >= VISIBLE_MIN else "insufficient_evidence"
-        items.append(TimelineItem(status, d.cls, part_of(d), d.bbox, None, ci))
+        items.append(TimelineItem(status, d.cls, part_of(d), d.bbox, None, ci, score=d.score))
     for i, (r, w) in enumerate(zip(ref_dmg, warped_ref)):
-        if i in used:
+        if i in used or r.score < ABSENT_MIN:  # an unsure old finding that is not seen again is no news
             continue
         status = "previously_seen_now_absent" if w is not None and w.any() else "insufficient_evidence"
-        items.append(TimelineItem(status, r.cls, part_of_ref(r), None, r.bbox, None, i))
+        items.append(TimelineItem(status, r.cls, part_of_ref(r), None, r.bbox, None, i, score=r.score))
     return items

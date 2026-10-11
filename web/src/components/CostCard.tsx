@@ -27,6 +27,19 @@ const OP_EN: Record<string, string> = {
   wheel_repair: "wheel repair", plastic_repair: "plastic repair", repair_paint: "repair and paint", replace: "replace",
 };
 
+const DAMAGE_RU: Record<string, string> = {
+  broken_part: "поломка детали", corrosion: "коррозия", crack: "трещина", dent: "вмятина", missing_part: "нет детали",
+  paint_damage: "повреждение ЛКП", scratch: "царапина",
+};
+const DAMAGE_EN: Record<string, string> = {
+  broken_part: "broken part", corrosion: "corrosion", crack: "crack", dent: "dent", missing_part: "missing part",
+  paint_damage: "paint damage", scratch: "scratch",
+};
+
+export function damageName(cls: string, lang: "ru" | "en"): string {
+  return (lang === "ru" ? DAMAGE_RU : DAMAGE_EN)[cls] ?? cls.replaceAll("_", " ");
+}
+
 export function partName(key: string, lang: "ru" | "en"): string {
   const side = key.startsWith("left_") ? "left" : key.startsWith("right_") ? "right" : "";
   const base = side ? key.slice(side.length + 1) : key;

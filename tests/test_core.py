@@ -133,3 +133,25 @@ def test_phash_survives_recompression_and_resize_but_separates_images():
     a2 = np.asarray(Image.open(buf))
     assert hamming(phash64(a), phash64(a2)) <= 6
     assert hamming(phash64(a), phash64(textured(seed=2))) > 15
+
+
+def test_timeline_reports_gone_only_for_confident_reference_findings():
+    from types import SimpleNamespace
+
+    from carprint.timeline.diff import ABSENT_MIN, ZoneMap, compare
+
+    m = np.zeros((100, 100), bool)
+    m[40:60, 40:60] = True
+    zone = ZoneMap(np.eye(3), (0, 0, 100, 100), (0, 0, 100, 100))
+    rgb = np.full((100, 100, 3), 120, np.uint8)
+
+    def finding(score):
+        return SimpleNamespace(cls="scratch", score=score, bbox=(40, 40, 20, 20), mask=m)
+
+    assert compare([finding(ABSENT_MIN - 0.2)], [], [zone], rgb, (100, 100)) == []
+    gone = compare([finding(ABSENT_MIN + 0.2)], [], [zone], rgb, (100, 100))
+    assert [i.status for i in gone] == ["previously_seen_now_absent"]
+    new = compare([], [finding(0.4)], [zone], rgb, (100, 100))
+    assert [(i.status, i.score) for i in new] == [("newly_detected", 0.4)]
+    same = compare([finding(0.4)], [finding(0.5)], [zone], rgb, (100, 100))
+    assert [i.status for i in same] == ["previously_recorded"]

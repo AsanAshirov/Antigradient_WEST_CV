@@ -60,6 +60,7 @@ export type TimelineItem = {
   cur_bbox: number[] | null;
   ref_bbox: number[] | null;
   damage_id: string | null;
+  score?: number | null;
 };
 
 export type Quality = {

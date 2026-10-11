@@ -1,13 +1,13 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useMemo, useRef, useState, type ChangeEvent, type DragEvent } from "react";
-import { CostCard, partName } from "../components/CostCard";
+import { CostCard, damageName, partName } from "../components/CostCard";
 import { CompareSlider, MatchView } from "../components/EvidenceViewer";
 import { Arrow, Camera, Check, Close, Doc, Plus, VerdictMark, Warn } from "../components/Icons";
 import { LangToggle, Wordmark } from "../components/Nav";
 import { useI18n } from "../i18n";
 import { api, ApiError, type CompareResult, type Cost, type FrameAnalysis, type FrameUpload, type Inspection,
   type Verification } from "../lib/api";
-import { money, num, seconds } from "../lib/format";
+import { money, num, pct, seconds } from "../lib/format";
 import { Link } from "../lib/router";
 
 const MODELS: [string, string][] = [
@@ -318,7 +318,13 @@ function ResultView({ result, srcs, analysisRef, analysisCur, inspectionId, onRe
                   <span className={`chip ${d.status === "newly_detected" ? "chip--new" : d.status === "previously_recorded" ? "chip--old"
                     : d.status === "previously_seen_now_absent" ? "chip--absent" : "chip--unknown"}`}>{t.studio.status[d.status]}</span>
                   <strong>{d.part ? partName(d.part, lang) : partName("unknown_part", lang)}</strong>
-                  <span>{d.class}</span>
+                  <span>
+                    {damageName(d.class, lang)}
+                    {d.score != null && <> · {pct(d.score, lang)}</>}
+                    {d.score != null && d.score < 0.6 && d.status !== "previously_seen_now_absent" && (
+                      <em className="timeline__check"> · {t.studio.checkByStaff}</em>
+                    )}
+                  </span>
                 </li>
               ))}
             </ul>

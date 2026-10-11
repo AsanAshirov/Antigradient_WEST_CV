@@ -867,3 +867,8 @@
   height: auto;
   display: block;
 }
+
+.timeline__check {
+  font-style: normal;
+  color: var(--signal-text);
+}

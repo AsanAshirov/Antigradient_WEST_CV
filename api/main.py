@@ -420,6 +420,7 @@ def _verify(ref: Inspection, cur: Inspection) -> dict:
                                          "ref_frame": rf, "cur_frame": cf, "cur_bbox": item.cur_bbox, "ref_bbox": item.ref_bbox,
                                          "damage_id": f"dmg_{cf}_{item.cur_index}" if item.cur_index is not None else None,
                                          "ref_damage_id": f"dmg_{rf}_{item.ref_index}" if item.ref_index is not None else None,
+                                         "score": round(item.score, 3) if item.score is not None else None,
                                          "first_seen_inspection_id": ref.inspection_id if item.status == "previously_recorded" else None})
                         if item.cur_index is not None and item.status in ("newly_detected", "previously_recorded"):
                             target = new_idx if item.status == "newly_detected" else old_idx
