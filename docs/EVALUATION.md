@@ -69,6 +69,22 @@ What changed between the first run and this one, and why it matters:
 Recall is the open item: Commons photos of one car are mostly taken from different sides, the product compares the
 same shot-plan angle. A same-angle test (two sessions × 8 slots for several cars) is the first pilot measurement.
 
+### Damage segmentation (RF-DETR-Seg Medium on HITL, CC0)
+
+Held-out 15% split of HITL Car Parts & Damages (seed 42), 7 classes, 12 epochs on a Kaggle T4 (images downscaled once
+to 1024 px; the first 40-epoch run on raw 3,000 px PNGs was CPU-bound and hit Kaggle's 12-hour limit).
+
+| Metric (validation) | Value |
+|---|---|
+| Box mAP@0.5 | 0.177 |
+| Box mAP@0.5:0.95 | 0.103 |
+| Mask mAP@0.5 | 0.156 |
+| Training instances | 7,299 (scratch 2,599 · dent 1,407 · broken part 1,280 · paint damage 1,192 · missing part 531 · corrosion 219 · crack 71) |
+
+Honest reading: a suggestion tool for a person, not an automatic judge. The curve was still rising at the last epoch
+(a 28-epoch run is training); cracks have only 71 training instances. Every finding is confirmed by staff, and the
+timeline only compares damages inside registered panels of the same car.
+
 ### Latency on the live server
 
 | Hardware | Pair of photos, browser to answer | Note |

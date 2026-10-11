@@ -28,6 +28,8 @@ Second channel: insurers (KASKO pre-inspection and claims).
 | Automatic SAME, same car, uncontrolled Commons angles | 1 / 25 (rest REVIEW) | same; the product compares the same shot-plan angle |
 | Quick check, pair of photos, live server | 2.7 s on T4 · ≈10 s on free CPU | browser to answer, `/api/v1/compare` |
 | Repair estimate | P10–P50–P90 from 4,000 Monte Carlo scenarios | `carprint/damage/estimate.py`, Tashkent public prices |
+| Damage segmentation, 7 classes | box mAP@0.5 **0.177**, mask mAP@0.5 0.156 | RF-DETR-Seg Medium, 12 epochs, held-out 15% of HITL (CC0); a suggestion for staff, not a judge |
+| Damage model latency | 0.2 s on GPU · ≈1 s on 2 CPU threads | per frame, `carprint/damage/segmenter.py` |
 
 ## Repository layout
 
