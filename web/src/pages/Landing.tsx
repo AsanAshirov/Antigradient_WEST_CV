@@ -5,7 +5,7 @@ import { MatchView } from "../components/EvidenceViewer";
 import { HeroFilm, PipelineFilm } from "../components/HeroFilm";
 import { Arrow, Play, VerdictMark } from "../components/Icons";
 import { LandingNav } from "../components/Nav";
-import { DimensionLine, Reveal, rise, SectionHead, stagger, Viewfinder, Wipe } from "../components/Primitives";
+import { DimensionLine, MaskLine, Reveal, rise, SectionHead, stagger, Viewfinder, Wipe } from "../components/Primitives";
 import sampleCost from "../data/sample_cost.json";
 import { useI18n } from "../i18n";
 import type { Cost } from "../lib/api";
@@ -30,6 +30,7 @@ export default function Landing() {
         <EvidenceSection />
         <Estimate />
         <Numbers />
+        <Limits />
         <Business />
         <Science />
         <Closing />
@@ -51,10 +52,8 @@ function Hero() {
             {t.hero.eyebrow}
           </motion.div>
           <h1 className="hero__title">
-            <motion.span variants={rise} className="hero__line">{t.hero.line1}</motion.span>
-            <motion.span variants={rise} className="hero__line">
-              {t.hero.line2a}<span className="hero__accent">{t.hero.line2b}</span>
-            </motion.span>
+            <MaskLine className="hero__line">{t.hero.line1}</MaskLine>
+            <MaskLine className="hero__line">{t.hero.line2a}<span className="hero__accent">{t.hero.line2b}</span></MaskLine>
           </h1>
           <motion.p variants={rise} className="hero__lead">{t.hero.lead}</motion.p>
           <motion.div variants={rise} className="hero__ctas">
@@ -279,13 +278,42 @@ function Numbers() {
   );
 }
 
+function Limits() {
+  const { t } = useI18n();
+  return (
+    <section className="section" id="limits" aria-labelledby="limits-title">
+      <div className="wrap">
+        <SectionHead index="06" label={t.limits.label} />
+        <div className="head-row">
+          <Reveal><h2 className="h2" id="limits-title">{t.limits.title}</h2></Reveal>
+          <Reveal delay={0.08}><p className="lead head-row__aside">{t.limits.lead}</p></Reveal>
+        </div>
+        <Reveal className="table-box">
+          <table className="data limits">
+            <thead>
+              <tr>{t.limits.cols.map((c) => <th key={c} scope="col">{c}</th>)}</tr>
+            </thead>
+            <tbody>
+              {t.limits.rows.map((r) => (
+                <tr key={r[0]}>
+                  <th scope="row">{r[0]}</th><td className="limits__answer">{r[1]}</td><td className="limits__why">{r[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 function Business() {
   const { t } = useI18n();
   const [dealer, insurer] = t.business.cols;
   return (
     <section className="section" id="business" aria-labelledby="business-title">
       <div className="wrap">
-        <SectionHead index="06" label={t.business.label} />
+        <SectionHead index="07" label={t.business.label} />
         <Reveal><h2 className="h2 business__title" id="business-title">{t.business.title}</h2></Reveal>
         <div className="columns">
           {[dealer, insurer].map((c, i) => (
@@ -317,7 +345,7 @@ function Science() {
   return (
     <section className="section section--ink on-ink" id="science" aria-labelledby="science-title">
       <div className="wrap">
-        <SectionHead index="07" label={t.science.label} />
+        <SectionHead index="08" label={t.science.label} />
         <h2 className="visually-hidden" id="science-title">{t.science.label}</h2>
         <div className="science">
           {t.science.items.map((it, i) => (

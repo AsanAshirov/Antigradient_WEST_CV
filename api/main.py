@@ -57,6 +57,23 @@ CHALLENGES = ["Покажите правое заднее колесо круп�
               "Покажите правое переднее колесо крупно", "Покажите левое заднее колесо крупно"]
 
 app = FastAPI(title="CarPrint API", version="0.1.0")
+WARM_MODELS = [m for m in os.environ.get("CARPRINT_WARM", "cobalt,matiz,nexia,gentra,spark").split(",") if m]
+
+
+@app.on_event("startup")
+def _warm_cohorts():
+    """Compute the cohort banks of the common models in the background, so the jury's first check does not pay for
+    them (on a CPU-only host this is ~40 s per model)."""
+    def run():
+        for m in WARM_MODELS:
+            try:
+                with compute_lock:
+                    cohort_for(m)
+                print(f"[carprint] cohort warmed: {m}")
+            except Exception as e:
+                print(f"[carprint] cohort warm-up failed for {m}: {e!r}")
+
+    threading.Thread(target=run, daemon=True).start()
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 ledger = Ledger(DATA / "passport.sqlite", DATA / "signing_key.pem")
 compute_lock = threading.Lock()  # one heavy job at a time on a small GPU

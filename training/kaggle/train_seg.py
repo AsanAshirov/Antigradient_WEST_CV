@@ -16,9 +16,10 @@ import time
 import zlib
 
 TASK = "__TASK__"
-EPOCHS = {"damage": 40, "parts": 30}[TASK]
+EPOCHS = {"damage": 12, "parts": 10}[TASK]  # v1 (40/30) hit the 12 h limit: CPU-bound on 3 GB of PNGs
 SEED = 42
 VAL_FRACTION = 0.15
+MAX_SIDE = 1024
 WORK = "/kaggle/working"
 DS = f"{WORK}/ds_{TASK}"
 OUT = f"{WORK}/out_{TASK}"
@@ -98,9 +99,15 @@ def build_dataset():
             if not os.path.exists(img_path):
                 continue
             a = json.load(open(af))
-            fname = f"{i:05d}{os.path.splitext(img_path)[1].lower()}"
-            os.symlink(img_path, f"{d}/{fname}")
-            coco["images"].append({"id": i, "file_name": fname, "width": a["size"]["width"], "height": a["size"]["height"]})
+            from PIL import Image
+
+            im = Image.open(img_path).convert("RGB")  # decode once, downscale, store as JPEG
+            s = min(1.0, MAX_SIDE / max(im.size))
+            if s < 1.0:
+                im = im.resize((round(im.size[0] * s), round(im.size[1] * s)), Image.LANCZOS)
+            fname = f"{i:05d}.jpg"
+            im.save(f"{d}/{fname}", quality=92)
+            coco["images"].append({"id": i, "file_name": fname, "width": im.size[0], "height": im.size[1]})
             for o in a["objects"]:
                 name = cmap.get(o["classTitle"])
                 if name is None:
@@ -114,6 +121,7 @@ def build_dataset():
                 for pts in polys:
                     if len(pts) < 3:
                         continue
+                    pts = [(x * s, y * s) for x, y in pts]
                     area, bbox = poly_area_bbox(pts)
                     if area < 16:
                         continue

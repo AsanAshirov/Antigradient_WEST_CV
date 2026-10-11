@@ -1,3 +1,4 @@
+import { motion, useScroll, useSpring } from "motion/react";
 import { useEffect, useState } from "react";
 import { useI18n } from "../i18n";
 import type { Lang } from "../i18n/strings";
@@ -32,6 +33,8 @@ export function LandingNav() {
   const { t } = useI18n();
   const [solid, setSolid] = useState(false);
   const [open, setOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 200, damping: 40, mass: 0.3 });
 
   useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 40);
@@ -42,7 +45,7 @@ export function LandingNav() {
 
   const links: [string, string][] = [
     ["#problem", t.nav.problem], ["#how", t.nav.how], ["#evidence", t.nav.evidence], ["#estimate", t.nav.estimate],
-    ["#numbers", t.nav.numbers], ["#business", t.nav.business], ["#science", t.nav.science],
+    ["#numbers", t.nav.numbers], ["#limits", t.nav.limits], ["#business", t.nav.business], ["#science", t.nav.science],
   ];
 
   return (
@@ -62,6 +65,7 @@ export function LandingNav() {
           </button>
         </div>
       </div>
+      <motion.div className="topnav__progress" style={{ scaleX: progress }} aria-hidden="true" />
     </header>
   );
 }

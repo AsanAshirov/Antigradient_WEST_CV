@@ -1,5 +1,5 @@
 import { useInView } from "motion/react";
-import { useEffect, useMemo, useRef, useState, type PointerEvent } from "react";
+import { useEffect, useId, useMemo, useRef, useState, type PointerEvent } from "react";
 
 const H = 1000; // SVG units: both photos share this height, widths follow their aspect ratios
 const GAP = 24;
@@ -8,12 +8,18 @@ export const INDIVIDUAL_W = 0.7;
 type Size = [number, number];
 
 /** Two photos and the inlier lines between them, drawn from the evidence data (not a baked image). */
+const LENS_R = 130;
+const LENS_ZOOM = 2.6;
+
 export function MatchView({ refSrc, curSrc, refSize, curSize, matches, cells, onlyMarks = false, label }: {
   refSrc: string; curSrc: string; refSize: Size; curSize: Size; matches: number[][]; cells?: number[][];
   onlyMarks?: boolean; label: string;
 }) {
   const ref = useRef<SVGSVGElement>(null);
   const inView = useInView(ref, { once: true, margin: "0px 0px -20% 0px" });
+  const uid = useId().replace(/:/g, "");
+  const [lens, setLens] = useState<{ x: number; y: number } | null>(null);
+  const finePointer = typeof window !== "undefined" && window.matchMedia("(pointer: fine)").matches;
   const w1 = (H * refSize[0]) / refSize[1];
   const w2 = (H * curSize[0]) / curSize[1];
   const lines = useMemo(() => {
@@ -22,27 +28,52 @@ export function MatchView({ refSrc, curSrc, refSize, curSize, matches, cells, on
     return [...rows].sort((a, b) => a[4] - b[4]);
   }, [matches, onlyMarks]);
 
+  const onMove = (e: PointerEvent<SVGSVGElement>) => {
+    const svg = ref.current;
+    const m = svg?.getScreenCTM();
+    if (!svg || !m || !finePointer) return;
+    const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse());
+    setLens({ x: p.x, y: p.y });
+  };
+
   return (
     <svg ref={ref} className={`matchview ${inView ? "is-drawn" : ""}`} viewBox={`0 0 ${w1 + GAP + w2} ${H}`}
-      role="img" aria-label={label} preserveAspectRatio="xMidYMid meet">
-      <image href={refSrc} x="0" y="0" width={w1} height={H} preserveAspectRatio="none" className="matchview__photo" />
-      <image href={curSrc} x={w1 + GAP} y="0" width={w2} height={H} preserveAspectRatio="none" className="matchview__photo" />
-      {cells?.map(([x, y, w, h], i) => (
-        <rect key={`c${i}`} className="matchview__cell" x={x * w1} y={y * H} width={w * w1} height={h * H}
-          style={{ ["--i" as string]: i }} />
-      ))}
-      {lines.map(([x0, y0, x1, y1, w], i) => (
-        <line key={i} pathLength={1}
-          className={w >= INDIVIDUAL_W ? "matchview__mark" : "matchview__design"}
-          x1={x0 * w1} y1={y0 * H} x2={w1 + GAP + x1 * w2} y2={y1 * H}
-          style={{ ["--i" as string]: i }} />
-      ))}
-      {lines.filter((m) => m[4] >= INDIVIDUAL_W).map(([x0, y0, x1, y1], i) => (
-        <g key={`p${i}`} className="matchview__dots" style={{ ["--i" as string]: i }}>
-          <circle cx={x0 * w1} cy={y0 * H} r={5} />
-          <circle cx={w1 + GAP + x1 * w2} cy={y1 * H} r={5} />
+      role="img" aria-label={label} preserveAspectRatio="xMidYMid meet"
+      onPointerMove={onMove} onPointerLeave={() => setLens(null)}>
+      <g id={`scene-${uid}`}>
+        <image href={refSrc} x="0" y="0" width={w1} height={H} preserveAspectRatio="none" className="matchview__photo" />
+        <image href={curSrc} x={w1 + GAP} y="0" width={w2} height={H} preserveAspectRatio="none" className="matchview__photo" />
+        {cells?.map(([x, y, w, h], i) => (
+          <rect key={`c${i}`} className="matchview__cell" x={x * w1} y={y * H} width={w * w1} height={h * H}
+            style={{ ["--i" as string]: i }} />
+        ))}
+        {lines.map(([x0, y0, x1, y1, w], i) => (
+          <line key={i} pathLength={1}
+            className={w >= INDIVIDUAL_W ? "matchview__mark" : "matchview__design"}
+            x1={x0 * w1} y1={y0 * H} x2={w1 + GAP + x1 * w2} y2={y1 * H}
+            style={{ ["--i" as string]: i }} />
+        ))}
+        {lines.filter((m) => m[4] >= INDIVIDUAL_W).map(([x0, y0, x1, y1], i) => (
+          <g key={`p${i}`} className="matchview__dots" style={{ ["--i" as string]: i }}>
+            <circle cx={x0 * w1} cy={y0 * H} r={5} />
+            <circle cx={w1 + GAP + x1 * w2} cy={y1 * H} r={5} />
+          </g>
+        ))}
+      </g>
+      {lens && (
+        <g aria-hidden="true" pointerEvents="none">
+          <defs>
+            <clipPath id={`lens-${uid}`}><circle cx={lens.x} cy={lens.y} r={LENS_R} /></clipPath>
+          </defs>
+          <g clipPath={`url(#lens-${uid})`}>
+            <rect x={lens.x - LENS_R} y={lens.y - LENS_R} width={2 * LENS_R} height={2 * LENS_R} fill="#0c0d0f" />
+            <g transform={`translate(${lens.x} ${lens.y}) scale(${LENS_ZOOM}) translate(${-lens.x} ${-lens.y})`}>
+              <use href={`#scene-${uid}`} />
+            </g>
+          </g>
+          <circle className="matchview__lens-ring" cx={lens.x} cy={lens.y} r={LENS_R} />
         </g>
-      ))}
+      )}
     </svg>
   );
 }

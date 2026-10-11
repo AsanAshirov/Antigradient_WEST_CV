@@ -52,11 +52,28 @@ export const rise: Variants = {
 
 export function SectionHead({ index, label }: { index: string; label: string }) {
   return (
-    <div className="section-head label">
-      <span>{index}</span>
-      <span className="section-head__rule" aria-hidden="true" />
-      <span>{label}</span>
-    </div>
+    <>
+      <span className="sheet-number" aria-hidden="true">{index}</span>
+      <div className="section-head label">
+        <span>{index}</span>
+        <span className="section-head__rule" aria-hidden="true" />
+        <span>{label}</span>
+      </div>
+    </>
+  );
+}
+
+const lineUp: Variants = {
+  hidden: { y: "108%" },
+  show: { y: "0%", transition: { duration: 0.9, ease: EASE } },
+};
+
+/** A headline line that slides up from behind a mask (editorial reveal); static with reduced motion. */
+export function MaskLine({ children, className }: { children: ReactNode; className?: string }) {
+  return (
+    <span className={`mask-line ${className ?? ""}`}>
+      <motion.span className="mask-line__inner" variants={lineUp}>{children}</motion.span>
+    </span>
   );
 }
 
